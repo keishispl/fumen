@@ -1,0 +1,42 @@
+<html>
+
+<head>
+     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" type="text/css"
+          rel="stylesheet">
+     <link href="index.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+     <div class="tint" style="text-align: center;">
+          <div style="padding-bottom: 50px;">
+          <h1 style="padding-top: 25px; padding-bottom: 25px;">圭紫の太鼓創作譜面<a style="padding-right: 100px;"></a>Keishi's Taiko Custom Charts</h1>
+          <table class="main cellcolor">
+               <thead>
+                    <tr>
+                         <th>Song</th>
+                         <th>Artist</th>
+                         <th>Source</th>
+                         <th>BPM</th>
+                         <th>Duration</th>
+                         <th style="min-width: 200px;">Chart</th>
+                         <th></th>
+                    </tr>
+               </thead>
+               <tbody id="table-body"></tbody>
+          </table>
+     </div>
+
+          <script src="parse_song.js"></script>
+          <script src="json_from_file.js"></script>
+          <script>
+               jsonFromFile("jpop").forEach((song) => parseSong(song, "jpop"));
+               jsonFromFile("anime").forEach((song) => parseSong(song, "anime"));
+               jsonFromFile("vocaloid").forEach((song) => parseSong(song, "vocaloid"));
+               jsonFromFile("touhou").forEach((song) => parseSong(song, "touhou"));
+               jsonFromFile("game").forEach((song) => parseSong(song, "game"));
+          </script>
+     </div>
+</body>
+
+</html>

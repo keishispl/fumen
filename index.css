@@ -1,0 +1,87 @@
+body {
+     overscroll-behavior: none;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://keishispl.github.io/img/wallpaper/self_drawn.png');
+     background-size: cover;
+     background-position: center right;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     color: #e9ebec;
+     font-weight: normal;
+     margin: 0;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+td,
+th {
+     padding: 0
+}
+
+.main {
+     border-collapse: collapse;
+     border-spacing: 0;
+     display: block;
+     width: auto;
+     overflow: auto;
+     overflow-x: scroll;
+     word-break: normal;
+     word-break: keep-all;
+     -webkit-overflow-scrolling: touch;
+}
+
+.main th {
+     font-weight: 700
+}
+
+.main th,
+.main td {
+     padding: .5rem 1rem;
+     border: 1px solid #e9ebec
+}
+
+.tint {
+     background-color: rgba(0, 0, 0, 0.15);
+     background-blend-mode: multiply;
+}
+
+
+
+.cellcolor .icon {
+     margin-bottom: -5px;
+     max-width: 20px;
+     max-height: 20px;
+}
+
+.cellcolor .hiddenlink {
+     text-decoration: underline;
+     color: #e9ebec;
+}
+
+.cellcolor {
+
+     .jpop {
+          background-color: rgba(76, 177, 255, 0.15);
+     }
+
+     .anime {
+          background-color: rgba(255, 76, 225, 0.15);
+     }
+
+     .vocaloid {
+          background-color: rgba(241, 241, 241, 0.15);
+     }
+
+     .touhou {
+          background-color: rgba(255, 76, 76, 0.15);
+     }
+
+     .variety {
+          background-color: rgba(76, 255, 91, 0.15);
+     }
+
+     .game {
+          background-color: rgba(207, 76, 255, 0.15);
+     }
+
+}
