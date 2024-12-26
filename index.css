@@ -1,3 +1,12 @@
+::-moz-selection {
+     color: white;
+     background: rgba(95, 168, 0, 0.22);
+}
+::selection {
+     color: white;
+     background: rgba(95, 168, 0, 0.22);
+}
+
 body {
      overscroll-behavior: none;
      background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://keishispl.github.io/img/wallpaper/self_drawn.png');
@@ -5,7 +14,7 @@ body {
      background-position: center right;
      background-repeat: no-repeat;
      background-attachment: fixed;
-     color: #e9ebec;
+     color: #cecfd0;
      font-weight: normal;
      margin: 0;
      display: flex;
@@ -37,7 +46,7 @@ th {
 .main th,
 .main td {
      padding: .5rem 1rem;
-     border: 1px solid #e9ebec
+     border: 1px solid #cecfd0
 }
 
 .tint {

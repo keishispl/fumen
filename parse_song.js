@@ -2,12 +2,16 @@ function parseSong(song, genre) {
      const tableBody = document.getElementById("table-body");
      const row = document.createElement("tr");
 
-     if (genre == "jpop") row.className = "jpop";
-     if (genre == "anime") row.className = "anime";
-     if (genre == "vocaloid") row.className = "vocaloid";
-     if (genre == "touhou") row.className = "touhou";
-     if (genre == "variety") row.className = "variety";
-     if (genre == "game") row.className = "game";
+     genreList = [
+          "jpop",
+          "anime",
+          "vocaloid",
+          "touhou",
+          "variety",
+          "game"
+     ]
+
+     if (genreList.includes(genre)) row.className = genre;
 
      tableBody.appendChild(row);
 
@@ -37,19 +41,19 @@ function parseSong(song, genre) {
                case "chart":
                     if (song.chart.kantan) {
                          kantan = `<div><img class="icon" src="difficulty/kantan.png" alt="かんたん" data-scanned="true">: ☆${song.chart.kantan.join(` / `)} コンボ</div>`
-                    } else kantan = "";
+                    } else kantan = `<div><img class="icon" src="difficulty/kantan.png" alt="かんたん" data-scanned="true">: -</div>`;
 
                     if (song.chart.futsuu) {
                          futsuu = `<div><img class="icon" src="difficulty/futsuu.png" alt="ふつう" data-scanned="true">: ☆${song.chart.futsuu.join(` / `)} コンボ</div>`
-                    } else futsuu = "";
+                    } else futsuu = `<div><img class="icon" src="difficulty/futsuu.png" alt="ふつう" data-scanned="true">: -</div>`;
 
                     if (song.chart.muzukashii) {
                          muzukashii = `<div><img class="icon" src="difficulty/muzukashii.png" alt="むずかしい" data-scanned="true">: ☆${song.chart.muzukashii.join(` / `)} コンボ</div>`
-                    } else muzukashii = "";
+                    } else muzukashii = `<div><img class="icon" src="difficulty/muzukashii.png" alt="むずかしい" data-scanned="true">: -</div>`;
 
                     if (song.chart.oni) {
                          oni = `<div><img class="icon" src="difficulty/oni.png" alt="おに" data-scanned="true">: ☆${song.chart.oni.join(` / `)} コンボ</div>`
-                    } else oni = "";
+                    } else oni = `<div><img class="icon" src="difficulty/oni.png" alt="おに" data-scanned="true">: -</div>`;
 
                     if (song.chart.ura) {
                          ura = `<div><img class="icon" src="difficulty/ura.png" alt="うら" data-scanned="true">: ☆${song.chart.ura.join(` / `)} コンボ</div>`
@@ -58,7 +62,11 @@ function parseSong(song, genre) {
                     cell.innerHTML = kantan + futsuu + muzukashii + oni + ura;
                     break;
                case "":
-                    cell.innerHTML = `<a href="https://github.com/keishispl/taikofumen-res/tree/main/charts/${genre}/${song.song[0]}/" class="hiddenlink" target="_blank"><i class="fa-solid fa-download"></i></a>`;
+                    if (`${song[key]}` === "" || `${song[key]}` === "true") {
+                         cell.innerHTML = `-`;
+                    } else {
+                         cell.innerHTML = `<a href="https://drive.google.com/drive/folders/${song[key]}/" class="hiddenlink" target="_blank"><i class="fa-solid fa-download"></i></a>`;
+                    }
                     break;
                default:
                     cell.innerHTML = song[key];
