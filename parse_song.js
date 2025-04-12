@@ -27,7 +27,7 @@ function parseSong(song, genre) {
           switch (key) {
                case "song":
                     if (song.link) {
-                         cell.innerHTML = `<a href="${song.link}" class="hiddenlink" target="_blank">${song[key].join(`<br>`)}</a>`;
+                         cell.innerHTML = `<a href="https://www.youtube.com/watch?v=${song.link}" class="hiddenlink" target="_blank">${song[key].join(`<br>`)}</a>`;
                     } else {
                          cell.innerHTML = song[key].join(`<br>`);
                     }
