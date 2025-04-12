@@ -54,7 +54,12 @@ th {
      background-blend-mode: multiply;
 }
 
-
+a, a:visited {
+     color: rgb(141, 255, 236)
+}
+a:hover {
+     color: rgb(128, 232, 215)
+}
 
 .cellcolor .icon {
      margin-bottom: -5px;

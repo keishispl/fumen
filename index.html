@@ -1,16 +1,16 @@
 <html>
 
 <head>
-     <title>圭紫の太鼓創作譜面</title>
+     <title>圭紫の太鼓の達人創作譜面</title>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
  
      <meta name="theme-color" content="#FEF2E8">
-     <meta content="圭紫の太鼓創作譜面" property="og:title">
-     <meta content="Keishi's Taiko Custom Charts" property="og:description">
-     <meta content="Keishi's Taiko Custom Charts" name="description">
+     <meta content="圭紫の太鼓の達人創作譜面" property="og:title">
+     <meta content="" property="og:description">
+     <meta content="" name="description">
      <meta name="revisit-after" content="2 days">
-     <meta property="og:locale" content="en">
+     <meta property="og:locale" content="ja">
      <link rel="canonical" href="https://keishispl.github.io/">
      <meta property="og:url" content="https://keishispl.github.io/">
      <meta property="og:site_name" content="圭紫">
@@ -24,31 +24,39 @@
 <body>
      <div class="tint" style="text-align: center;">
           <div style="padding-bottom: 50px;">
-          <h1 style="padding-top: 25px; padding-bottom: 25px;">圭紫の太鼓創作譜面<a style="padding-right: 100px;"></a>Keishi's Taiko Custom Charts</h1>
+          <h1 style="padding-top: 25px; padding-bottom: 25px;">圭紫の太鼓の達人創作譜面</h1>
           <table class="main cellcolor" style="padding-bottom: 25px;">
                <thead>
                     <tr>
-                         <th>Song</th>
-                         <th>Artist</th>
-                         <th>Source</th>
+                         <th>楽曲</th>
+                         <th>作曲者</th>
+                         <th>ソース</th>
                          <th>BPM</th>
-                         <th>Duration</th>
-                         <th style="min-width: 200px;">Chart</th>
+                         <th>持続時間</th>
+                         <th style="min-width: 200px;">難易度</th>
                          <th></th>
                     </tr>
                </thead>
                <tbody id="table-body"></tbody>
           </table>
+          <p style="padding-top: 25px;">最新のリストは<a href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM" target="_blank">Google スプレッドシート</a>にあります</p>
      </div>
 
           <script src="parse_song.js"></script>
           <script src="json_from_file.js"></script>
           <script>
-               jsonFromFile("jpop").forEach((song) => parseSong(song, "jpop"));
-               jsonFromFile("anime").forEach((song) => parseSong(song, "anime"));
-               jsonFromFile("vocaloid").forEach((song) => parseSong(song, "vocaloid"));
-               jsonFromFile("touhou").forEach((song) => parseSong(song, "touhou"));
-               jsonFromFile("game").forEach((song) => parseSong(song, "game"));
+               const genreToLoad = [
+                    "jpop",
+                    "anime",
+                    "vocaloid",
+                    "touhou",
+                    "game"
+               ]
+
+               var length = genreToLoad.length
+               for (var i = 0; i < length; i++) {
+                    jsonFromFile(genreToLoad[i]).forEach((song) => parseSong(song, genreToLoad[i]))
+               }
           </script>
      </div>
 </body>
