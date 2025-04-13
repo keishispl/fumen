@@ -1,4 +1,4 @@
-function parseSong(song, genre) {
+function parseSong(song, genre, index) {
      const tableBody = document.getElementById("table-body");
      const row = document.createElement("tr");
 

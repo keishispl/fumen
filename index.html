@@ -21,11 +21,14 @@
      <link href="index.css" type="text/css" rel="stylesheet">
 </head>
 
-<body>
-     <div class="tint" style="text-align: center;">
+<body class="bg-enabled" id="body">
+     <div id="obj" style="text-align: center;">
+          <p id="bg-toggle" class="hidden">BG TOGGLE</p>
+
           <div style="padding-bottom: 50px;">
-          <h1 style="padding-top: 25px; padding-bottom: 25px;">圭紫の太鼓の達人創作譜面</h1>
-          <table class="main cellcolor" style="padding-bottom: 25px;">
+          <h1 id="logotext" class="hidden" style="padding-top: 25px; padding-bottom: 25px;">圭紫の太鼓の達人創作譜面</h1>
+          <p id="loading">Loading...</p>
+          <table id="table" class="main cellcolor hidden" style="padding-bottom: 25px;">
                <thead>
                     <tr>
                          <th>楽曲</th>
@@ -39,25 +42,16 @@
                </thead>
                <tbody id="table-body"></tbody>
           </table>
-          <p style="padding-top: 25px;">最新のリストは<a href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM" target="_blank">Google スプレッドシート</a>にあります</p>
+          <p id="source" class="hidden" style="padding-top: 25px;">最新のリストは<a href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM" target="_blank">Google スプレッドシート</a>にあります</p>
+
+          <button id="scroll" class="hidden"><i class="fa-solid fa-arrow-up"></i></button>
      </div>
 
           <script src="parse_song.js"></script>
           <script src="json_from_file.js"></script>
-          <script>
-               const genreToLoad = [
-                    "jpop",
-                    "anime",
-                    "vocaloid",
-                    "touhou",
-                    "game"
-               ]
-
-               var length = genreToLoad.length
-               for (var i = 0; i < length; i++) {
-                    jsonFromFile(genreToLoad[i]).forEach((song) => parseSong(song, genreToLoad[i]))
-               }
-          </script>
+          <script src="startup.js"></script>
+          <script src="bg_toggle.js"></script>
+          <script src="scroll.js"></script>
      </div>
 </body>
 
