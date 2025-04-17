@@ -3,7 +3,9 @@ document.title = 'Loading...'
 setTimeout(() => {
      document.title = '圭紫の太鼓の達人創作譜面'
      document.getElementById("loading").remove()
-     document.getElementById("obj").classList.add("tint")
+     if (bgSetting === true) {
+          document.getElementById("obj").classList.add("tint")
+     }
 
      const showObjects = [
           "table",

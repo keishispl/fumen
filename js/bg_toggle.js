@@ -26,8 +26,6 @@ if (urlParams.get('bg') === "image" || urlParams.get('bg') === "color") {
 if (bgSetting === true) {
      body.classList.add('bg-enabled')
      body.classList.remove('bg-disabled')
-
-     obj.classList.add('tint')
 } else {
      body.classList.add('bg-disabled')
      body.classList.remove('bg-enabled')
