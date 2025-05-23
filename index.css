@@ -8,6 +8,19 @@
      background: rgba(95, 168, 0, 0.22);
 }
 
+#table-body {
+     padding-bottom: 25px;
+}
+
+#logotext {
+     padding-top: 25px;
+     padding-bottom: 25px;
+}
+
+#source {
+     padding-top: 25px;
+}
+
 body {
      overscroll-behavior: none;
      background-size: cover;
@@ -60,7 +73,7 @@ th {
 }
 
 .tint {
-     background-color: rgba(0, 0, 0, 0.15);
+     background-color: rgba(0, 0, 0, 0.25);
      background-blend-mode: multiply;
 }
 
@@ -77,6 +90,8 @@ a:hover {
      margin-bottom: -5px;
      max-width: 20px;
      max-height: 20px;
+     pointer-events: none;
+     -webkit-touch-callout: none;
 }
 
 .cellcolor .hiddenlink {

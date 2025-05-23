@@ -1,16 +1,28 @@
-const refresh = document.getElementById(`scroll`);
-refresh.classList.add('hidden');
+/**
+ * Shows the scroll to top button when the user has scrolled more than 250px
+ * down the page.
+ */
 
-refresh.addEventListener('click', () => {
-     document.body.scrollTo({ top: 0, behavior: 'smooth' });
-     document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+const scrollButton = document.getElementById('scroll');
+scrollButton.classList.add('hidden');
+
+/**
+ * Listens for clicks on the scroll to top button and scrolls to the top of the
+ * page smoothly.
+ */
+scrollButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-window.onscroll = function () { scrollFunction() };
-function scrollFunction() {
-     if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
-          refresh.classList.remove('hidden');
-     } else {
-          refresh.classList.add('hidden');
-     }
-}
+/**
+ * Listens for scroll events and shows/hides the scroll to top button based on
+ * the current scroll position.
+ */
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    if (scrollPosition > 250) {
+        scrollButton.classList.remove('hidden');
+    } else {
+        scrollButton.classList.add('hidden');
+    }
+});
