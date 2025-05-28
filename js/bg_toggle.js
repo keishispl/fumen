@@ -60,7 +60,7 @@ document.getElementById('bg-toggle').addEventListener('click', () => {
            * So, toggle the background preference to "color".
            */
           document.body.classList.replace('bg-enabled', 'bg-disabled');
-          document.getElementById('obj').classList.remove('tint');
+          document.body.classList.remove('tint');
           document.cookie = 'bg=color;';
      } else {
           /**
@@ -68,7 +68,7 @@ document.getElementById('bg-toggle').addEventListener('click', () => {
            * So, toggle the background preference to "image".
            */
           document.body.classList.replace('bg-disabled', 'bg-enabled');
-          document.getElementById('obj').classList.add('tint');
+          document.body.classList.add('tint');
           document.cookie = 'bg=image;';
      }
 });

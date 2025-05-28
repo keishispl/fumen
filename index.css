@@ -15,10 +15,14 @@
 #logotext {
      padding-top: 25px;
      padding-bottom: 25px;
+     user-select: none;
+     -moz-user-select: none;
 }
 
 #source {
      padding-top: 25px;
+     user-select: none;
+     -moz-user-select: none;
 }
 
 body {
@@ -70,6 +74,14 @@ th {
 .main td {
      padding: .5rem 1rem;
      border: 1px solid #cecfd0
+}
+
+td {
+     text-align: center;
+}
+
+.難易度／コンボ {
+     text-align: left;
 }
 
 .tint {
@@ -131,27 +143,35 @@ a:hover {
      display: none;
 }
 
-#bg-toggle {
+#loading {
+     user-select: none;
+     -moz-user-select: none;
+     font-size: 20px;
+}
+
+body {
+     position: relative;
+}
+
+#sidebar {
      position: fixed;
-     bottom: -8px;
-     left: 7px;
-     background-color: rgba(0, 0, 0, 0.1);
-     backdrop-filter: blur(2.5px);
-     padding: 4px;
-     border: 1px solid #cecfd0;
-     border-radius: 6px;
+     background-color: rgb(32, 32, 32);
+     top: 0;
+     bottom: 0;
+     left: 0;
+     width: 300px;
+     transition: transform 0.2s;
      user-select: none;
      -moz-user-select: none;
 }
 
-#bg-toggle:hover {
-     background: rgba(206, 207, 208, 0.22);
+.menu-closed>#sidebar {
+     transform: translateX(-300px);
 }
 
-#scroll {
+#scroll,
+#btn2 {
      position: fixed;
-     bottom: 20px;
-     right: 20px;
      border: 1px solid #cecfd0;
      background-color: rgba(0, 0, 0, 0.1);
      backdrop-filter: blur(2.5px);
@@ -166,12 +186,50 @@ a:hover {
      -moz-user-select: none;
 }
 
-#scroll:hover {
+#scroll:hover,
+#btn2:hover,
+#bg-toggle:hover {
      background: rgba(206, 207, 208, 0.22);
 }
 
-#loading {
+#scroll {
+     bottom: 20px;
+     right: 20px;
+}
+
+#btn2 {
+     top: 10px;
+     left: 310px;
+     transition: left 0.2s;
+     border: 1px solid #cecfd0;
+     background-color: rgba(0, 0, 0, 0.1);
+     backdrop-filter: blur(2.5px);
+     cursor: pointer;
+     padding: 15px;
+     border-radius: 10px;
+     font-size: 16px;
+     width: 50px;
+     height: 50px;
      user-select: none;
      -moz-user-select: none;
-     font-size: 20px;
+     color: #cecfd0;
+}
+
+#bg-toggle {
+     transition: left 0.2s;
+     position: fixed;
+     bottom: -8px;
+     left: 7px;
+     padding: 4px;
+     border: 1px solid #cecfd0;
+     border-radius: 6px;
+     user-select: none;
+     -moz-user-select: none;
+     backdrop-filter: blur(2.5px);
+     cursor: pointer;
+}
+
+.line {
+     margin-top: -35px;
+     margin-left: -5px;
 }

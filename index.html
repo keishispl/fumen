@@ -22,9 +22,18 @@
 </head>
 
 <body class="bg-enabled">
+     <div id="sidebar" class="hidden">
+          <div style="padding-left: 25px;">
+               <h1>MENU</h1>
+               <p>ジャンプする</p>
+               <p class="line"></p>
+               <div id="jumplist"></div>
+          </div>
+     </div>
      <div id="obj" style="text-align: center;">
-          <p id="bg-toggle" class="hidden">BG TOGGLE</p>
-          <button id="scroll" class="hidden"><i class="fa-solid fa-arrow-up"></i></button>
+          <button class="hidden" id="btn2" tabindex="2"><i class="fa-solid fa-bars"></i></button>
+          <p id="bg-toggle" class="hidden" tabindex="2">BG TOGGLE</p>
+          <button id="scroll" class="hidden" tabindex="2"><i class="fa-solid fa-arrow-up"></i></button>
           <p id="loading">Loading...</p>
 
           <div style="padding-bottom: 50px;">
@@ -34,13 +43,13 @@
                          href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM"
                          target="_blank">Google スプレッドシート</a>にあります</p>
           </div>
-
-          <script src="js/parse_song.js"></script>
-          <script src="js/json_from_file.js"></script>
-          <script src="js/startup.js"></script>
-          <script src="js/bg_toggle.js"></script>
-          <script src="js/scroll.js"></script>
      </div>
+     <script src="js/parse_song.js"></script>
+     <script src="js/json_from_file.js"></script>
+     <script src="js/startup.js"></script>
+     <script src="js/bg_toggle.js"></script>
+     <script src="js/scroll.js"></script>
+     <script src="js/menu.js"></script>
 </body>
 
 </html>

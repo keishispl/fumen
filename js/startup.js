@@ -1,4 +1,17 @@
 /**
+ * Object that maps genre names to their corresponding labels.
+ * Used to set the text content of the genre labels in the table.
+ * @type {Object.<string,string>}
+ */
+const genreLabels = {
+     jpop: 'ポップス',
+     anime: 'アニメ',
+     vocaloid: 'ボーカロイド™',
+     touhou: '東方Project',
+     game: 'ゲームミュージック'
+};
+
+/**
  * Sets the document title to "Loading..." and waits for 100ms
  * before setting it to the desired title.
  * This is used to create a loading animation for the page.
@@ -44,7 +57,7 @@ setTimeout(() => {
                cell.style.fontWeight = 'bold';
                cell.style.textAlign = 'center';
                cell.textContent = text;
-               cell.id = colorClass + "_" + text;
+               cell.id = "カテゴリー/" + colorClass + "_" + (text ? text : "ダウンロード");
                if (colorClass) {
                     cell.classList.add(colorClass);
                }
@@ -65,7 +78,7 @@ setTimeout(() => {
       * @param {string} text - Text content of the table cell.
       */
      function setTableCell(genre, type, text) {
-          document.getElementById(genre + "_" + type).textContent = text;
+          document.getElementById("カテゴリー/" + genre + "_" + type).textContent = text;
      }
 
      /**
@@ -73,19 +86,6 @@ setTimeout(() => {
       * Used to prevent genres from being loaded more than once.
       */
      const loadedGenres = new Set();
-
-     /**
-      * Object that maps genre names to their corresponding labels.
-      * Used to set the text content of the genre labels in the table.
-      * @type {Object.<string,string>}
-      */
-     const genreLabels = {
-          jpop: 'ポップス',
-          anime: 'アニメ',
-          vocaloid: 'ボーカロイド™',
-          touhou: '東方Project',
-          game: 'ゲームミュージック'
-     };
 
      /**
       * Loop through the array of genres and fetch the corresponding JSON data from the server.
@@ -139,14 +139,14 @@ setTimeout(() => {
       * This is used to apply a tint effect to the element.
       */
      if (bgSetting) {
-          document.getElementById('obj').classList.add('tint');
+          document.body.classList.add('tint');
      }
 
      /**
       * Array of element IDs whose 'hidden' class will be removed.
       * This will make the elements visible on the page.
       */
-     ['table-body', 'bg-toggle', 'source', 'logotext'].forEach(id => {
+     ['table-body', 'bg-toggle', 'source', 'logotext', 'sidebar', 'btn2'].forEach(id => {
           document.getElementById(id).classList.remove('hidden');
      });
 }, Math.floor(Math.random() * 700) + 100);
