@@ -92,7 +92,7 @@ setTimeout(() => {
       * For each genre, loop through the array of songs and add them to the table.
       * If the genre has not been loaded before, add a header row to the table with the genre name.
       */
-     ['jpop', 'anime', 'vocaloid', 'touhou', 'game'].forEach(genre => {
+     Object.keys(genreLabels).forEach(genre => {
           jsonFromFile(genre).forEach(song => {
                /**
                 * If the genre has not been loaded before, add a header row to the table with the genre name.

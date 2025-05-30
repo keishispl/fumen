@@ -11,7 +11,7 @@ for (var i = 0; i < lines.length; i++) {
 };
 
 const list = document.getElementById('jumplist');
-['jpop', 'anime', 'vocaloid', 'touhou', 'game'].forEach(genre => {
+Object.keys(genreLabels).forEach(genre => {
      const link = document.createElement('p');
      link.innerHTML = genreLabels[genre];
      link.style.cursor = 'pointer';
@@ -41,7 +41,7 @@ function menuToggle(bool) {
           document.getElementById("btn2").style.right = "310px";
           document.getElementById("scroll").style.right = "310px";
           menuClosed = false;
-          ['jpop', 'anime', 'vocaloid', 'touhou', 'game'].forEach(genre => {
+          Object.keys(genreLabels).forEach(genre => {
                document.getElementById("jump-" + genre).tabIndex = 1;
           })
      }
@@ -50,7 +50,7 @@ function menuToggle(bool) {
           document.getElementById("btn2").style.right = "10px";
           document.getElementById("scroll").style.right = "10px";
           menuClosed = true;
-          ['jpop', 'anime', 'vocaloid', 'touhou', 'game'].forEach(genre => {
+          Object.keys(genreLabels).forEach(genre => {
                document.getElementById("jump-" + genre).tabIndex = -1;
           })
      }
