@@ -22,6 +22,10 @@
 </head>
 
 <body class="bg-enabled">
+     <p id="loading">Loading...</p>
+     <button class="hidden" id="btn2" tabindex="2"><i class="fa-solid fa-bars"></i></button>
+     <p id="bg-toggle" class="hidden" tabindex="2">BG TOGGLE</p>
+     <button id="scroll" class="hidden" tabindex="2"><i class="fa-solid fa-arrow-up"></i></button>
      <div id="sidebar" class="hidden">
           <div style="padding-right: 25px;">
                <h1>MENU</h1>
@@ -30,19 +34,12 @@
                <div id="jumplist"></div>
           </div>
      </div>
-     <p id="loading">Loading...</p>
-     <div id="obj" style="text-align: center;">
-          <button class="hidden" id="btn2" tabindex="2"><i class="fa-solid fa-bars"></i></button>
-          <p id="bg-toggle" class="hidden" tabindex="2">BG TOGGLE</p>
-          <button id="scroll" class="hidden" tabindex="2"><i class="fa-solid fa-arrow-up"></i></button>
-
-          <div style="padding-top: 300vh; padding-bottom: 50px;">
-               <h1 id="logotext" class="hidden">圭紫の太鼓の達人創作譜面</h1>
-               <table id="table-body" class="main cellcolor hidden"></table>
-               <p id="source" class="hidden">最新のリストは<a
-                         href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM"
-                         target="_blank">Google スプレッドシート</a>にあります</p>
-          </div>
+     <div id="obj" style="text-align: center; padding-bottom: 50px;">
+          <h1 id="logotext" class="hidden">圭紫の太鼓の達人創作譜面</h1>
+          <table id="table-body" class="main cellcolor hidden"></table>
+          <p id="source" class="hidden">最新のリストは<a
+                    href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM"
+                    target="_blank">Google スプレッドシート</a>にあります</p>
      </div>
      <script src="js/parse_song.js"></script>
      <script src="js/json_from_file.js"></script>
