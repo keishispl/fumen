@@ -50,10 +50,12 @@ if (bgSetting) {
 }
 
 /**
- * Add an event listener to the bg-toggle element.
- * When the user clicks on the element, toggle the background preference.
+ * Toggles the background preference between "image" and "color".
+ * If the background preference is currently set to "image", toggles it to "color".
+ * If the background preference is currently set to "color", toggles it to "image".
+ * Updates the document cookie to reflect the new background preference.
  */
-document.getElementById('bg-toggle').addEventListener('click', () => {
+function backgroundToggle() {
      if (document.body.classList.contains('bg-enabled')) {
           /**
            * The user has clicked on the bg-toggle element and the background preference is currently set to "image".
@@ -70,5 +72,18 @@ document.getElementById('bg-toggle').addEventListener('click', () => {
           document.body.classList.replace('bg-disabled', 'bg-enabled');
           document.body.classList.add('tint');
           document.cookie = 'bg=image;';
+     }
+}
+
+/**
+ * Add an event listener to the bg-toggle element.
+ * When the user clicks/press enter on the element, toggle the background preference.
+ */
+document.getElementById('bg-toggle').addEventListener('click', () => {
+     backgroundToggle();
+});
+document.getElementById('bg-toggle').addEventListener('keyup', (e) => {
+     if (e.key === "Enter") {
+          backgroundToggle();
      }
 });

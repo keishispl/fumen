@@ -22,15 +22,24 @@ const list = document.getElementById('jumplist');
      link.addEventListener('click', () => {
           document.querySelector("." + genre).scrollIntoView({ behavior: 'smooth' });
      });
+     link.addEventListener('keyup', function (e) {
+          if (e.key === "Enter") {
+               document.querySelector("." + genre).scrollIntoView({ behavior: 'smooth' });
+          }
+     });
 });
 
 let menuClosed = true;
 
+/**
+ * Toggles the menu on and off.
+ * @param {boolean} [bool] - Optional boolean that can be used to toggle the menu on or off. If not provided, the function will toggle the menu depending on the current state.
+ */
 function menuToggle(bool) {
      function toggleOn() {
           document.body.classList.remove("menu-closed");
-          document.getElementById("btn2").style.left = "310px";
-          document.getElementById("bg-toggle").style.left = "307px";
+          document.getElementById("btn2").style.right = "310px";
+          document.getElementById("scroll").style.right = "310px";
           menuClosed = false;
           ['jpop', 'anime', 'vocaloid', 'touhou', 'game'].forEach(genre => {
                document.getElementById("jump-" + genre).tabIndex = 1;
@@ -38,8 +47,8 @@ function menuToggle(bool) {
      }
      function toggleOff() {
           document.body.classList.add("menu-closed");
-          document.getElementById("btn2").style.left = "10px";
-          document.getElementById("bg-toggle").style.left = "7px";
+          document.getElementById("btn2").style.right = "10px";
+          document.getElementById("scroll").style.right = "10px";
           menuClosed = true;
           ['jpop', 'anime', 'vocaloid', 'touhou', 'game'].forEach(genre => {
                document.getElementById("jump-" + genre).tabIndex = -1;
@@ -61,17 +70,21 @@ function menuToggle(bool) {
      }
 }
 
+/**
+ * Add an event listener to the btn2 (menu) element.
+ * When the user clicks/press enter on the element, toggle the menu.
+ */
 document.getElementById('btn2').addEventListener('click', () => {
-     menuToggle();
-});
-window.addEventListener("keyup", function (e) {
-     if (e.key === "m") {
+     if (!document.getElementById('loading')) {
           menuToggle();
      }
 });
-
 window.addEventListener("keyup", function (e) {
-     if (e.key === "Escape") {
+     if (e.key === "m") {
+          if (!document.getElementById('loading')) {
+               menuToggle();
+          }
+     } else if (e.key === "Escape") {
           menuToggle(false);
      }
 });
