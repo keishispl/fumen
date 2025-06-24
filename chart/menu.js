@@ -19,15 +19,27 @@ let menuClosed = true;
 function menuToggle(bool) {
      function toggleOn() {
           document.getElementById("main").classList.remove("menu-closed");
-          document.getElementById("btn2").style.right = "310px";
+          document.getElementById("menu-button").style.right = "310px";
           menuClosed = false;
+
+          setTimeout(() => {
+               if (document.getElementById("main") && document.getElementById("main").clientWidth <= 880) {
+                    document.getElementById("list-big-wrap").classList.add("list-fix");
+               }
+          }, 200);
      }
      function toggleOff() {
           document.getElementById("main").classList.add("menu-closed");
-          document.getElementById("btn2").style.right = "10px";
+          document.getElementById("menu-button").style.right = "10px";
           menuClosed = true;
+
+          setTimeout(() => {
+               if (document.getElementById("main") && document.getElementById("main").clientWidth > 880) {
+                    document.getElementById("list-big-wrap").classList.remove("list-fix");
+               }
+          }, 200);
      }
-     
+
      if (typeof bool !== 'undefined') {
           if (bool) {
                toggleOn();
@@ -47,7 +59,7 @@ function menuToggle(bool) {
  * Add an event listener to the btn2 (menu) element.
  * When the user clicks/press enter on the element, toggle the menu.
  */
-document.getElementById('btn2').addEventListener('click', () => {
+document.getElementById('menu-button').addEventListener('click', () => {
      menuToggle();
 });
 window.addEventListener("keyup", function (e) {

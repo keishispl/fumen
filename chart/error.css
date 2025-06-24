@@ -1,0 +1,44 @@
+body {
+     overscroll-behavior: none;
+     background-size: cover;
+     background-position: center right;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-color: none;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://keishispl.github.io/img/wallpaper/self_drawn.png');
+     color: #cecfd0;
+     font-weight: normal;
+     margin: 0;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     user-select: none;
+     -moz-user-select: none;
+}
+
+::-moz-selection {
+     color: white;
+     background: rgba(95, 168, 0, 0.22);
+}
+
+::selection {
+     color: white;
+     background: rgba(95, 168, 0, 0.22);
+}
+
+.button {
+     border: 1px solid #cecfd0;
+     background-color: rgba(0, 0, 0, 0.1);
+     backdrop-filter: blur(2.5px);
+     color: #cecfd0;
+     cursor: pointer;
+     padding: 15px 30px 15px 30px;
+     border-radius: 10px;
+     font-size: 20px;
+     transition: background-color linear 0.2s;
+     text-decoration: none;
+}
+
+.button:hover {
+     background-color: rgba(206, 207, 208, 0.22);
+}

@@ -8,21 +8,45 @@
      background: rgba(95, 168, 0, 0.22);
 }
 
-#table-body {
-     padding-bottom: 25px;
+#nav {
+     display: flex;
+     align-items: center;
+     background-color: rgba(0, 0, 0, 0.25);
+     background-blend-mode: multiply;
+     backdrop-filter: blur(2.5px);
+     width: 100%;
+     height: 100px;
+     margin-bottom: 25px;
 }
 
-#logotext {
-     padding-top: 25px;
-     padding-bottom: 25px;
+#nav>p {
+     margin-left: 30px;
+     padding: 0px;
+     font-size: 32px;
+     text-align: left;
      user-select: none;
      -moz-user-select: none;
+     font-weight: bold;
+     line-height: 3em;
+}
+
+#nav>p>a {
+     text-decoration: none;
+     color: #cecfd0;
+}
+
+#table-body {
+     padding-bottom: 25px;
+     max-width: 100vw;
+     overflow-x: scroll;
 }
 
 #source {
-     padding-top: 25px;
      user-select: none;
      -moz-user-select: none;
+     padding: 0;
+     margin: 0;
+     margin-bottom: 25px;
 }
 
 body {
@@ -31,6 +55,8 @@ body {
      background-position: center right;
      background-repeat: no-repeat;
      background-attachment: fixed;
+     background-color: none;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://keishispl.github.io/img/wallpaper/self_drawn.png');
      color: #cecfd0;
      font-weight: normal;
      margin: 0;
@@ -44,16 +70,6 @@ body {
      flex-direction: column;
      align-items: center;
      justify-content: center;
-}
-
-.bg-enabled {
-     background-color: none;
-     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://keishispl.github.io/img/wallpaper/self_drawn.png');
-}
-
-.bg-disabled {
-     background-image: none;
-     background-color: rgb(40, 40, 40);
 }
 
 td,
@@ -85,15 +101,6 @@ th {
 
 td {
      text-align: center;
-}
-
-.難易度／コンボ {
-     text-align: left;
-}
-
-.tint {
-     background-color: rgba(0, 0, 0, 0.25);
-     background-blend-mode: multiply;
 }
 
 a,
@@ -145,17 +152,6 @@ a:hover {
 
 }
 
-.hidden {
-     display: none;
-}
-
-#loading {
-     user-select: none;
-     -moz-user-select: none;
-     font-size: 20px;
-     margin-top: calc(50vh - 20px);
-}
-
 #sidebar {
      position: fixed;
      background-color: rgb(32, 32, 32);
@@ -174,7 +170,27 @@ a:hover {
      transform: translateX(300px);
 }
 
-#scroll,
+#main {
+     width: calc(100vw - 300px);
+     transition: width 0.2s;
+}
+
+#main.menu-closed {
+     width: 100vw;
+}
+
+@media screen and (max-width: 880px) {
+     #nav>p {
+          font-size: 24px;
+     }
+}
+
+@media screen and (max-width: 1040px) {
+     #main {
+          width: 100vw;
+     }
+}
+
 #btn2 {
      position: fixed;
      border: 1px solid #cecfd0;
@@ -193,15 +209,8 @@ a:hover {
      z-index: 5;
 }
 
-#scroll:hover,
-#btn2:hover,
-#bg-toggle:hover {
+#btn2:hover {
      background: rgba(206, 207, 208, 0.22);
-}
-
-#scroll {
-     bottom: 10px;
-     right: 10px;
 }
 
 #btn2 {
@@ -209,21 +218,11 @@ a:hover {
      right: 10px;
 }
 
-#bg-toggle {
-     z-index: 5;
-     position: fixed;
-     bottom: -8px;
-     left: 7px;
-     padding: 4px;
-     border: 1px solid #cecfd0;
-     border-radius: 6px;
-     user-select: none;
-     -moz-user-select: none;
-     backdrop-filter: blur(2.5px);
-     cursor: pointer;
-}
-
 .line {
      margin-top: -35px;
      margin-right: -5px;
+}
+
+#jumplist {
+     margin-bottom: 50px;
 }
