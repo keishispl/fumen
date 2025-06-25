@@ -1,23 +1,11 @@
 /**
- * Object that maps genre names to their corresponding labels.
- * Used to set the text content of the genre labels in the table.
- * @type {Object.<string,string>}
- */
-const genreLabels = {
-     jpop: 'ポップス',
-     anime: 'アニメ',
-     vocaloid: 'ボーカロイド™',
-     touhou: '東方Project',
-     game: 'ゲームミュージック'
-};
-
-/**
  * An array of songs
  * @type {Song[]}
  */
 var songs = [];
 var genreCount = {};
 
+// Load songs into the array
 Object.keys(genreLabels).forEach(genre => {
      var number = 0;
      jsonFromFile(genre).sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`)).forEach(song => {
@@ -39,6 +27,10 @@ Object.keys(genreLabels).forEach(genre => {
      genreCount[genre] = number;
 });
 
+/**
+ * Sorts the songs array by date of update or release, and then iterates it to generate the list of charts.
+ * @returns {void}
+ */
 function chartsSetup() {
      document.getElementById("song-list").innerHTML = "";
 

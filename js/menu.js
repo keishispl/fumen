@@ -1,15 +1,3 @@
-var lineLength = 30;
-var text = "";
-
-for (var i = 0; i < lineLength; i++) {
-     text += "_";
-};
-
-var lines = document.querySelectorAll('.line');
-for (var i = 0; i < lines.length; i++) {
-     lines[i].innerHTML = text;
-};
-
 let menuClosed = true;
 
 /**

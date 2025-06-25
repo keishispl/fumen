@@ -1,4 +1,54 @@
 /**
+ * @typedef Song
+ * @property {Array.<string>} song - The name of the song
+ * @property {Object.<string,Object>} artist - The artist of the song
+ * @property {Array.<string>} source - The source of the song
+ * @property {integer} bpm - The BPM of the song
+ * @property {string} duration - The length of the song
+ * @property {Object.<string,Array.<integer>>} chart - The data of the charts
+ * @property {string} genre - The genre ID of the song
+ * @property {integer} id - The ID of the song
+ * @property {string} link - The YouTube link of the song
+ * @property {string} download - The Google Drive link of the song
+ */
+
+/**
+ * Object that maps genre names to their corresponding labels.
+ * @type {Object.<string,string>}
+ */
+const genreLabels = {
+     jpop: 'ポップス',
+     anime: 'アニメ',
+     vocaloid: 'ボーカロイド™',
+     touhou: '東方Project',
+     game: 'ゲームミュージック'
+};
+
+/**
+ * Object that maps chart difficulty names to their corresponding labels.
+ * @type {Object.<string,string>}
+ */
+const chartLabels = {
+     kantan: 'かんたん',
+     futsuu: 'ふつう',
+     muzukashii: 'むずかしい',
+     oni: 'おに',
+     ura: 'おに（裏)'
+};
+
+var lineLength = 30;
+var linetext = "";
+
+for (var i = 0; i < lineLength; i++) {
+     linetext += "_";
+};
+
+var lines = document.querySelectorAll('.line');
+for (var i = 0; i < lines.length; i++) {
+     lines[i].innerHTML = linetext;
+};
+
+/**
  * Fetches and parses a JSON file from a remote URL.
  * Synchronously sends a GET request to retrieve JSON data from the specified file path
  * on the GitHub repository and parses the response into a JavaScript object.
@@ -13,6 +63,14 @@ function jsonFromFile(file) {
      return JSON.parse(request.responseText);
 }
 
+/**
+ * Constructs a string representation of the artists for a given song.
+ * Combines the main artists' names, optionally with their alternate names,
+ * and appends a "feat." prefix followed by any vocal artists if present.
+ * 
+ * @param {object} song - The song object containing artist information.
+ * @returns {string} A formatted string of the main and vocal artists.
+ */
 function writeArtists(song) {
      var main = [];
      var alt = "";
@@ -31,6 +89,14 @@ function writeArtists(song) {
      return main.join(", ") + alt;
 }
 
+/**
+ * Constructs a string representation of the song's source.
+ * Returns a formatted string based on the genre type.
+ * If the source is not present, returns a hyphen.
+ * 
+ * @param {object} song - The song object containing source information.
+ * @returns {string} A formatted string of the source.
+ */
 function writeSources(song) {
      if (song.source) {
           var genre = "{obj}";
@@ -43,7 +109,14 @@ function writeSources(song) {
      }
 }
 
-function writeBox(song, href="") {
+/**
+ * Generates a song box element given a song object.
+ * 
+ * @param {object} song - The song object containing song information.
+ * @param {string} [href=""] - The base URL to link to each song box.
+ * @returns {object} The generated song box element.
+ */
+function writeBox(song, href = "") {
      const block = document.createElement("div");
 
      const link = document.createElement("a");
