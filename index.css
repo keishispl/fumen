@@ -63,6 +63,7 @@ body {
      align-items: center;
      justify-content: center;
      text-align: center;
+     overflow-x: hidden;
 }
 
 #obj {
@@ -123,33 +124,6 @@ a:hover {
 .cellcolor .hiddenlink {
      text-decoration: underline;
      color: #e9ebec;
-}
-
-.cellcolor {
-     .jpop {
-          background-color: rgba(46, 107, 154, 0.15);
-     }
-
-     .anime {
-          background-color: rgba(150, 44, 132, 0.15);
-     }
-
-     .vocaloid {
-          background-color: rgba(133, 132, 132, 0.15);
-     }
-
-     .touhou {
-          background-color: rgba(146, 44, 44, 0.15);
-     }
-
-     .variety {
-          background-color: rgba(39, 135, 47, 0.15);
-     }
-
-     .game {
-          background-color: rgba(116, 42, 143, 0.15);
-     }
-
 }
 
 #sidebar {
@@ -225,4 +199,115 @@ a:hover {
 
 #jumplist {
      margin-bottom: 50px;
+}
+
+.padding {
+     margin-left: 5px;
+     margin-top: 5px;
+}
+
+.song-list {
+     display: flex;
+     flex-direction: row;
+     flex-grow: 0;
+     flex-wrap: wrap;
+     margin: 0;
+     left: 0;
+     right: 0;
+     overflow-x: scroll;
+     width: 850px;
+     max-width: 100vw;
+     justify-content: center;
+}
+
+.song-list>div {
+     border-radius: 10px;
+     width: 400px !important;
+     min-width: 400px;
+     height: 200px;
+     background-color: rgb(24, 27, 42);
+     margin: 12.5px;
+     display: block;
+     position: relative;
+     box-shadow: rgba(0, 0, 0, 0.3) 1px 2px 4px;
+
+     .jpop {
+          color: rgba(46, 107, 154);
+     }
+
+     .anime {
+          color: rgba(150, 44, 132);
+     }
+
+     .vocaloid {
+          color: rgba(133, 132, 132);
+     }
+
+     .touhou {
+          color: rgba(146, 44, 44);
+     }
+
+     .variety {
+          color: rgba(39, 135, 47);
+     }
+
+     .game {
+          color: rgba(116, 42, 143);
+     }
+}
+
+@media screen and (max-width: 500px) {
+     .song-list>div {
+          margin: 12.5px 0 12.5px 0 !important;
+     }
+     
+}
+
+.song-div {
+     --w: 360px;
+     overflow: hidden;
+     width: var(--w);
+     text-align: left;
+     height: 50px;
+     margin-left: 20px;
+     position: relative;
+}
+
+.song-text-div {
+     --w: 335px;
+     overflow: hidden;
+     width: var(--w);
+     text-align: left;
+     height: 100px;
+     margin-left: 45px;
+     position: relative;
+}
+
+.icons {
+     position: absolute;
+     left: 15px;
+     font-size: 24px;
+     top: 66px;
+}
+
+.song-text {
+     position: absolute;
+     animation: move 6s linear infinite forwards;
+     left: 0;
+     top: 0;
+     white-space: nowrap;
+}
+
+@keyframes move {
+     0%,
+     10%,
+     90%,
+     100% {
+          transform: translateX(0px);
+     }
+
+     40%,
+     60% {
+          transform: translateX(calc(-1 * max(0px, 100% - var(--w))));
+     }
 }

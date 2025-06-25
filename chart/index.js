@@ -176,24 +176,8 @@ window.onload = () => {
                if (s.song === song.song) {
                     return;
                }
-               const block = document.createElement("div");
-
-               const link = document.createElement("a");
-               link.href = `?genre=${genre}&id=${s.id}`;
-               link.style = "color: inherit; text-decoration: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;";
-               block.appendChild(link);
-
-               const title = document.createElement("h3");
-               title.textContent = s.song;
-               title.style = "overflow: hidden; max-height: 30px; max-width: 360px;";
-               block.appendChild(title);
-
-               const detail = document.createElement("p");
-               detail.innerHTML = writeArtists(s);
-               detail.style = "overflow: hidden; max-height: 25px;";
-               block.appendChild(detail);
-
-               document.getElementById("song-list").appendChild(block);
+               
+               document.getElementById("song-list").appendChild(writeBox(s));
           })
 
           if (song.artist.main.length > 0) {
@@ -203,24 +187,8 @@ window.onload = () => {
                          if (s.song === song.song) {
                               return;
                          }
-                         const block = document.createElement("div");
 
-                         const link = document.createElement("a");
-                         link.href = `?genre=${s.genre}&id=${s.id}`;
-                         link.style = "color: inherit; text-decoration: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;";
-                         block.appendChild(link);
-
-                         const title = document.createElement("h3");
-                         title.textContent = s.song;
-                         title.style = "overflow: hidden; max-height: 30px; max-width: 360px;";
-                         block.appendChild(title);
-
-                         const detail = document.createElement("p");
-                         detail.innerHTML = writeArtists(s);
-                         detail.style = "overflow: hidden; max-height: 25px;";
-                         block.appendChild(detail);
-
-                         document.getElementById("artist-list").appendChild(block);
+                         document.getElementById("artist-list").appendChild(writeBox(s));
                     })
                } else {
                     document.getElementById("artists").remove();
