@@ -38,7 +38,7 @@ var genreCount = {};
 
 Object.keys(genreLabels).forEach(genre => {
      var number = 0;
-     jsonFromFile(genre).forEach(song => {
+     jsonFromFile(genre).sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`)).forEach(song => {
           songs.push({
                link: song['link'],
                song: song['song'],
@@ -49,12 +49,15 @@ Object.keys(genreLabels).forEach(genre => {
                chart: song['chart'],
                download: song[''],
                genre: genre,
-               id: number
+               id: number,
+               date: song['date']
           });
           number++;
      })
      genreCount[genre] = number;
 });
+
+songs = songs.sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`));
 
 /**
  * The genre ID of the page
@@ -119,83 +122,82 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                document.getElementById("list-big-wrap").classList.remove("list-fix");
           }
      });
+}
 
-     window.onload = () => {
-          setTimeout(() => {
-               /**
-                * The song object
-                * @type {Song}
-                */
-               const song = songs.find(s => s.id == parseInt(id) && s.genre == genre);
+window.onload = () => {
+     setTimeout(() => {
+          /**
+           * The song object
+           * @type {Song}
+           */
+          const song = songs.find(s => s.id == parseInt(id) && s.genre == genre);
 
-               document.title = song.song + " (" + genreLabels[genre] + ") - 圭紫の太鼓の達人創作譜面";
+          document.title = song.song + " (" + genreLabels[genre] + ") - 圭紫の太鼓の達人創作譜面";
 
-               document.getElementById("title").textContent = song.song;
-               document.getElementById("genre").textContent = genreLabels[song.genre];
-               document.getElementById("title").className = song.genre;
-               document.getElementById("genre").className = song.genre;
-               document.getElementById("artist").textContent = song.artist.join(" ");
-               document.getElementById("source").textContent = song.source.join(" ");
-               document.getElementById("duration").textContent = song.duration.replace("m", "分").replace("s", "秒").replace(" ", "");
-               document.getElementById("bpm").textContent = song.bpm + " BPM";
-               document.getElementById("youtube").href = `https://www.youtube.com/watch?v=${song.link}`;
-               document.getElementById("download").href = `https://drive.google.com/drive/folders/${song.download}`;
+          document.getElementById("title").textContent = song.song;
+          document.getElementById("genre").textContent = genreLabels[song.genre];
+          document.getElementById("title").className = song.genre;
+          document.getElementById("genre").className = song.genre;
+          document.getElementById("artist").textContent = writeArtists(song);
+          document.getElementById("source").textContent = writeSources(song);
+          document.getElementById("duration").textContent = song.duration.replace("m", "分").replace("s", "秒").replace(" ", "");
+          document.getElementById("bpm").textContent = song.bpm + " BPM";
+          document.getElementById("date").textContent = song.date.release.replaceAll("/", "-") + (song.date.update ? " (更新:" + song.date.update.replaceAll("/", "-") + ")" : "");
+          document.getElementById("youtube").href = `https://www.youtube.com/watch?v=${song.link}`;
+          document.getElementById("download").href = `https://drive.google.com/drive/folders/${song.download}`;
 
-               Object.keys(song.chart).forEach(chart => {
-                    const block = document.createElement("div");
+          Object.keys(song.chart).forEach(chart => {
+               const block = document.createElement("div");
 
-                    const sideColor = document.createElement("div");
-                    sideColor.classList.add("sideColor");
-                    sideColor.classList.add("sideColor-" + chart);
-                    block.appendChild(sideColor);
+               const sideColor = document.createElement("div");
+               sideColor.classList.add("sideColor");
+               sideColor.classList.add("sideColor-" + chart);
+               block.appendChild(sideColor);
 
-                    const image = document.createElement("img");
-                    image.classList.add("sideImage");
-                    image.draggable = false;
-                    image.src = `../difficulty/${chart}.png`;
-                    block.appendChild(image);
+               const image = document.createElement("img");
+               image.classList.add("sideImage");
+               image.draggable = false;
+               image.src = `../difficulty/${chart}.png`;
+               block.appendChild(image);
 
-                    const title = document.createElement("h3");
-                    title.textContent = chartLabels[chart];
-                    block.appendChild(title);
+               const title = document.createElement("h3");
+               title.textContent = chartLabels[chart];
+               block.appendChild(title);
 
-                    const detail = document.createElement("p");
-                    detail.innerHTML = "☆" + song.chart[chart].join("<br>") + "コンボ";
-                    block.appendChild(detail);
+               const detail = document.createElement("p");
+               detail.innerHTML = "☆" + song.chart[chart].join("<br>") + "コンボ";
+               block.appendChild(detail);
 
-                    document.getElementById("list").appendChild(block);
-                    document.getElementById("fakelist").appendChild(block.cloneNode(true));
-               });
+               document.getElementById("list").appendChild(block);
+               document.getElementById("fakelist").appendChild(block.cloneNode(true));
+          });
 
-               songs.filter(s => s.genre == genre).forEach(s => {
-                    if (s.song === song.song) {
-                         return;
-                    }
-                    const block = document.createElement("div");
+          songs.filter(s => s.genre == genre).forEach(s => {
+               if (s.song === song.song) {
+                    return;
+               }
+               const block = document.createElement("div");
 
-                    const link = document.createElement("a");
-                    link.href = `?genre=${genre}&id=${s.id}`;
-                    link.style = "color: inherit; text-decoration: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;";
-                    block.appendChild(link);
+               const link = document.createElement("a");
+               link.href = `?genre=${genre}&id=${s.id}`;
+               link.style = "color: inherit; text-decoration: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;";
+               block.appendChild(link);
 
-                    const title = document.createElement("h3");
-                    title.textContent = s.song;
-                    title.style = "overflow: hidden; max-height: 30px; max-width: 360px;";
-                    block.appendChild(title);
+               const title = document.createElement("h3");
+               title.textContent = s.song;
+               title.style = "overflow: hidden; max-height: 30px; max-width: 360px;";
+               block.appendChild(title);
 
-                    const detail = document.createElement("p");
-                    detail.innerHTML = s.artist.join(" ");
-                    detail.style = "overflow: hidden; max-height: 25px;";
-                    block.appendChild(detail);
+               const detail = document.createElement("p");
+               detail.innerHTML = writeArtists(s);
+               detail.style = "overflow: hidden; max-height: 25px;";
+               block.appendChild(detail);
 
-                    document.getElementById("song-list").appendChild(block);
-               })
+               document.getElementById("song-list").appendChild(block);
+          })
 
-               var margin = document.createElement("p");
-               margin.style = "margin-right: 12.5px;";
-               document.getElementById("song-list").appendChild(margin);
-
-               var artists = songs.filter(s => s.artist.join(" ").substring(0, 2) == song.artist.join(" ").substring(0, 2));
+          if (song.artist.main.length > 0) {
+               var artists = songs.filter(s => (s.artist.main.length > 0 ? s.artist.main[0].name : null) == song.artist.main[0].name);
                if (artists.length > 1) {
                     artists.forEach(s => {
                          if (s.song === song.song) {
@@ -204,7 +206,7 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                          const block = document.createElement("div");
 
                          const link = document.createElement("a");
-                         link.href = `?genre=${song.genre}&id=${s.id}`;
+                         link.href = `?genre=${s.genre}&id=${s.id}`;
                          link.style = "color: inherit; text-decoration: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;";
                          block.appendChild(link);
 
@@ -214,20 +216,18 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                          block.appendChild(title);
 
                          const detail = document.createElement("p");
-                         detail.innerHTML = s.artist.join(" ");
+                         detail.innerHTML = writeArtists(s);
                          detail.style = "overflow: hidden; max-height: 25px;";
                          block.appendChild(detail);
 
                          document.getElementById("artist-list").appendChild(block);
                     })
-
-                    var margin = document.createElement("p");
-                    margin.style = "margin-right: 12.5px;";
-                    document.getElementById("artist-list").appendChild(margin);
                } else {
                     document.getElementById("artists").remove();
                }
+          } else {
+               document.getElementById("artists").remove();
+          }
 
-          }, 500);
-     }
+     }, 500);
 }
