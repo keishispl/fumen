@@ -2,30 +2,8 @@
  * An array of songs
  * @type {Song[]}
  */
-var songs = [];
-var genreCount = {};
-
-// Load songs into the array
-Object.keys(genreLabels).forEach(genre => {
-     var number = 0;
-     jsonFromFile(genre).sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`)).forEach(song => {
-          songs.push({
-               link: song['link'],
-               song: song['song'],
-               artist: song['artist'],
-               source: song['source'],
-               bpm: song['bpm'],
-               duration: song['duration'],
-               chart: song['chart'],
-               download: song[''],
-               genre: genre,
-               id: number,
-               date: song['date']
-          });
-          number++;
-     })
-     genreCount[genre] = number;
-});
+var songs = getSongs()[0];
+var genreCount = getSongs()[1];
 
 // Sort the array
 songs = songs.sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`));

@@ -174,3 +174,38 @@ function writeBox(song, href = "") {
 
      return block;
 }
+
+/**
+ * Loads song data from remote JSON files and returns it as an array and an object.
+ * The array contains all song data, and the object contains the count of songs for each genre.
+ *
+ * @returns {[object, object]} - The array of song data and the object containing the amount of songs in each genre.
+ */
+function getSongs() {
+     var songs = [];
+     var genreCount = {};
+
+     // Load songs into the array
+     Object.keys(genreLabels).forEach(genre => {
+          var number = 0;
+          jsonFromFile(genre).sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`)).forEach(song => {
+               songs.push({
+                    link: song['link'],
+                    song: song['song'],
+                    artist: song['artist'],
+                    source: song['source'],
+                    bpm: song['bpm'],
+                    duration: song['duration'],
+                    chart: song['chart'],
+                    download: song[''],
+                    genre: genre,
+                    id: number,
+                    date: song['date']
+               });
+               number++;
+          })
+          genreCount[genre] = number;
+     });
+
+     return [songs, genreCount];
+}
