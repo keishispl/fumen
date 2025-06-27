@@ -41,15 +41,41 @@
                </div>
           </div>
           <div id="obj" style="text-align: center; padding-bottom: 50px;">
-               <p id="source">最新のリストは<a
-                         href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM"
-                         target="_blank">Google スプレッドシート</a>にあります<br>曲検索機能が近日公開予定</p>
                <div id="songs" class="padding">
-                    <h2 style="text-align: left; font-size: 28px;">すべての曲</h2>
+                    <h2 style="text-align: left; font-size: 28px; margin: 0;">譜面検索<a
+                              style="color: lightskyblue; text-decoration: none; font-size: 20px;">（ベータ）</a></h2>
                     <hr>
+                    <div id="song-filter">
+                         <div>
+                              <h3>曲名</h3>
+                              <input type="text" autocomplete="off" id="input-song">
+                         </div>
+                         <div>
+                              <h3>アーティスト</h3>
+                              <input type="text" autocomplete="off" id="input-artist">
+                         </div>
+                         <div>
+                              <h3>ソース</h3>
+                              <input type="text" autocomplete="off" id="input-source">
+                         </div>
+                         <div>
+                              <h3>ジャンル</h3>
+                              <input type="text" autocomplete="off" id="input-genre">
+                         </div>
+                         <div id="hr">
+                              <hr>
+                         </div>
+                         <div id="search">
+                              <button id="input-search">検索</button>
+                         </div>
+                    </div>
                     <div id="song-lists"></div>
                     <div id="song-navigate"></div>
                </div>
+               <hr style="min-width: 300px; width: calc(100vw - 160px); margin-top: 50px;">
+               <p id="source">最新のリストは<a
+                         href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM"
+                         target="_blank">Google スプレッドシート</a>にあります</p>
           </div>
      </div>
      <script src="functions.js"></script>

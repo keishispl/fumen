@@ -491,6 +491,7 @@ hr {
 }
 
 @keyframes move {
+
      0%,
      10%,
      90%,
@@ -502,4 +503,9 @@ hr {
      60% {
           transform: translateX(calc(-1 * max(0px, 100% - var(--w))));
      }
+}
+
+br {
+     user-select: none;
+     -moz-user-select: none;
 }

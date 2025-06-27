@@ -209,3 +209,15 @@ function getSongs() {
 
      return [songs, genreCount];
 }
+
+/**
+ * Converts all katakana characters in a given string to hiragana characters.
+ * @param {string} str - The string to convert.
+ * @returns {string} The string with all katakana characters converted to hiragana characters.
+ */
+function kataToHira(str) {
+     return str.replace(/[\u30a1-\u30f6]/g, function (match) {
+          var chr = match.charCodeAt(0) - 0x60;
+          return String.fromCharCode(chr);
+     });
+}

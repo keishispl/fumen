@@ -15,7 +15,7 @@ function menuToggle(bool) {
           document.getElementById("btn2").style.right = "10px";
           menuClosed = true;
      }
-     
+
      if (typeof bool !== 'undefined') {
           if (bool) {
                toggleOn();
@@ -39,6 +39,20 @@ document.getElementById('btn2').addEventListener('click', () => {
      menuToggle();
 });
 window.addEventListener("keyup", function (e) {
+     var focus = false;
+
+     // Check if the focus is on any of the input fields
+     ["song", "artist", "source", "genre"].forEach(item => {
+          if (document.getElementById("input-" + item).contains(document.activeElement)) {
+               focus = true;
+               return;
+          }
+     })
+
+     if (focus) {
+          return;
+     }
+
      if (e.key === "m") {
           menuToggle();
      } else if (e.key === "Escape") {
