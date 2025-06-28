@@ -22,10 +22,31 @@ function getURLParams() {
      return [song, artist, source, genre];
 }
 
+// Add genre options
+Object.keys(genreLabels).forEach(genre => {
+     var option = document.createElement("option");
+     option.value = genre;
+     option.textContent = genreLabels[genre];
+     document.getElementById("input-genre").appendChild(option);
+})
+
 // Set input values
 getURLParams().forEach((param, index) => {
      if (param) {
           document.getElementById("input-" + ["song", "artist", "source", "genre"][index]).value = param;
+
+          if (index == 3 && !Object.keys(genreLabels).includes(param)) {
+               document.getElementById("input-genre").value = "";
+
+               var urlparam = new URLSearchParams(window.location.search);
+               urlparam.delete('genre');
+
+               if (urlparam.toString() === "") {
+                    history.pushState(null, null, ".");
+               } else {
+                    history.pushState(null, null, "?" + urlparam.toString());
+               }
+          }
      }
 })
 
@@ -37,13 +58,15 @@ getURLParams().forEach((param, index) => {
  */
 function comparePages(div, current) {
      for (let i = 0; i < div.length; i++) {
-          if (i == current) {
-               document.getElementById(div[i]).style.display = "flex";
-               document.getElementById("song-button-" + i).classList.add("active");
-          } else {
-               document.getElementById(div[i]).style.display = "none";
-               document.getElementById("song-button-" + i).classList.remove("active");
-          }
+          try {
+               if (i == current) {
+                    document.getElementById(div[i]).style.display = "flex";
+                    document.getElementById("song-button-" + i).classList.add("active");
+               } else {
+                    document.getElementById(div[i]).style.display = "none";
+                    document.getElementById("song-button-" + i).classList.remove("active");
+               }
+          } catch (e) { }
      }
 }
 
@@ -72,10 +95,12 @@ function chartsSetup(_songs) {
                     _songs = _songs.filter(song => kataToHira(writeSources(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
                if (index == 3) {
-                    _songs = _songs.filter(song => kataToHira(genreLabels[song.genre]).toLowerCase().includes(kataToHira(param).toLowerCase()));
+                    _songs = _songs.filter(song => song.genre == param);
                }
           }
      });
+
+     var amount = 0;
 
      // Generate song divs
      _songs.forEach(song => {
@@ -91,22 +116,35 @@ function chartsSetup(_songs) {
           }
 
           number++;
+          amount++;
 
           document.getElementById(songDivs[songDivs.length - 1]).appendChild(writeBox(song, "chart/"));
      });
 
-     // Navigate pages
-     for (let i = 0; i < songDivs.length; i++) {
-          var button = document.createElement("button");
-          button.id = "song-button-" + i;
-          button.className = "song-button";
-          button.innerHTML = i + 1;
+     // Generate song amount
+     document.getElementById("song-amount").textContent = amount + "件の結果";
 
-          document.getElementById("song-navigate").appendChild(button);
+     if (amount == 0) {
+          var div = document.createElement("div");
+          div.id = "song-list-" + songDivs.length;
+          div.className = "song-list";
 
-          button.addEventListener("click", () => {
-               comparePages(songDivs, i);
-          });
+          songDivs.push(div.id);
+          document.getElementById("song-lists").appendChild(div);
+     } else {
+          // Navigate pages
+          for (let i = 0; i < songDivs.length; i++) {
+               var button = document.createElement("button");
+               button.id = "song-button-" + i;
+               button.className = "song-button";
+               button.innerHTML = i + 1;
+
+               document.getElementById("song-navigate").appendChild(button);
+
+               button.addEventListener("click", () => {
+                    comparePages(songDivs, i);
+               });
+          }
      }
 
      comparePages(songDivs, 0);

@@ -319,7 +319,8 @@ a:hover {
           margin: 0;
      }
 
-     >input {
+     >input,
+     >select {
           font-size: 16px;
           line-height: 1.5em;
           padding: 7.5px;
@@ -329,6 +330,7 @@ a:hover {
           background-color: rgb(31, 26, 42);
           box-shadow: inset black -1px -1px 5px;
           transition: border 0.2s;
+          height: 41px;
 
           &:focus {
                border: 1px solid rgb(114, 14, 207);

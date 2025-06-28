@@ -60,7 +60,10 @@
                          </div>
                          <div>
                               <h3>ジャンル</h3>
-                              <input type="text" autocomplete="off" id="input-genre">
+                              <select id="input-genre">
+                                   <option value="">すべて</option>
+                                   <option disabled>ーーーーーーーーーー</option>
+                              </select>
                          </div>
                          <div id="hr">
                               <hr>
@@ -69,7 +72,10 @@
                               <button id="input-search">検索</button>
                          </div>
                     </div>
-                    <div id="song-lists"></div>
+                    <h2 style="text-align: left; font-size: 28px; margin: 0 0 10px 25px;" id="song-amount">??件の結果</h2>
+                    <div id="song-lists">
+                         <div class="song-list" id="placeholder-list"></div>
+                    </div>
                     <div id="song-navigate"></div>
                </div>
                <hr style="min-width: 300px; width: calc(100vw - 160px); margin-top: 50px;">
