@@ -158,7 +158,11 @@ function chartsSetup(_songs) {
           number++;
           amount++;
 
-          document.getElementById(songDivs[songDivs.length - 1]).appendChild(writeBox(song, "chart/"));
+          var block = document.getElementById(songDivs[songDivs.length - 1]);
+
+          block.appendChild(writeBox(song, "chart/"));
+
+          animationBox(block.querySelectorAll(".song-text"));
      });
 
      // Generate song amount

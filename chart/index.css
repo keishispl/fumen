@@ -484,24 +484,53 @@ hr {
 
 .song-text {
      position: absolute;
-     animation: move 6s linear infinite forwards;
      left: 0;
      top: 0;
      white-space: nowrap;
 }
 
-@keyframes move {
+.scroll-text {
+     transform: translateX(100%);
+     left: auto;
+     right: 0;
+     
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+}
 
-     0%,
-     10%,
-     90%,
-     100% {
-          transform: translateX(0px);
+.song-text-div>.scroll-text {
+     animation-name: scroll;
+}
+
+.song-div>.scroll-text {
+     animation-name: scroll-long;
+}
+
+@keyframes scroll {
+     0% {
+          -moz-transform: translateX(calc(100% + 12.5px));
+          -webkit-transform: translateX(calc(100% + 12.5px));
+          transform: translateX(calc(100% + 12.5px));
      }
 
-     40%,
-     60% {
-          transform: translateX(calc(-1 * max(0px, 100% - var(--w))));
+     100% {
+          -moz-transform: translateX(-335px);
+          -webkit-transform: translateX(-335px);
+          transform: translateX(-335px);
+     }
+}
+
+@keyframes scroll-long {
+     0% {
+          -moz-transform: translateX(calc(100% + 17.5px));
+          -webkit-transform: translateX(calc(100% + 17.5px));
+          transform: translateX(calc(100% + 17.5px));
+     }
+
+     100% {
+          -moz-transform: translateX(-360px);
+          -webkit-transform: translateX(-360px);
+          transform: translateX(-360px);
      }
 }
 

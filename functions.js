@@ -204,6 +204,26 @@ function writeBox(song, href = "") {
 }
 
 /**
+ * Add a CSS animation to each element in the given array of elements that are too wide.
+ * The animation will scroll the element from right to left, and repeat indefinitely.
+ * The duration of the animation is proportional to the width of the element.
+ * @param {HTMLCollectionOf<Element>} box - The array of elements to animate.
+ */
+function animationBox(box) {
+     box.forEach(detail => {
+          if (detail.clientWidth > 335) {
+               detail.classList.add("scroll-text");
+
+               const width = detail.clientWidth;
+               const distance = width + 335;
+               const duration = 12.5 * distance;
+
+               detail.style.animationDuration = `${duration}ms`;
+          }
+     })
+}
+
+/**
  * Loads song data from remote JSON files and returns it as an array and an object.
  * The array contains all song data, and the object contains the count of songs for each genre.
  *

@@ -139,7 +139,11 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                          return;
                     }
 
-                    document.getElementById("song-list").appendChild(writeBox(s));
+                    var block = document.getElementById("song-list");
+                    
+                    block.appendChild(writeBox(s));
+
+                    animationBox(block.querySelectorAll(".song-text"));
                })
           }, 500);
      }
