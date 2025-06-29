@@ -106,7 +106,7 @@ function chartsSetup(_songs) {
                     _songs = _songs.filter(song => kataToHira(writeArtists(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
                if (index === 2) {
-                    _songs = _songs.filter(song => kataToHira(song.artist.vocal.length == 0 ? "-" : song.artist.vocal.join(", ")).toLowerCase().includes(kataToHira(param).toLowerCase()));
+                    _songs = _songs.filter(song => kataToHira(writeVocals(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
                if (index === 3) {
                     _songs = _songs.filter(song => kataToHira(writeSources(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
@@ -128,7 +128,7 @@ function chartsSetup(_songs) {
                          _songs = _songs.sort((a, b) => `${writeArtists(a)}`.localeCompare(`${writeArtists(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
                     }
                     if (param === "3") {
-                         _songs = _songs.sort((a, b) => `${a.artist.vocal.length == 0 ? "-" : a.artist.vocal.join(", ")}`.localeCompare(`${b.artist.vocal.length == 0 ? "-" : b.artist.vocal.join(", ")}`) || `${a.song}`.localeCompare(`${b.song}`));
+                         _songs = _songs.sort((a, b) => `${writeVocals(a)}`.localeCompare(`${writeVocals(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
                     }
                     if (param === "4") {
                          _songs = _songs.sort((a, b) => `${writeSources(a)}`.localeCompare(`${writeSources(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
@@ -144,7 +144,7 @@ function chartsSetup(_songs) {
 
      // Generate song divs
      _songs.forEach(song => {
-          if (number >= 10 || number < 0) {
+          if (number >= 12 || number < 0) {
                number = 0;
 
                var div = document.createElement("div");

@@ -95,7 +95,8 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                document.getElementById("title").className = song.genre;
                document.getElementById("genre").className = song.genre;
                document.getElementById("artist").textContent = writeArtists(song);
-               document.getElementById("vocal").textContent = song.artist.vocal.length == 0 ? "-" : song.artist.vocal.join(", ");
+               document.getElementById("vocal").textContent = writeVocals(song);
+               if (writeVocals(song) === "Inst ver.") document.getElementById("vocal").style.color = "red";
                document.getElementById("source").textContent = writeSources(song);
                document.getElementById("duration").textContent = song.duration.replace("m", "分").replace("s", "秒").replace(" ", "");
                document.getElementById("bpm").textContent = song.bpm + " BPM";

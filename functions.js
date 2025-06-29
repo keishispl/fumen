@@ -66,16 +66,37 @@ function jsonFromFile(file) {
 /**
  * Constructs a string representation of the artists for a given song.
  * Combines the main artists' names, optionally with their alternate names,
- * and appends a "feat." prefix followed by any vocal artists if present.
  * 
  * @param {object} song - The song object containing artist information.
- * @returns {string} A formatted string of the main and vocal artists.
+ * @returns {string} A formatted string of the main artists.
  */
 function writeArtists(song) {
      var main = [];
      if (song.artist.main.length > 0) {
           song.artist.main.forEach(artist => {
                main.push(artist.name + (artist.alt ?? ""));
+          })
+     } else {
+          main = ["-"];
+     }
+
+     return main.join(", ");
+}
+
+/**
+ * Constructs a string representation of the artists for a given song.
+ * Combines the vocal names, optionally with their alternate names,
+ * 
+ * @param {object} song - The song object containing artist information.
+ * @returns {string} A formatted string of the vocal artists.
+ */
+function writeVocals(song) {
+     if (song.artist.vocal === 0) return "Inst ver.";
+
+     var main = [];
+     if (song.artist.vocal.length > 0) {
+          song.artist.vocal.forEach(vocal => {
+               main.push(vocal.name + (vocal.alt ?? ""));
           })
      } else {
           main = ["-"];
@@ -151,9 +172,10 @@ function writeBox(song, href = "") {
                                    </svg>`
 
      var detail = document.createElement("p");
-     detail.textContent = song.artist.vocal.length == 0 ? "-" : song.artist.vocal.join(", ");
+     detail.textContent = writeVocals(song);
      detail.className = "song-text";
      detail.style.top = "24px";
+     if (writeVocals(song) === "Inst ver.") detail.style.color = "red";
      contain.appendChild(detail);
 
 
@@ -194,22 +216,26 @@ function getSongs() {
      // Load songs into the array
      Object.keys(genreLabels).forEach(genre => {
           var number = 0;
-          jsonFromFile(genre).sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`)).forEach(song => {
-               songs.push({
-                    link: song['link'],
-                    song: song['song'],
-                    artist: song['artist'],
-                    source: song['source'],
-                    bpm: song['bpm'],
-                    duration: song['duration'],
-                    chart: song['chart'],
-                    download: song[''],
-                    genre: genre,
-                    id: number,
-                    date: song['date']
-               });
-               number++;
-          })
+          try {
+               jsonFromFile(genre).sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`)).forEach(song => {
+                    songs.push({
+                         link: song['link'],
+                         song: song['song'],
+                         artist: song['artist'],
+                         source: song['source'],
+                         bpm: song['bpm'],
+                         duration: song['duration'],
+                         chart: song['chart'],
+                         download: song[''],
+                         genre: genre,
+                         id: number,
+                         date: song['date']
+                    });
+                    number++;
+               })
+          } catch (e) {
+               console.error(e);
+          }
           genreCount[genre] = number;
      });
 
