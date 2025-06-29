@@ -80,7 +80,7 @@ function writeArtists(song) {
           main = ["-"];
      }
 
-     return main.join(", ");
+     return main.join("、").replaceAll(", ", "、");
 }
 
 /**
@@ -91,7 +91,7 @@ function writeArtists(song) {
  * @returns {string} A formatted string of the vocal artists.
  */
 function writeVocals(song) {
-     if (song.artist.vocal === 0) return "Inst ver.";
+     if (song.artist.vocal === 0) return "Inst. ver.";
 
      var main = [];
      if (song.artist.vocal.length > 0) {
@@ -102,7 +102,7 @@ function writeVocals(song) {
           main = ["-"];
      }
 
-     return main.join(", ");
+     return main.join("、").replaceAll(", ", "、");
 }
 
 /**
@@ -175,7 +175,7 @@ function writeBox(song, href = "") {
      detail.textContent = writeVocals(song);
      detail.className = "song-text";
      detail.style.top = "24px";
-     if (writeVocals(song) === "Inst ver.") detail.style.color = "red";
+     if (writeVocals(song) === "Inst. ver.") detail.style.color = "red";
      contain.appendChild(detail);
 
 
