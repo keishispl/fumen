@@ -104,6 +104,8 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                document.getElementById("youtube").href = `https://www.youtube.com/watch?v=${song.link}`;
                document.getElementById("download").href = `https://drive.google.com/drive/folders/${song.download}`;
 
+               document.getElementById("genre-link").href = `../?genre=${song.genre}`;
+
                // Generate the difficulty list
                Object.keys(song.chart).forEach(chart => {
                     const block = document.createElement("div");
