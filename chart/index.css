@@ -470,7 +470,7 @@ hr {
      overflow: hidden;
      width: var(--w);
      text-align: left;
-     height: 100px;
+     height: 150px;
      margin-left: 45px;
      position: relative;
 }

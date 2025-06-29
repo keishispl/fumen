@@ -16,10 +16,12 @@ function getURLParams() {
 
      var song = urlparam.get('song');
      var artist = urlparam.get('artist');
+     var vocal = urlparam.get('vocal');
      var source = urlparam.get('source');
      var genre = urlparam.get('genre');
+     var sort = urlparam.get('sort');
 
-     return [song, artist, source, genre];
+     return [song, artist, vocal, source, genre, sort];
 }
 
 // Add genre options
@@ -33,13 +35,25 @@ Object.keys(genreLabels).forEach(genre => {
 // Set input values
 getURLParams().forEach((param, index) => {
      if (param) {
-          document.getElementById("input-" + ["song", "artist", "source", "genre"][index]).value = param;
+          document.getElementById("input-" + ["song", "artist", "vocal", "source", "genre", "sort"][index]).value = param;
 
           if (index == 3 && !Object.keys(genreLabels).includes(param)) {
                document.getElementById("input-genre").value = "";
 
                var urlparam = new URLSearchParams(window.location.search);
                urlparam.delete('genre');
+
+               if (urlparam.toString() === "") {
+                    history.pushState(null, null, ".");
+               } else {
+                    history.pushState(null, null, "?" + urlparam.toString());
+               }
+          }
+          if (index == 4 && !["", "0", "1", "2", "3", "4"].includes(param)) {
+               document.getElementById("input-sort").value = "";
+
+               var urlparam = new URLSearchParams(window.location.search);
+               urlparam.delete('sort');
 
                if (urlparam.toString() === "") {
                     history.pushState(null, null, ".");
@@ -85,17 +99,43 @@ function chartsSetup(_songs) {
      // Filter songs
      getURLParams().forEach((param, index) => {
           if (param) {
-               if (index == 0) {
+               if (index === 0) {
                     _songs = _songs.filter(song => kataToHira(song.song).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
-               if (index == 1) {
+               if (index === 1) {
                     _songs = _songs.filter(song => kataToHira(writeArtists(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
-               if (index == 2) {
+               if (index === 2) {
+                    _songs = _songs.filter(song => kataToHira(song.artist.vocal.length == 0 ? "-" : song.artist.vocal.join(", ")).toLowerCase().includes(kataToHira(param).toLowerCase()));
+               }
+               if (index === 3) {
                     _songs = _songs.filter(song => kataToHira(writeSources(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
-               if (index == 3) {
+               if (index === 4) {
                     _songs = _songs.filter(song => song.genre == param);
+               }
+               if (index === 5) {
+                    if (param === "") {
+                         _songs = _songs.sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`));
+                    }
+                    if (param === "0") {
+                         _songs = _songs.sort((a, b) => new Date(b.date.update ?? b.date.release) - new Date(a.date.update ?? a.date.release) || `${a.song}`.localeCompare(`${b.song}`));
+                    }
+                    if (param === "1") {
+                         _songs = _songs.sort((a, b) => `${a.song}`.localeCompare(`${b.song}`));
+                    }
+                    if (param === "2") {
+                         _songs = _songs.sort((a, b) => `${writeArtists(a)}`.localeCompare(`${writeArtists(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
+                    }
+                    if (param === "3") {
+                         _songs = _songs.sort((a, b) => `${a.artist.vocal.length == 0 ? "-" : a.artist.vocal.join(", ")}`.localeCompare(`${b.artist.vocal.length == 0 ? "-" : b.artist.vocal.join(", ")}`) || `${a.song}`.localeCompare(`${b.song}`));
+                    }
+                    if (param === "4") {
+                         _songs = _songs.sort((a, b) => `${writeSources(a)}`.localeCompare(`${writeSources(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
+                    }
+                    if (param === "5") {
+                         _songs = _songs.sort((a, b) => `${genreLabels[a.genre]}`.localeCompare(`${genreLabels[b.genre]}`) || `${a.song}`.localeCompare(`${b.song}`));
+                    }
                }
           }
      });
@@ -154,20 +194,26 @@ function chartsSetup(_songs) {
 document.getElementById("input-search").addEventListener("click", () => {
      var song = document.getElementById("input-song").value;
      var artist = document.getElementById("input-artist").value;
+     var vocal = document.getElementById("input-vocal").value;
      var source = document.getElementById("input-source").value;
      var genre = document.getElementById("input-genre").value;
+     var sort = document.getElementById("input-sort").value;
 
      var urlparam = new URLSearchParams(window.location.search);
 
      urlparam.delete('song');
      urlparam.delete('artist');
+     urlparam.delete('vocal');
      urlparam.delete('source');
      urlparam.delete('genre');
+     urlparam.delete('sort');
 
      song === "" ? song = null : urlparam.set('song', song);
      artist === "" ? artist = null : urlparam.set('artist', artist);
+     vocal === "" ? vocal = null : urlparam.set('vocal', vocal);
      source === "" ? source = null : urlparam.set('source', source);
      genre === "" ? genre = null : urlparam.set('genre', genre);
+     sort === "" ? sort = null : urlparam.set('sort', sort);
 
      if (urlparam.toString() === "") {
           history.pushState(null, null, ".");

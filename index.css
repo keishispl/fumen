@@ -224,7 +224,7 @@ a:hover {
      overflow: hidden;
      width: var(--w);
      text-align: left;
-     height: 100px;
+     height: 150px;
      margin-left: 45px;
      position: relative;
 }
@@ -297,14 +297,14 @@ a:hover {
      min-width: 350px;
      max-width: 900px;
      width: 100vw;
-     justify-content: center;
+     justify-content: left;
      background-color: rgb(31, 26, 42);
      box-shadow: rgba(0, 0, 0, 0.3) 1px 2px 4px;
      border-radius: 10px;
 }
 
 #song-filter>div {
-     width: calc(50% - 40px);
+     width: calc(50% - 30px);
      max-width: 500px;
      padding: 15px;
      margin-bottom: 10px;

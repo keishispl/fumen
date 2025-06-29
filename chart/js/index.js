@@ -95,6 +95,7 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                document.getElementById("title").className = song.genre;
                document.getElementById("genre").className = song.genre;
                document.getElementById("artist").textContent = writeArtists(song);
+               document.getElementById("vocal").textContent = song.artist.vocal.length == 0 ? "-" : song.artist.vocal.join(", ");
                document.getElementById("source").textContent = writeSources(song);
                document.getElementById("duration").textContent = song.duration.replace("m", "分").replace("s", "秒").replace(" ", "");
                document.getElementById("bpm").textContent = song.bpm + " BPM";
@@ -137,24 +138,6 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
 
                     document.getElementById("song-list").appendChild(writeBox(s));
                })
-
-               // Generate the relevant songs list for the artist
-               if (song.artist.main.length > 0) {
-                    var artists = songs.filter(s => (s.artist.main.length > 0 ? s.artist.main[0].name : null) == song.artist.main[0].name);
-                    if (artists.length > 1) {
-                         artists.forEach(s => {
-                              if (s.song === song.song) {
-                                   return;
-                              }
-
-                              document.getElementById("artist-list").appendChild(writeBox(s));
-                         })
-                    } else {
-                         document.getElementById("artists").remove();
-                    }
-               } else {
-                    document.getElementById("artists").remove();
-               }
           }, 500);
      }
 }
