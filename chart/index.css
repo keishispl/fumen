@@ -311,10 +311,10 @@ hr {
      display: flex;
      flex-direction: row;
      flex-grow: 0;
-     animation: scroll 10s linear 1s infinite;
+     animation: scroll-bar 8s linear 1s infinite;
 }
 
-@keyframes scroll {
+@keyframes scroll-bar {
      0% {
           transform: translateX(0);
      }
