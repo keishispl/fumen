@@ -8,6 +8,8 @@ function menuToggle(bool) {
      function toggleOn() {
           document.getElementById("main").classList.remove("menu-closed");
           document.getElementById("menu-button").style.right = "310px";
+          document.getElementById("sidebar-wrap").style.opacity = 1;
+          document.getElementById("sidebar-wrap").style.zIndex = 4;
           menuClosed = false;
 
           setTimeout(() => {
@@ -19,6 +21,8 @@ function menuToggle(bool) {
      function toggleOff() {
           document.getElementById("main").classList.add("menu-closed");
           document.getElementById("menu-button").style.right = "10px";
+          document.getElementById("sidebar-wrap").style.opacity = 0;
+          document.getElementById("sidebar-wrap").style.zIndex = -1;
           menuClosed = true;
 
           setTimeout(() => {

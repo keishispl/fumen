@@ -8,11 +8,15 @@ function menuToggle(bool) {
      function toggleOn() {
           document.getElementById("main").classList.remove("menu-closed");
           document.getElementById("btn2").style.right = "310px";
+          document.getElementById("sidebar-wrap").style.opacity = 1;
+          document.getElementById("sidebar-wrap").style.zIndex = 4;
           menuClosed = false;
      }
      function toggleOff() {
           document.getElementById("main").classList.add("menu-closed");
           document.getElementById("btn2").style.right = "10px";
+          document.getElementById("sidebar-wrap").style.opacity = 0;
+          document.getElementById("sidebar-wrap").style.zIndex = -1;
           menuClosed = true;
      }
 
@@ -38,6 +42,14 @@ function menuToggle(bool) {
 document.getElementById('btn2').addEventListener('click', () => {
      menuToggle();
 });
+
+window.addEventListener("click", (e) => {
+     if (!document.getElementById('btn2').contains(e.target) && !document.getElementById('sidebar').contains(e.target) && !document.getElementById('settings-wrap').contains(e.target) && !document.getElementById('settings').contains(e.target)) {
+          menuToggle(false);
+     }
+})
+
+
 window.addEventListener("keyup", function (e) {
      var focus = false;
 

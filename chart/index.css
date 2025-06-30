@@ -204,6 +204,17 @@ hr {
      z-index: 5;
 }
 
+#sidebar-wrap {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.3);
+     z-index: 4;
+     transition: opacity ease 0.2s;
+}
+
 .line {
      margin-top: -35px;
      margin-right: -5px;

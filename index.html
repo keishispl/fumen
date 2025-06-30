@@ -27,6 +27,7 @@
      </div>
      <div id="main">
           <button id="btn2" tabindex="2"><i class="fa-solid fa-bars"></i></button>
+
           <div id="sidebar">
                <div style="padding-right: 25px;">
                     <h1>MENU</h1>
@@ -38,9 +39,30 @@
                     </p>
                     <p><a href="https://github.com/keishispl/taikofumen" style="text-decoration: none; color: #cecfd0;"
                               target="_blank">Githubソースコード</a></p>
+                    <div style="position: absolute; bottom: 20px; right: 25px; font-size: 20px;">
+                    <p class="line" style="font-size: 16px;"></p>
+                         <p id="open-settings" style="cursor: pointer;">設定</p>
+                    </div>
                </div>
           </div>
+          <div id="sidebar-wrap" style="opacity: 0; z-index: -1;"></div>
+
+          <div id="settings" style="opacity: 0; z-index: -1;">
+               <h2>設定</h2>
+               <hr>
+               <h3>ページあたりの項目数: <a id="page-amount"></a></h3>
+               <div style="display: flex; flex-direction: row; justify-content: center;" id="range-wrap">
+                    <p>8</p>
+                    <input type="range" id="page-range" min="8" max="30" step="2" value="12"></input>
+                    <p>30</p>
+               </div>
+               <button id="close-settings">閉じる</button>
+          </div>
+          <div id="settings-wrap" style="opacity: 0; z-index: -1;"></div>
+
           <div id="obj" style="text-align: center; padding-bottom: 50px;">
+               <div id="charts-loading" style="opacity: 0; z-index: -1;"></div>
+
                <div id="songs" class="padding">
                     <h2 style="text-align: left; font-size: 28px; margin: 0;">譜面検索<a
                               style="color: lightskyblue; text-decoration: none; font-size: 20px;">（ベータ）</a></h2>

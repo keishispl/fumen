@@ -1,9 +1,47 @@
+var pageRange = getCookie("page-range", 12);
+document.getElementById("page-range").value = 12;
+
+document.getElementById("page-amount").textContent = document.getElementById("page-range").value;
+document.getElementById("page-range").addEventListener("input", () => {
+     document.getElementById("page-amount").textContent = document.getElementById("page-range").value;
+     if (document.getElementById("page-range").value.length === 1) {
+          document.getElementById("page-amount").style.paddingLeft = "0.82rem";
+     } else {
+          document.getElementById("page-amount").style.paddingLeft = "0";
+     }
+     document.cookie = "page-range=" + document.getElementById("page-range").value + ";";
+     pageRange = document.getElementById("page-range").value;
+     chartsSetup(songs.sort((a, b) => new Date(b.date.update ?? b.date.release) - new Date(a.date.update ?? a.date.release) || `${a.song}`.localeCompare(`${b.song}`)));
+})
+
+document.getElementById("close-settings").addEventListener("click", () => {
+     document.getElementById("settings-wrap").style.opacity = 0;
+     document.getElementById("settings-wrap").style.zIndex = -1;
+     document.getElementById("settings").style.opacity = 0;
+     document.getElementById("settings").style.zIndex = -1;
+})
+
+document.getElementById("settings-wrap").addEventListener("click", () => {
+     document.getElementById("settings-wrap").style.opacity = 0;
+     document.getElementById("settings-wrap").style.zIndex = -1;
+     document.getElementById("settings").style.opacity = 0;
+     document.getElementById("settings").style.zIndex = -1;
+})
+
+document.getElementById("open-settings").addEventListener("click", () => {
+     document.getElementById("settings-wrap").style.opacity = 1;
+     document.getElementById("settings-wrap").style.zIndex = 9;
+     document.getElementById("settings").style.opacity = 1;
+     document.getElementById("settings").style.zIndex = 10;
+})
+
 /**
  * An array of songs
  * @type {Song[]}
  */
 var songs = getSongs()[0];
 var songDivs = [];
+var loading = 0;
 
 /**
  * Returns the URL parameters as an array of strings.
@@ -140,58 +178,85 @@ function chartsSetup(_songs) {
           }
      });
 
+     document.getElementById("charts-loading").style.opacity = 1;
+     document.getElementById("charts-loading").style.zIndex = 3;
+
+     document.getElementById("song-amount").textContent = "??件の結果";
+
+     var div = document.createElement("div");
+     div.id = "placeholder-div";
+     div.className = "song-list";
+     document.getElementById("song-lists").appendChild(div);
+
+     loading++;
+
      var amount = 0;
 
      // Generate song divs
-     _songs.forEach(song => {
-          if (number >= 12 || number < 0) {
-               number = 0;
+     setTimeout(() => {
 
+          if (loading > 1) {
+               loading--;
+               return;
+          }
+
+          loading--;
+
+          document.getElementById("charts-loading").style.opacity = 0;
+          document.getElementById("charts-loading").style.zIndex = -1;
+
+          document.getElementById("placeholder-div").remove();
+
+          _songs.forEach(song => {
+               if (number >= pageRange || number < 0) {
+                    number = 0;
+
+                    var div = document.createElement("div");
+                    div.id = "song-list-" + songDivs.length;
+                    div.className = "song-list";
+
+                    songDivs.push(div.id);
+                    document.getElementById("song-lists").appendChild(div);
+               }
+
+               number++;
+               amount++;
+
+               var block = document.getElementById(songDivs[songDivs.length - 1]);
+
+               block.appendChild(writeBox(song, "chart/"));
+
+               animationBox(block.querySelectorAll(".song-text"));
+          });
+
+          // Generate song amount
+          document.getElementById("song-amount").textContent = amount + "件の結果";
+
+          if (amount == 0) {
                var div = document.createElement("div");
                div.id = "song-list-" + songDivs.length;
                div.className = "song-list";
 
                songDivs.push(div.id);
                document.getElementById("song-lists").appendChild(div);
+          } else {
+               // Navigate pages
+               for (let i = 0; i < songDivs.length; i++) {
+                    var button = document.createElement("button");
+                    button.id = "song-button-" + i;
+                    button.className = "song-button";
+                    button.innerHTML = i + 1;
+
+                    document.getElementById("song-navigate").appendChild(button);
+
+                    button.addEventListener("click", () => {
+                         comparePages(songDivs, i);
+                    });
+               }
           }
 
-          number++;
-          amount++;
-
-          var block = document.getElementById(songDivs[songDivs.length - 1]);
-
-          block.appendChild(writeBox(song, "chart/"));
-
-          animationBox(block.querySelectorAll(".song-text"));
-     });
-
-     // Generate song amount
-     document.getElementById("song-amount").textContent = amount + "件の結果";
-
-     if (amount == 0) {
-          var div = document.createElement("div");
-          div.id = "song-list-" + songDivs.length;
-          div.className = "song-list";
-
-          songDivs.push(div.id);
-          document.getElementById("song-lists").appendChild(div);
-     } else {
-          // Navigate pages
-          for (let i = 0; i < songDivs.length; i++) {
-               var button = document.createElement("button");
-               button.id = "song-button-" + i;
-               button.className = "song-button";
-               button.innerHTML = i + 1;
-
-               document.getElementById("song-navigate").appendChild(button);
-
-               button.addEventListener("click", () => {
-                    comparePages(songDivs, i);
-               });
-          }
-     }
-
-     comparePages(songDivs, 0);
+          comparePages(songDivs, 0);
+     }, Math.floor(Math.random() * (1500 - 500 + 1)) + 500);
 }
 
 // Search
