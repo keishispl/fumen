@@ -1,5 +1,5 @@
 var pageRange = getCookie("page-range", 12);
-document.getElementById("page-range").value = 12;
+document.getElementById("page-range").value = parseInt(pageRange);
 
 document.getElementById("page-amount").textContent = document.getElementById("page-range").value;
 document.getElementById("page-range").addEventListener("input", () => {
