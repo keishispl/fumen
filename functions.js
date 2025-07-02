@@ -91,7 +91,7 @@ function writeArtists(song) {
  * @returns {string} A formatted string of the vocal artists.
  */
 function writeVocals(song) {
-     if (song.artist.vocal === 0) return "Inst. ver.";
+     if (song.artist.vocal === null) return "Inst. ver.";
 
      var main = [];
      if (song.artist.vocal.length > 0) {
