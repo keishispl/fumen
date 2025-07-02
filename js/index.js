@@ -43,6 +43,8 @@ var songs = getSongs()[0];
 var songDivs = [];
 var loading = 0;
 
+var searchFilters = ["song", "artist", "vocal", "source", "genre", "sort"];
+
 /**
  * Returns the URL parameters as an array of strings.
  * The array contains the 'song', 'artist', 'source', and 'genre' parameters in order.
@@ -52,14 +54,12 @@ var loading = 0;
 function getURLParams() {
      var urlparam = new URLSearchParams(window.location.search);
 
-     var song = urlparam.get('song');
-     var artist = urlparam.get('artist');
-     var vocal = urlparam.get('vocal');
-     var source = urlparam.get('source');
-     var genre = urlparam.get('genre');
-     var sort = urlparam.get('sort');
+     var obj = [];
+     searchFilters.forEach(filter => {
+          obj.push(urlparam.get(filter));
+     })
 
-     return [song, artist, vocal, source, genre, sort];
+     return obj;
 }
 
 // Add genre options
@@ -73,9 +73,9 @@ Object.keys(genreLabels).forEach(genre => {
 // Set input values
 getURLParams().forEach((param, index) => {
      if (param) {
-          document.getElementById("input-" + ["song", "artist", "vocal", "source", "genre", "sort"][index]).value = param;
+          document.getElementById("input-" + searchFilters[index]).value = param;
 
-          if (index == 3 && !Object.keys(genreLabels).includes(param)) {
+          if (searchFilters[index] === "genre" && !Object.keys(genreLabels).includes(param)) {
                document.getElementById("input-genre").value = "";
 
                var urlparam = new URLSearchParams(window.location.search);
@@ -87,7 +87,7 @@ getURLParams().forEach((param, index) => {
                     history.pushState(null, null, "?" + urlparam.toString());
                }
           }
-          if (index == 4 && !["", "0", "1", "2", "3", "4"].includes(param)) {
+          if (searchFilters[index] === "sort" && !["", "0", "1", "2", "3", "4"].includes(param)) {
                document.getElementById("input-sort").value = "";
 
                var urlparam = new URLSearchParams(window.location.search);
@@ -137,22 +137,22 @@ function chartsSetup(_songs) {
      // Filter songs
      getURLParams().forEach((param, index) => {
           if (param) {
-               if (index === 0) {
+               if (searchFilters[index] === "song") {
                     _songs = _songs.filter(song => kataToHira(song.song).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
-               if (index === 1) {
+               if (searchFilters[index] === "artist") {
                     _songs = _songs.filter(song => kataToHira(writeArtists(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
-               if (index === 2) {
+               if (searchFilters[index] === "vocal") {
                     _songs = _songs.filter(song => kataToHira(writeVocals(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
-               if (index === 3) {
+               if (searchFilters[index] === "source") {
                     _songs = _songs.filter(song => kataToHira(writeSources(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
                }
-               if (index === 4) {
+               if (searchFilters[index] === "genre") {
                     _songs = _songs.filter(song => song.genre == param);
                }
-               if (index === 5) {
+               if (searchFilters[index] === "sort") {
                     if (param === "") {
                          _songs = _songs.sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`));
                     }
@@ -194,12 +194,10 @@ function chartsSetup(_songs) {
 
      // Generate song divs
      setTimeout(() => {
-
           if (loading > 1) {
                loading--;
                return;
           }
-
           loading--;
 
           document.getElementById("charts-loading").style.opacity = 0;
@@ -261,28 +259,12 @@ function chartsSetup(_songs) {
 
 // Search
 document.getElementById("input-search").addEventListener("click", () => {
-     var song = document.getElementById("input-song").value;
-     var artist = document.getElementById("input-artist").value;
-     var vocal = document.getElementById("input-vocal").value;
-     var source = document.getElementById("input-source").value;
-     var genre = document.getElementById("input-genre").value;
-     var sort = document.getElementById("input-sort").value;
-
      var urlparam = new URLSearchParams(window.location.search);
-
-     urlparam.delete('song');
-     urlparam.delete('artist');
-     urlparam.delete('vocal');
-     urlparam.delete('source');
-     urlparam.delete('genre');
-     urlparam.delete('sort');
-
-     song === "" ? song = null : urlparam.set('song', song);
-     artist === "" ? artist = null : urlparam.set('artist', artist);
-     vocal === "" ? vocal = null : urlparam.set('vocal', vocal);
-     source === "" ? source = null : urlparam.set('source', source);
-     genre === "" ? genre = null : urlparam.set('genre', genre);
-     sort === "" ? sort = null : urlparam.set('sort', sort);
+     searchFilters.forEach(filter => {
+          var param = document.getElementById("input-" + filter).value;
+          urlparam.delete(filter);
+          param === "" ? param = null : urlparam.set(filter, param);
+     })
 
      if (urlparam.toString() === "") {
           history.pushState(null, null, ".");
