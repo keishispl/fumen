@@ -1,4 +1,7 @@
 let menuClosed = true;
+setTimeout(() => {
+     document.getElementById("sidebar").style.display = "block";
+}, 50)
 
 /**
  * Toggles the menu on and off.
@@ -7,7 +10,7 @@ let menuClosed = true;
 function menuToggle(bool) {
      function toggleOn() {
           document.getElementById("main").classList.remove("menu-closed");
-          document.getElementById("menu-button").style.right = "310px";
+          document.getElementById("menu-button").style.right = "300px";
           document.getElementById("sidebar-wrap").style.opacity = 1;
           document.getElementById("sidebar-wrap").style.zIndex = 4;
           menuClosed = false;
@@ -54,6 +57,14 @@ function menuToggle(bool) {
 document.getElementById('menu-button').addEventListener('click', () => {
      menuToggle();
 });
+
+window.addEventListener("click", (e) => {
+     if (!document.getElementById('menu-button').contains(e.target) && !document.getElementById('sidebar').contains(e.target)) {
+          menuToggle(false);
+     }
+})
+
+
 window.addEventListener("keyup", function (e) {
      if (e.key === "m") {
           menuToggle();

@@ -1,40 +1,3 @@
-::-moz-selection {
-     color: white;
-     background: rgba(95, 168, 0, 0.22);
-}
-
-::selection {
-     color: white;
-     background: rgba(95, 168, 0, 0.22);
-}
-
-#nav {
-     display: flex;
-     align-items: center;
-     background-color: rgba(0, 0, 0, 0.25);
-     background-blend-mode: multiply;
-     backdrop-filter: blur(2.5px);
-     width: 100%;
-     height: 100px;
-     margin-bottom: 25px;
-}
-
-#nav>p {
-     margin-left: 30px;
-     padding: 0px;
-     font-size: 32px;
-     text-align: left;
-     user-select: none;
-     -moz-user-select: none;
-     font-weight: bold;
-     line-height: 3em;
-}
-
-#nav>p>a {
-     text-decoration: none;
-     color: #cecfd0;
-}
-
 #source {
      user-select: none;
      -moz-user-select: none;
@@ -43,119 +6,11 @@
      margin: 25px 0 -25px 0;
 }
 
-body {
-     overscroll-behavior: none;
-     background-size: cover;
-     background-position: center right;
-     background-repeat: no-repeat;
-     background-attachment: fixed;
-     background-color: none;
-     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://keishispl.github.io/img/wallpaper/self_drawn.png');
-     color: #cecfd0;
-     font-weight: normal;
-     margin: 0;
-     align-items: center;
-     justify-content: center;
-     text-align: center;
-     overflow-x: hidden;
-}
-
 #obj {
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
-}
-
-a,
-a:visited {
-     color: rgb(141, 255, 236)
-}
-
-a:hover {
-     color: rgb(128, 232, 215)
-}
-
-#sidebar {
-     position: fixed;
-     background-color: rgb(32, 32, 32);
-     top: 0;
-     bottom: 0;
-     right: 0;
-     width: 300px;
-     transition: transform 0.2s;
-     user-select: none;
-     -moz-user-select: none;
-     text-align: right;
-     z-index: 5;
-}
-
-#sidebar-wrap {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100vw;
-     height: 100vh;
-     background-color: rgba(0, 0, 0, 0.3);
-     z-index: 4;
-     transition: opacity ease 0.2s;
-}
-
-.menu-closed>#sidebar {
-     transform: translateX(300px);
-}
-
-#main {
-     width: calc(100vw - 300px);
-     transition: width 0.2s;
-}
-
-#main.menu-closed {
-     width: 100vw;
-}
-
-@media screen and (max-width: 880px) {
-     #nav>p {
-          font-size: 24px;
-     }
-}
-
-@media screen and (max-width: 1250px) {
-     #main {
-          width: 100vw;
-     }
-}
-
-#btn2 {
-     position: fixed;
-     border: 1px solid #cecfd0;
-     background-color: rgba(0, 0, 0, 0.1);
-     backdrop-filter: blur(2.5px);
-     color: #cecfd0;
-     cursor: pointer;
-     padding: 15px;
-     border-radius: 10px;
-     font-size: 16px;
-     width: 50px;
-     height: 50px;
-     user-select: none;
-     -moz-user-select: none;
-     transition: right 0.2s;
-     z-index: 5;
-}
-
-#btn2:hover {
-     background: rgba(206, 207, 208, 0.22);
-}
-
-#btn2 {
-     top: 10px;
-     right: 10px;
-}
-
-.line {
-     margin-top: -35px;
-     margin-right: -5px;
 }
 
 .padding {
@@ -578,7 +433,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
      height: 100vh;
      background-color: rgba(255, 255, 255, 0.1);
      transition: opacity ease 0.2s;
-     animation: loading 2s infinite ease-in-out;
+     animation: loading 1.75s infinite ease-in-out;
      z-index: 3;
 }
 

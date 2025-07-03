@@ -1,0 +1,139 @@
+body {
+     overscroll-behavior: none;
+     background-size: cover;
+     background-position: center right;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-color: #102D3B;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://keishispl.github.io/img/wallpaper/self_drawn.png');
+     color: #cecfd0;
+     font-weight: normal;
+     margin: 0;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     overflow-x: hidden;
+}
+
+::-moz-selection {
+     color: white;
+     background: rgba(95, 168, 0, 0.22);
+}
+
+::selection {
+     color: white;
+     background: rgba(95, 168, 0, 0.22);
+}
+
+#nav {
+     display: flex;
+     align-items: center;
+     width: 100%;
+     height: 100px;
+     margin-bottom: 25px;
+     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1));
+     backdrop-filter: blur(2.5px);
+     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#nav>p {
+     margin-left: 30px;
+     padding: 0px;
+     font-size: 32px;
+     text-align: left;
+     user-select: none;
+     -moz-user-select: none;
+     font-weight: bold;
+     line-height: 3em;
+}
+
+#nav>p>a {
+     text-decoration: none;
+     color: #cecfd0;
+}
+
+@media screen and (max-width: 880px) {
+     #nav>p {
+          font-size: 24px;
+     }
+}
+
+a,
+a:visited {
+     color: rgb(141, 255, 236)
+}
+
+a:hover {
+     color: rgb(128, 232, 215)
+}
+
+#sidebar {
+     position: fixed;
+     background-color: rgba(255, 255, 255, 0.1);
+     border: 2px solid rgba(255, 255, 255, 0.4);
+     backdrop-filter: blur(5px) brightness(120%) saturate(130%);
+     top: 0;
+     bottom: 0;
+     right: 0;
+     width: 279px;
+     margin: 10px 10px 10px 0;
+     border-radius: 10px;
+     transition: transform 0.2s;
+     user-select: none;
+     -moz-user-select: none;
+     text-align: right;
+     z-index: 5;
+}
+
+#sidebar-wrap {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.15);
+     z-index: 4;
+     transition: opacity ease 0.2s;
+}
+
+.menu-closed>#sidebar {
+     transform: translateX(300px);
+}
+
+#main {
+     width: 100vw;
+}
+
+#menu-button {
+     position: fixed;
+     top: 10px;
+     right: 10px;
+     background-color: rgba(255, 255, 255, 0.1);
+     border: 2px solid rgba(255, 255, 255, 0.4);
+     backdrop-filter: blur(2.5px);
+     color: #cecfd0;
+     cursor: pointer;
+     padding: 15px;
+     border-radius: 10px;
+     font-size: 16px;
+     width: 50px;
+     height: 50px;
+     user-select: none;
+     -moz-user-select: none;
+     transition: right 0.2s;
+     z-index: 5;
+}
+
+#menu-button:hover {
+     background-color: rgba(255, 255, 255, 0.2);
+}
+
+#menu-button:focus {
+     outline: none;
+     background-color: rgba(255, 255, 255, 0.2);
+}
+
+.line {
+     margin-top: -35px;
+     margin-right: -5px;
+}
