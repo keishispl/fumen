@@ -72,6 +72,7 @@ a:hover {
      background-color: rgba(255, 255, 255, 0.1);
      border: 2px solid rgba(255, 255, 255, 0.4);
      backdrop-filter: blur(5px) brightness(125%) saturate(130%);
+     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
      top: 0;
      bottom: 0;
      right: 0;
@@ -83,6 +84,17 @@ a:hover {
      -moz-user-select: none;
      text-align: right;
      z-index: 5;
+
+     a {
+          text-decoration: none;
+          color: #cecfd0;
+          transition: filter 0.2s, text-shadow 0.2s;
+
+          &:hover {
+               filter: brightness(115%) saturate(120%);
+               text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+          }
+     }
 }
 
 #sidebar-wrap {
@@ -110,7 +122,8 @@ a:hover {
      right: 10px;
      background-color: rgba(255, 255, 255, 0.1);
      border: 2px solid rgba(255, 255, 255, 0.4);
-     backdrop-filter: blur(2.5px);
+     backdrop-filter: blur(5px) brightness(125%) saturate(130%);
+     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
      color: #cecfd0;
      cursor: pointer;
      padding: 15px;
@@ -120,17 +133,19 @@ a:hover {
      height: 50px;
      user-select: none;
      -moz-user-select: none;
-     transition: right 0.2s;
      z-index: 5;
+     transition: right 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
 #menu-button:hover {
      background-color: rgba(255, 255, 255, 0.2);
+     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
 }
 
 #menu-button:focus {
      outline: none;
      background-color: rgba(255, 255, 255, 0.2);
+     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
 }
 
 .line {
