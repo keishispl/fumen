@@ -57,6 +57,17 @@
 .padding>h2 {
      margin-top: 50px;
      margin-bottom: 0;
+     transition: filter 0.2s, text-shadow 0.2s;
+
+     &:hover {
+          filter: brightness(115%) saturate(120%);
+          text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+     }
+
+     svg {
+          margin-left: 0.25em;
+          margin-bottom: -0.1em;
+     }
 }
 
 hr#line {
@@ -129,13 +140,14 @@ hr {
 .button {
      border: 2px solid rgba(206, 207, 208, 0.22);
      background-color: rgba(0, 0, 0, 0.1);
-     backdrop-filter: blur(2.5px);
+     backdrop-filter: blur(5px) brightness(125%) saturate(130%);
+     box-shadow: 0px 0px 10px rgba(206, 207, 208, 0.2);
      color: #cecfd0;
      cursor: pointer;
      padding: 10px;
      border-radius: 10px;
      font-size: 20px;
-     transition: background-color linear 0.2s;
+     transition: background-color 0.2s, box-shadow 0.2s;
      text-decoration: none;
      margin-top: 0;
      text-align: center;
@@ -145,14 +157,17 @@ hr {
 
      &.youtube {
           border: 2px solid rgba(216, 66, 66, 0.22);
+          box-shadow: 0px 0px 10px rgba(216, 66, 66, 0.2);
      }
 }
 
 .button:hover {
-     background-color: rgba(206, 207, 208, 0.22);
+     background-color: rgba(206, 207, 208, 0.1);
+     box-shadow: 0px 0px 10px rgba(206, 207, 208, 0.4);
 
      &.youtube {
           background-color: rgba(216, 66, 66, 0.1);
+          box-shadow: 0px 0px 10px rgba(216, 66, 66, 0.4);
      }
 }
 
@@ -388,6 +403,7 @@ hr {
 }
 
 @keyframes scroll {
+
      0%,
      20% {
           -moz-transform: translateX(0);
@@ -415,6 +431,7 @@ hr {
 }
 
 @keyframes scroll-long {
+
      0%,
      15% {
           -moz-transform: translateX(0);
