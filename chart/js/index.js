@@ -73,6 +73,9 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
           }
      });
 
+     document.getElementById("charts-loading").style.opacity = 1;
+     document.getElementById("charts-loading").style.zIndex = 3;
+
      /**
       * Window onload event handler.
       * Updates the song details of the page.
@@ -87,6 +90,9 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                 * @type {Song}
                 */
                const song = songs.find(s => s.id == parseInt(id) && s.genre == genre);
+
+               document.getElementById("charts-loading").style.opacity = 0;
+               document.getElementById("charts-loading").style.zIndex = -1;
 
                // Update the song details
                document.title = song.song + " (" + genreLabels[genre] + ") - 圭紫の太鼓の達人創作譜面";
@@ -145,6 +151,6 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
 
                     animationBox(block.querySelectorAll(".song-text"));
                })
-          }, 500);
+          }, Math.floor(Math.random() * (1500 - 500 + 1)) + 500);
      }
 }
