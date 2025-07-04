@@ -57,7 +57,7 @@ window.addEventListener("keyup", function (e) {
      var focus = false;
 
      // Check if the focus is on any of the input fields
-     ["song", "artist", "source", "genre"].forEach(item => {
+     ["song", "artist", "vocal", "source", "genre"].forEach(item => {
           if (document.getElementById("input-" + item).contains(document.activeElement)) {
                focus = true;
                return;
