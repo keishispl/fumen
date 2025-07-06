@@ -7,7 +7,8 @@ if (!ssong) {
      document.title = "404 - プロセカ創作譜面";
 
      document.getElementById("id").textContent = "";
-     document.getElementById("yori").remove();
+     document.getElementById("yori-wrap").remove();
+     document.getElementById("youtube-wrap").remove();
 
      document.getElementById("song-image").style.animation = "loading 1.75s infinite ease-in-out";
      document.getElementById("song-name").textContent = "404エラー";
@@ -24,6 +25,7 @@ if (!ssong) {
 
      document.getElementById("id").textContent = "#" + songId;
      document.getElementById("yori").textContent = ssong.yori;
+     document.getElementById("youtube").href = "https://www.youtube.com/watch?v=" + ssong.youtube;
 
      document.getElementById("song-image").src = "https://cc-cdn.sevenc7c.com/" + ssong.image;
      document.getElementById("song-name").textContent = ssong.name;

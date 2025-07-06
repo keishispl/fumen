@@ -325,3 +325,16 @@ h3.scroll-text {
           margin: 0;
      }
 }
+
+#youtube-wrap {
+     position: absolute;
+     top: 75px;
+     right: 50px;
+     margin: 0;
+     font-size: 20px;
+
+     >a {
+          color: #cecfd0;
+          text-decoration: none;
+     }
+}
