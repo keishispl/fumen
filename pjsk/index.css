@@ -1,0 +1,180 @@
+body {
+     overflow-y: hidden;
+}
+
+#search {
+     border-radius: 5px;
+     width: 750px;
+     max-width: 90vw;
+     padding: 6px;
+     font-size: 14px;
+     line-height: 1em;
+     background-color: rgba(255, 255, 255, 0.1);
+     border: 2px solid rgba(255, 255, 255, 0.4);
+     backdrop-filter: blur(5px) brightness(125%) saturate(130%);
+     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+     color: #cecfd0;
+     transition: border 0.2s, box-shadow 0.2s, backdrop-filter 0.2s, background-color 0.2s;
+}
+
+#search::placeholder {
+     color: #99999b;
+}
+
+#search:focus {
+     outline: none;
+     background-color: rgba(255, 255, 255, 0.2);
+     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+}
+
+#chart-wrap {
+     display: block;
+     width: 750px;
+     max-width: 90vw;
+     margin: 20px auto 40px auto;
+     height: calc(100vh - 120px - 32px - 60px);
+     overflow-y: scroll;
+}
+
+#charts {
+     display: flex;
+     flex-direction: column;
+     width: 750px;
+     max-width: 90vw;
+     margin: 0;
+}
+
+#charts>div {
+     display: flex;
+     flex-direction: column;
+     position: relative;
+     width: calc(750px - 24px);
+     max-width: calc(90vw - 24px);
+     align-items: center;
+     padding: 10px;
+     border-radius: 10px;
+     background-color: rgba(255, 255, 255, 0.1);
+     border: 2px solid rgba(255, 255, 255, 0.4);
+     margin-bottom: 10px;
+     backdrop-filter: blur(5px) brightness(115%) saturate(120%);
+     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+     transition: border 0.2s, box-shadow 0.2s, backdrop-filter 0.2s, background-color 0.2s;
+
+     &:hover {
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+          background-color: rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(5px) brightness(125%) saturate(130%);
+     }
+
+     >a {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+     }
+
+     >p {
+          margin: 5px;
+          position: absolute;
+          top: 0;
+          left: 0;
+     }
+}
+
+#charts>div>div {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     width: calc(750px - 24px);
+     max-width: calc(90vw - 24px);
+     margin-top: 10px;
+     
+     >img {
+          margin-right: 10px;
+     }
+}
+
+#charts>div>div>div {
+     position: relative;
+     flex-direction: column;
+     width: 640px;
+     white-space: nowrap;
+     overflow-x: hidden;
+
+     >* {
+          margin: 0;
+          text-align: left;
+          width: fit-content;
+     }
+}
+
+.scroll-text {
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+}
+
+p.scroll-text {
+     animation-name: scroll;
+}
+
+h3.scroll-text {
+     animation-name: scroll-long;
+}
+
+@keyframes scroll {
+
+     0%,
+     20% {
+          -moz-transform: translateX(0);
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+     }
+
+     59.999% {
+          -moz-transform: translateX(calc(-100%));
+          -webkit-transform: translateX(calc(-100%));
+          transform: translateX(calc(-100%));
+     }
+
+     60% {
+          -moz-transform: translateX(calc(100%));
+          -webkit-transform: translateX(calc(100%));
+          transform: translateX(calc(100%));
+     }
+
+     100% {
+          -moz-transform: translateX(0);
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+     }
+}
+
+@keyframes scroll-long {
+
+     0%,
+     15% {
+          -moz-transform: translateX(0);
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+     }
+
+     57.499% {
+          -moz-transform: translateX(calc(-100%));
+          -webkit-transform: translateX(calc(-100%));
+          transform: translateX(calc(-100%));
+     }
+
+     57.5% {
+          -moz-transform: translateX(calc(100%));
+          -webkit-transform: translateX(calc(100%));
+          transform: translateX(calc(100%));
+     }
+
+     100% {
+          -moz-transform: translateX(0);
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+     }
+}

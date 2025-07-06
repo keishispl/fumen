@@ -58,7 +58,7 @@ for (var i = 0; i < lines.length; i++) {
  */
 function jsonFromFile(file) {
      var request = new XMLHttpRequest();
-     request.open("GET", `https://raw.githubusercontent.com/keishispl/taikofumen-res/refs/heads/main/${file}.json`, false);
+     request.open("GET", `https://raw.githubusercontent.com/keishispl/fumen-res/refs/heads/main/taiko/${file}.json`, false);
      request.send(null)
      return JSON.parse(request.responseText);
 }
@@ -211,11 +211,11 @@ function writeBox(song, href = "") {
  */
 function animationBox(box) {
      box.forEach(detail => {
-          if (detail.clientWidth > 335) {
+          if (detail.clientWidth > 300) {
                detail.classList.add("scroll-text");
 
                const width = detail.clientWidth;
-               const distance = width + 335;
+               const distance = width + 300;
                const duration = 12.5 * distance;
 
                detail.style.animationDuration = `${duration}ms`;

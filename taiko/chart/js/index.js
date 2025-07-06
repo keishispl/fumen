@@ -22,7 +22,7 @@ const id = new URL(window.location.href).searchParams.get('id');
 
 // Check if the song is valid 
 if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !Object.keys(genreLabels).includes(genre) || id >= genreCount[genre]) {
-     document.title = "404 - 圭紫の太鼓の達人創作譜面";
+     document.title = "404 - 太鼓の達人創作譜面";
      document.querySelector("main").remove();
      document.head.querySelector("link[rel=stylesheet][href='index.css']").remove();
 
@@ -58,7 +58,7 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
 
      document.body.querySelector("script[src='menu.js']").remove();
 } else {
-     document.head.querySelector("link[rel=stylesheet][href='error.css']").remove();
+     document.head.querySelector("link[rel=stylesheet][href='../../error.css']").remove();
 
      if (document.getElementById("main").clientWidth <= 880) {
           document.getElementById("list-big-wrap").classList.add("list-fix");
@@ -95,7 +95,7 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
                document.getElementById("charts-loading").style.zIndex = -1;
 
                // Update the song details
-               document.title = song.song + " (" + genreLabels[genre] + ") - 圭紫の太鼓の達人創作譜面";
+               document.title = song.song + " (" + genreLabels[genre] + ") - 太鼓の達人創作譜面";
                document.getElementById("title").textContent = song.song;
                document.getElementById("genre").textContent = genreLabels[song.genre];
                document.getElementById("title").className = song.genre;
