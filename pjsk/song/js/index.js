@@ -25,6 +25,11 @@ if (!ssong) {
 
      document.getElementById("id").textContent = "#" + songId;
      document.getElementById("yori").textContent = ssong.yori;
+     animateBox([document.getElementById("yori")], 235);
+     if (document.getElementById("yori-wrap").offsetWidth > 220) {
+          document.getElementById("youtube-wrap").style.top = "75px";
+     }
+
      document.getElementById("youtube").href = "https://www.youtube.com/watch?v=" + ssong.youtube;
 
      document.getElementById("song-image").src = "https://cc-cdn.sevenc7c.com/" + ssong.image;

@@ -317,18 +317,22 @@ h3.scroll-text {
      width: fit-content;
      height: 14px;
      top: 40px;
-     margin-left: -10px;
+     left: 75px;
+     overflow-x: hidden;
+     max-width: 235px;
 
      >p {
+          min-width: max-content;
           font-size: 14px;
           line-height: 1em;
           margin: 0;
+          white-space: nowrap;
      }
 }
 
 #youtube-wrap {
      position: absolute;
-     top: 75px;
+     top: 50px;
      right: 50px;
      margin: 0;
      font-size: 20px;
