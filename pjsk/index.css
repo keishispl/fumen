@@ -34,6 +34,7 @@ body {
      margin: 20px auto 40px auto;
      height: calc(100vh - 120px - 32px - 60px);
      overflow-y: scroll;
+     overflow-x: hidden;
 }
 
 #charts {
