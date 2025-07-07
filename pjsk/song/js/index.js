@@ -40,6 +40,8 @@ if (!ssong) {
           animateBox([child], 335);
      }
 
+     var items = [];
+
      ssong.difficulties.forEach(diff => {
           const div = document.createElement("div");
 
@@ -51,6 +53,9 @@ if (!ssong) {
                level.textContent = diff.data.level;
           } else {
                level.textContent = "-";
+               if (["easy", "normal", "hard"].includes(diff.type)) {
+                    items.push(div);
+               }
           }
           circle.appendChild(level);
 
@@ -101,4 +106,8 @@ if (!ssong) {
                })
           }
      })
+
+     if (items.length === 3) {
+          items.forEach(item => item.remove());
+     }
 }
