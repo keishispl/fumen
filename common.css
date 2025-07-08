@@ -91,6 +91,8 @@ a:hover {
      -moz-user-select: none;
      text-align: right;
      z-index: 5;
+     overflow-x: hidden;
+     overflow-y: scroll;
 
      a {
           text-decoration: none;
