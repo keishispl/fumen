@@ -64,10 +64,10 @@ function filterSearch() {
 
      var ssongs = getSongs().filter(song =>
           `#${song.id}`.toLowerCase().includes(search.value.toLowerCase()) ||
-          kataToHira(song.name).toLowerCase().includes(search.value.toLowerCase()) ||
-          kataToHira(writeComposers(song.composer)).toLowerCase().includes(search.value.toLowerCase()) ||
-          kataToHira(song.vocal.join("、").replaceAll(", ", "、")).toLowerCase().includes(search.value.toLowerCase()) ||
-          kataToHira(song.yori).toLowerCase().includes(search.value.toLowerCase())
+          kataToHira(song.name).toLowerCase().includes(kataToHira(search.value).toLowerCase()) ||
+          kataToHira(writeComposers(song.composer)).toLowerCase().includes(kataToHira(search.value).toLowerCase()) ||
+          kataToHira(song.vocal.join("、").replaceAll(", ", "、")).toLowerCase().includes(kataToHira(search.value).toLowerCase()) ||
+          kataToHira(song.yori).toLowerCase().includes(kataToHira(search.value).toLowerCase())
      );
 
      document.getElementById("charts").innerHTML = "";
