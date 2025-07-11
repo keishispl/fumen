@@ -86,6 +86,9 @@ function animateBox(box, size) {
                const duration = 12.5 * distance;
 
                detail.style.animationDuration = `${duration}ms`;
+          } else {
+               detail.classList.remove("scroll-text");
+               detail.style.animationDuration = "";
           }
      })
 }
