@@ -179,3 +179,22 @@ h3.scroll-text {
           transform: translateX(0);
      }
 }
+
+#end {
+     z-index: 2;
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.4);
+     backdrop-filter: blur(2.5px);
+
+     >p {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 20px;
+     }
+}

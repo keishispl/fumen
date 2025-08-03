@@ -1,7 +1,9 @@
 const songs = getSongs();
 
 const songId = new URLSearchParams(window.location.search).get("id");
-const ssong = songs.find(song => song.id === songId);
+var ssong = songs.find(song => song.id === songId);
+
+ssong = false;
 
 if (!ssong) {
      document.title = "404 - プロセカ創作譜面";
