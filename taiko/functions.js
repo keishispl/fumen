@@ -235,7 +235,7 @@ function getSongs() {
 
      // Load songs into the array
      Object.keys(genreLabels).forEach(genre => {
-          var number = 0;
+          var number = jsonFromFile(genre).length - 1;
           try {
                jsonFromFile(genre).sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`)).forEach(song => {
                     songs.push({
@@ -251,12 +251,12 @@ function getSongs() {
                          id: number,
                          date: song['date']
                     });
-                    number++;
+                    number--;
                })
           } catch (e) {
                console.error(e);
           }
-          genreCount[genre] = number;
+          genreCount[genre] = jsonFromFile(genre).length;
      });
 
      return [songs, genreCount];
