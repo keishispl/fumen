@@ -1,0 +1,98 @@
+<html>
+
+<head>
+     <title>太鼓の達人 - 創作譜面</title>
+
+     <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+     <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+     <script src="https://unpkg.com/@babel/standalone@7.28.3/babel.min.js"></script>
+
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+     <link href="https://raw.githubusercontent.com/keishispl/keishispl.github.io/refs/heads/main/fonts/font.css"
+          rel="stylesheet">
+     <link href="../index.css" type="text/css" rel="stylesheet">
+     <link href="index.css" type="text/css" rel="stylesheet">
+
+     <style>
+          .btn {
+               padding: 0 15px;
+          }
+     </style>
+</head>
+
+<body>
+     <main>
+          <a href="../" style="position: absolute; top: 25px; left: 25px; font-size: 24px; color: var(--font-color);"><i class="fa-solid fa-house"></i></a>
+          <div>
+               <h1><a href="./">太鼓の達人創作譜面</a></h1>
+          </div>
+          <div>
+               <h2 class="title">譜面検索</h2>
+               <hr/>
+               <div id="song-filter">
+                    <div>
+                         <h3>曲名</h3>
+                         <input type="text" autocomplete="off" id="input-song">
+                    </div>
+                    <div>
+                         <h3>作曲者</h3>
+                         <input type="text" autocomplete="off" id="input-artist">
+                    </div>
+                    <div>
+                         <h3>ボーカル</h3>
+                         <input type="text" autocomplete="off" id="input-vocal">
+                    </div>
+                    <div>
+                         <h3>來源（ソース）</h3>
+                         <input type="text" autocomplete="off" id="input-source">
+                    </div>
+                    <div>
+                         <h3>ジャンル</h3>
+                         <select id="input-genre">
+                              <option value="">すべて</option>
+                              <option disabled>ーーーーーーーーーー</option>
+                         </select>
+                    </div>
+                    <div>
+                         <h3>並び替え</h3>
+                         <select id="input-sort">
+                              <option value="">投稿順</option>
+                              <option value="0">更新順</option>
+                              <option disabled>ーーーーーーーーーー</option>
+                              <option value="1">曲名順</option>
+                              <option value="2">作曲者順</option>
+                              <option value="3">ボーカル順</option>
+                              <option value="4">來源（ソース）順</option>
+                              <option value="5">ジャンル順</option>
+                         </select>
+                    </div>
+                    <div id="hr">
+                         <hr>
+                    </div>
+                    <div id="search">
+                         <button id="input-search">検索</button>
+                    </div>
+               </div>
+          </div>
+          <div>
+               <h2 id="song-amount" class="title">??件の結果</h2>
+               <hr/>
+               <div id="song-lists"></div>
+               <p style="text-align: right; font-size: 14px; width: 900px; max-width: calc(100vw - 50px);" id="page-amount"></p>
+               <hr/>
+               <div id="song-navigate" style="margin-top: 10px;"></div>
+               <p id="current-page" style="font-size: 14px;"></p>
+          </div>
+     </main>
+     <footer>
+          <p>最新のリストは<a href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM"
+                    target="_blank">Google スプレッドシート</a>にあります</p>
+          <p class="noselect">&nbsp;</p>
+          <p>keishisplが作成したサイト</p>
+          <p><a href="https://github.com/keishispl/fumen" target="_blank">ソースコード</a>を見る</p>
+     </footer>
+     <script type="text/babel" src="js/functions.jsx"></script>
+     <script type="text/babel" src="js/index.jsx"></script>
+</body>
+
+</html>

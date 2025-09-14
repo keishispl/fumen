@@ -1,0 +1,198 @@
+:root {
+     --font-color: #cecfd0;
+     --link-color: #9cbbda;
+     overscroll-behavior: none;
+}
+
+body {
+     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+     background-image: url("https://keishispl.github.io/img/wallpaper/self_drawn.png");
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: center center;
+     backdrop-filter: blur(10px);
+     margin: 0;
+     color: var(--font-color);
+}
+
+br {
+     user-select: none;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     -o-user-select: none;
+}
+
+@keyframes bounce-button {
+     0% {
+          opacity: 0;
+          transform: translateY(-50px);
+          text-shadow: none;
+     }
+
+     50% {
+          text-shadow: none;
+     }
+
+     100% {
+          opacity: 1;
+          transform: translateY(0px);
+          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+     }
+}
+
+header {
+     height: 100vh;
+     width: 100vw;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     user-select: none;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     -o-user-select: none;
+
+     >* {
+          animation: 1s running bounce-button;
+          animation-iteration-count: 1;
+          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+     }
+
+     >h1 {
+          font-size: 80px;
+          letter-spacing: 10px;
+          margin: 5px 0 10px 0;
+          line-height: 1em;
+     }
+
+     >h2 {
+          font-size: 32px;
+          letter-spacing: 10px;
+          font-style: italic;
+          font-weight: normal;
+     }
+}
+
+footer {
+     background-color: rgb(5, 5, 5);
+     margin: 0;
+     padding: 10px 0;
+     text-align: center;
+
+     >p>a {
+          cursor: pointer;
+          text-decoration: none;
+          color: var(--link-color);
+          font-size: 16px;
+     }
+}
+
+main {
+     margin: 0;
+
+     >div {
+          width: 100vw;
+          padding: 20px 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+
+          >h1 {
+               font-size: 40px;
+               letter-spacing: 10px;
+               line-height: 1em;
+
+               >a {
+                    text-decoration: none;
+                    color: var(--font-color);
+               }
+          }
+
+          >h2 {
+               font-size: 30px;
+               letter-spacing: 7.5px;
+               line-height: 1em;
+          }
+
+          p {
+               font-size: 24px;
+               letter-spacing: 5px;
+               width: calc(100vw - 200px);
+               line-break: strict;
+          }
+
+          >img {
+               width: calc(100vw - 200px);
+               border-radius: 20px;
+          }
+     }
+}
+
+@media screen and (max-width: 600px) {
+     main {
+          >div {
+               >p {
+                    width: calc(100vw - 50px);
+               }
+
+               >img {
+                    width: calc(100vw - 50px);
+               }
+          }
+     }
+}
+
+.btn {
+     backface-visibility: hidden;
+     -webkit-backface-visibility: hidden;
+     -ms-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+     -o-backface-visibility: hidden;
+     box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     backdrop-filter: blur(10px);
+     border-radius: 5px;
+     box-sizing: border-box;
+     background: transparent;
+     color: var(--font-color);
+     cursor: pointer;
+     display: inline-block;
+     font-size: 16px;
+     line-height: 38px;
+     margin: .5em;
+     padding: 0 20px 0 25px;
+     letter-spacing: 2px;
+     text-align: center;
+     text-decoration: none;
+     transition: .1s box-shadow ease, .1s background-color ease, .1s border ease;
+
+     &:hover {
+          box-shadow: 2px 2px 7.5px rgba(227, 228, 237, .5);
+          background-color: rgba(255, 255, 255, .1);
+          border: 2px solid rgba(255, 255, 255, .3);
+     }
+}
+
+a:hover {
+     filter: brightness(105%);
+     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+     transition: filter 0.1s ease, text-shadow 0.1s ease;
+}
+
+hr {
+     width: 950px;
+     max-width: calc(100vw - 50px);
+}
+
+.noselect {
+     user-select: none;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     -o-user-select: none;
+}

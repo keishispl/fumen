@@ -1,37 +1,31 @@
-<html>
+<html lang="ja">
 
 <head>
      <title>ホーム - 創作譜面</title>
-     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-     <meta name="theme-color" content="#FEF2E8">
-     <meta content="ホーム - 創作譜面" property="og:title">
-     <meta content="" property="og:description">
-     <meta content="" name="description">
-     <meta name="revisit-after" content="2 days">
-     <meta property="og:locale" content="ja">
-     <link rel="canonical" href="https://keishispl.github.io/">
-     <meta property="og:url" content="https://keishispl.github.io/">
-     <meta property="og:site_name" content="圭紫">
-     <link href="https://raw.githubusercontent.com/keishispl/tlstuff/refs/heads/main/fonts/font.css" type="text/css" rel="stylesheet">
-     <link href="common.css" type="text/css" rel="stylesheet">
-     <link href="error.css" type="text/css" rel="stylesheet">
-     <style>
-          .button {
-               width: 100px;
-          }
-     </style>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+     <link href="https://raw.githubusercontent.com/keishispl/keishispl.github.io/refs/heads/main/fonts/font.css"
+          rel="stylesheet">
+     <link href="index.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-     <main style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-          <h1 style="font-size: 50px;">創作譜面へようこそ</h1>
-          <h2 style="padding-bottom: 50px;">ゲームを選択してください</h2>
-          <div style="display: flex; flex-direction: row; justify-content: center; gap: 50px;">
-               <p class="button"><a href="taiko">太鼓の達人</a></p>
-               <p class="button"><a href="pjsk"><s>プロセカ</s></a></p>
+     <header>
+          <h1 style="padding-top: 25px;">創作譜面へようこそ</h1>
+          <h2>ゲームを選択してください</h2>
+          <div>
+               <a class="btn" style="font-size: 24px; padding: 10px 20px; color: rgb(253, 153, 153);" href="pjsk"><s>プロセカ</s></a>
+               <a class="btn" style="font-size: 24px; padding: 10px 20px;" href="taiko">太鼓の達人</a>
+               <a class="btn" style="font-size: 24px; padding: 10px 20px;" href="https://osu.ppy.sh/beatmapsets?q=keishispl&s=any" target="_blank">osu! <i class="fa-solid fa-up-right-from-square"></i></a>
           </div>
-     </main>
+          <hr style="width: 600px; max-width: calc(100vw - 50px);"/>
+          <div>
+               <a class="btn" style="font-size: 24px; padding: 10px 20px;" href="beta">太鼓の達人<span style="color: var(--link-color); font-size: 20px;">（ベータ）</span></a>
+          </div>
+     </header>
+     <footer class="noselect">
+          <p>keishisplが作成したサイト</p>
+          <p><a href="https://github.com/keishispl/fumen" target="_blank">ソースコード</a>を見る</p>
+     </footer>
 </body>
 
 </html>

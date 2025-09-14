@@ -9,6 +9,7 @@ setTimeout(() => {
  */
 function menuToggle(bool) {
      function toggleOn() {
+          return;
           document.getElementById("main").classList.remove("menu-closed");
           document.getElementById("menu-button").style.right = "300px";
           document.getElementById("sidebar-wrap").style.opacity = 1;
