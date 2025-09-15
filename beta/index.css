@@ -64,7 +64,9 @@
           width: calc(900px - 50px);
           max-width: calc(100vw - 50px - 50px);
           text-overflow: ellipsis;
-          overflow-x: hidden;
+          overflow: hidden;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
      }
 
      >a {
