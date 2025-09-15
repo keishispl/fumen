@@ -125,6 +125,10 @@ function writeSources(song) {
      }
 }
 
+function writeDates(song) {
+     return (song.date.release.replaceAll("/", "-") + (song.date.update ? " (更新:" + song.date.update.replaceAll("/", "-") + ")" : ""));
+}
+
 /**
  * Generates a song box element given a song object.
  * 
@@ -140,27 +144,8 @@ function writeBox(song, href = "") {
           <h2>{writeArtists(song)}</h2>
           <h2>{writeVocals(song)}</h2>
           <p className={song.genre}>{genreLabels[song.genre]}</p>
+          <p className="date">{writeDates(song)}</p>
      </div>;
-}
-
-/**
- * Add a CSS animation to each element in the given array of elements that are too wide.
- * The animation will scroll the element from right to left, and repeat indefinitely.
- * The duration of the animation is proportional to the width of the element.
- * @param {HTMLCollectionOf<Element>} box - The array of elements to animate.
- */
-function animationBox(box) {
-     box.forEach(detail => {
-          if (detail.clientWidth > 300) {
-               detail.classList.add("scroll-text");
-
-               const width = detail.clientWidth;
-               const distance = width + 300;
-               const duration = 12.5 * distance;
-
-               detail.style.animationDuration = `${duration}ms`;
-          }
-     })
 }
 
 /**

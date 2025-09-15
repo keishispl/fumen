@@ -76,7 +76,7 @@ getURLParams().forEach((param, index) => {
 function comparePages(div, current) {
      ReactDOM.render(<div className="song-list">{div[current]}</div>, document.getElementById("song-lists"));
 
-     if (div.length > 0) {
+     if (div.length > 1) {
           renderButtons(div, current, true);
      } else {
           renderButtons(div, current, false)
@@ -100,30 +100,41 @@ function renderButtons(div, current, display) {
                }
           }
 
-          pushButton(current);
-          pushButton(current + 1);
-          pushButton(current - 1);
-          pushButton(0);
-          pushButton(div.length - 1);
-
-          buttons.sort((a, b) => a.key - b.key);
-
-          var searchButton = <input type="number" onKeyDown={handleKeyDown} />;
-          function handleKeyDown(event) {
-               if (event.key === "Enter") {
-                    var key = event.target.value;
-                    if (key > div.length) key = div.length;
-                    if (key < 1) key = 1;
-                    comparePages(div, key - 1);
-                    event.target.value = "";
+          if (avaliableButtons.length < 6) {
+               const length = avaliableButtons.length;
+               for (var i = 0; i < length; i++) {
+                    pushButton(i);
                }
-          }
 
-          for (var button of buttons) {
-               if (button.key === current) {
-                    buttonElements.push(searchButton);
-               } else {
+               for (var button of buttons) {
                     buttonElements.push(button.element);
+               }
+          } else {
+               pushButton(current);
+               pushButton(current + 1);
+               pushButton(current - 1);
+               pushButton(0);
+               pushButton(div.length - 1);
+
+               buttons.sort((a, b) => a.key - b.key);
+
+               var searchButton = <input type="number" onKeyDown={handleKeyDown} />;
+               function handleKeyDown(event) {
+                    if (event.key === "Enter") {
+                         var key = event.target.value;
+                         if (key > div.length) key = div.length;
+                         if (key < 1) key = 1;
+                         comparePages(div, key - 1);
+                         event.target.value = "";
+                    }
+               }
+
+               for (var button of buttons) {
+                    if (button.key === current) {
+                         buttonElements.push(searchButton);
+                    } else {
+                         buttonElements.push(button.element);
+                    }
                }
           }
 
@@ -144,44 +155,53 @@ function chartsSetup(_songs) {
 
      // Filter songs
      getURLParams().forEach((param, index) => {
+          if (index === 5 && !param) {
+               param = "null";
+          } else if (index === 5) {
+               param = parseInt(param);
+          }
           if (param) {
-               if (searchFilters[index] === "song") {
-                    _songs = _songs.filter(song => kataToHira(song.song).toLowerCase().includes(kataToHira(param).toLowerCase()));
-               }
-               if (searchFilters[index] === "artist") {
-                    _songs = _songs.filter(song => kataToHira(writeArtists(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
-               }
-               if (searchFilters[index] === "vocal") {
-                    _songs = _songs.filter(song => kataToHira(writeVocals(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
-               }
-               if (searchFilters[index] === "source") {
-                    _songs = _songs.filter(song => kataToHira(writeSources(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
-               }
-               if (searchFilters[index] === "genre") {
-                    _songs = _songs.filter(song => song.genre == param);
-               }
-               if (searchFilters[index] === "sort") {
-                    if (param === "") {
-                         _songs = _songs.sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`));
-                    }
-                    if (param === "0") {
-                         _songs = _songs.sort((a, b) => new Date(b.date.update ?? b.date.release) - new Date(a.date.update ?? a.date.release) || `${a.song}`.localeCompare(`${b.song}`));
-                    }
-                    if (param === "1") {
-                         _songs = _songs.sort((a, b) => `${a.song}`.localeCompare(`${b.song}`));
-                    }
-                    if (param === "2") {
-                         _songs = _songs.sort((a, b) => `${writeArtists(a)}`.localeCompare(`${writeArtists(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
-                    }
-                    if (param === "3") {
-                         _songs = _songs.sort((a, b) => `${writeVocals(a)}`.localeCompare(`${writeVocals(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
-                    }
-                    if (param === "4") {
-                         _songs = _songs.sort((a, b) => `${writeSources(a)}`.localeCompare(`${writeSources(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
-                    }
-                    if (param === "5") {
-                         _songs = _songs.sort((a, b) => `${genreLabels[a.genre]}`.localeCompare(`${genreLabels[b.genre]}`) || `${a.song}`.localeCompare(`${b.song}`));
-                    }
+               switch (index) {
+                    case 0:
+                         _songs = _songs.filter(song => kataToHira(song.song).toLowerCase().includes(kataToHira(param).toLowerCase()));
+                         break;
+                    case 1:
+                         _songs = _songs.filter(song => kataToHira(writeArtists(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
+                         break;
+                    case 2:
+                         _songs = _songs.filter(song => kataToHira(writeVocals(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
+                         break;
+                    case 3:
+                         _songs = _songs.filter(song => kataToHira(writeSources(song)).toLowerCase().includes(kataToHira(param).toLowerCase()));
+                         break;
+                    case 4:
+                         _songs = _songs.filter(song => song.genre == param);
+                         break;
+                    case 5:
+                         switch (param) {
+                              case "null":
+                                   _songs = _songs.sort((a, b) => new Date(b.date.release) - new Date(a.date.release) || `${a.song}`.localeCompare(`${b.song}`));
+                                   break;
+                              case 0:
+                                   _songs = _songs.sort((a, b) => new Date(b.date.update ?? b.date.release) - new Date(a.date.update ?? a.date.release) || `${a.song}`.localeCompare(`${b.song}`));
+                                   break;
+                              case 1:
+                                   _songs = _songs.sort((a, b) => `${a.song}`.localeCompare(`${b.song}`));
+                                   break;
+                              case 2:
+                                   _songs = _songs.sort((a, b) => `${writeArtists(a)}`.localeCompare(`${writeArtists(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
+                                   break;
+                              case 3:
+                                   _songs = _songs.sort((a, b) => `${writeVocals(a)}`.localeCompare(`${writeVocals(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
+                                   break;
+                              case 4:
+                                   _songs = _songs.sort((a, b) => `${writeSources(a)}`.localeCompare(`${writeSources(b)}`) || `${a.song}`.localeCompare(`${b.song}`));
+                                   break;
+                              case 5:
+                                   _songs = _songs.sort((a, b) => `${genreLabels[a.genre]}`.localeCompare(`${genreLabels[b.genre]}`) || `${a.song}`.localeCompare(`${b.song}`));
+                                   break;
+                         }
+                         break;
                }
           }
      });
