@@ -1,75 +1,112 @@
-#source {
-     user-select: none;
-     -moz-user-select: none;
-     padding: 0;
-     margin: 0;
-     margin: 25px 0 -25px 0;
+.jpop {
+     color: rgba(46, 107, 154);
 }
 
-#obj {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
+.anime {
+     color: rgba(150, 44, 132);
 }
 
-.padding {
-     margin-left: 5px;
-     margin-top: 5px;
+.vocaloid {
+     color: rgba(133, 132, 132);
+}
+
+.touhou {
+     color: rgba(146, 44, 44);
+}
+
+.variety {
+     color: rgba(39, 135, 47);
+}
+
+.game {
+     color: rgba(116, 42, 143);
 }
 
 .song-list {
      display: flex;
-     flex-direction: row;
-     flex-grow: 0;
-     flex-wrap: wrap;
+     flex-direction: column;
      margin: 0;
      left: 0;
      right: 0;
      overflow-x: hidden;
      width: 950px;
      max-width: 100vw;
-     justify-content: center;
+     align-items: center;
 }
 
-.song-list>div {
-     border-radius: 10px;
-     width: 400px !important;
-     min-width: 400px;
-     height: 200px;
-     background-color: rgb(24, 27, 42);
+.song-box {
+     box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     backdrop-filter: blur(10px);
+     border-radius: 5px;
+     box-sizing: border-box;
+     background: rgba(0, 0, 0, 0.2);
+     width: 900px !important;
+     max-width: calc(100vw - 50px);
+     height: 210px;
      margin: 12.5px;
      display: block;
      position: relative;
-     box-shadow: rgba(0, 0, 0, 0.3) 1px 2px 4px;
-     transition: box-shadow 0.2s;
+     transition: box-shadow 0.2s, background-color 0.1s;
+     padding-left: 20px;
 
      &:hover {
-          box-shadow: 0px 0px 20px rgba(96, 108, 170, 0.4);
+          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+          background-color: rgba(57, 57, 57, 0.2);
      }
 
-     .jpop {
-          color: rgba(46, 107, 154);
+     >* {
+          padding: none;
+          margin: none;
+          line-height: 1em;
+          text-align: left;
+          white-space: nowrap;
+          width: calc(900px - 50px);
+          max-width: calc(100vw - 50px - 50px);
+          text-overflow: ellipsis;
+          overflow: hidden;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
      }
 
-     .anime {
-          color: rgba(150, 44, 132);
+     >a {
+          z-index: 1;
+          color: inherit;
+          text-decoration: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
      }
 
-     .vocaloid {
-          color: rgba(133, 132, 132);
+     >h1 {
+          margin-top: 0;
+          font-size: 24px;
+          letter-spacing: 2px;
      }
 
-     .touhou {
-          color: rgba(146, 44, 44);
+     >h2 {
+          margin-left: 5px;
+          font-size: 16px;
+          font-weight: normal;
      }
 
-     .variety {
-          color: rgba(39, 135, 47);
+     >h3 {
+          margin-left: 2.5px;
+          margin-top: 20px;
+          font-size: 14px;
+          font-weight: normal;
      }
 
-     .game {
-          color: rgba(116, 42, 143);
+     >p {
+          position: absolute;
+          bottom: 25px;
+          font-size: 14px;
+
+          &.date {
+               bottom: 5px;
+          }
      }
 }
 
@@ -80,145 +117,19 @@
 
 }
 
-.song-div {
-     --w: 360px;
-     overflow: hidden;
-     width: var(--w);
+.title {
+     margin-bottom: 5px;
      text-align: left;
-     height: 50px;
-     margin-left: 20px;
-     position: relative;
-}
-
-.song-text-div {
-     --w: 335px;
-     overflow: hidden;
-     width: var(--w);
-     text-align: left;
-     height: 150px;
-     margin-left: 45px;
-     position: relative;
-}
-
-.icons {
-     position: absolute;
-     left: 15px;
-     font-size: 24px;
-     top: 66px;
-}
-
-.song-text {
-     position: absolute;
-     left: 0;
-     top: 0;
-     white-space: nowrap;
-}
-
-.scroll-text {
-     animation-iteration-count: infinite;
-     animation-timing-function: linear;
-}
-
-.song-text-div>.scroll-text {
-     animation-name: scroll;
-}
-
-.song-div>.scroll-text {
-     animation-name: scroll-long;
-}
-
-@keyframes scroll {
-
-     0%,
-     20% {
-          -moz-transform: translateX(0);
-          -webkit-transform: translateX(0);
-          transform: translateX(0);
-     }
-
-     59.999% {
-          -moz-transform: translateX(calc(-100%));
-          -webkit-transform: translateX(calc(-100%));
-          transform: translateX(calc(-100%));
-     }
-
-     60% {
-          -moz-transform: translateX(calc(100%));
-          -webkit-transform: translateX(calc(100%));
-          transform: translateX(calc(100%));
-     }
-
-     100% {
-          -moz-transform: translateX(0);
-          -webkit-transform: translateX(0);
-          transform: translateX(0);
-     }
-}
-
-@keyframes scroll-long {
-
-     0%,
-     15% {
-          -moz-transform: translateX(0);
-          -webkit-transform: translateX(0);
-          transform: translateX(0);
-     }
-
-     57.499% {
-          -moz-transform: translateX(calc(-100%));
-          -webkit-transform: translateX(calc(-100%));
-          transform: translateX(calc(-100%));
-     }
-
-     57.5% {
-          -moz-transform: translateX(calc(100%));
-          -webkit-transform: translateX(calc(100%));
-          transform: translateX(calc(100%));
-     }
-
-     100% {
-          -moz-transform: translateX(0);
-          -webkit-transform: translateX(0);
-          transform: translateX(0);
-     }
-}
-
-.song-button {
-     background-color: rgba(255, 255, 255, 0.1);
-     border: 2px solid rgba(255, 255, 255, 0.4);
-     backdrop-filter: blur(5px) brightness(125%) saturate(130%);
-     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-     transition: background-color 0.2s, box-shadow 0.2s;
-     color: #cecfd0;
-     cursor: pointer;
-     padding: 15px;
-     border-radius: 10px;
-     font-size: 16px;
-     width: 50px;
-     height: 50px;
-     user-select: none;
-     -moz-user-select: none;
-     margin: 30px 5px 0px 5px;
-
-     &:hover {
-          background-color: rgba(206, 207, 208, 0.22);
-          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
-     }
-
-     &.active {
-          color: #ad95ea;
-          background-color: rgba(143, 24, 255, 0.1);
-          border: 2px solid rgba(143, 24, 255, 0.4);
-          box-shadow: 0px 0px 10px rgba(143, 24, 255 0.2);
-
-          &:hover {
-               background-color: rgba(152, 74, 226, 0.22);
-               box-shadow: 0px 0px 10px rgba(143, 24, 255 0.4);
-          }
-     }
+     width: 925px;
+     max-width: calc(100vw - 25px);
 }
 
 #song-filter {
+     box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     border-radius: 5px;
+     backdrop-filter: blur(10px);
+     background: rgba(0, 0, 0, 0.2);
      display: flex;
      flex-direction: row;
      flex-grow: 0;
@@ -228,11 +139,6 @@
      max-width: 900px;
      width: 100vw;
      justify-content: left;
-     background-color: rgba(209, 181, 238, 0.1);
-     border: 2px solid rgba(242, 225, 255, 0.4);
-     backdrop-filter: blur(5px);
-     box-shadow: 0px 0px 10px rgba(237, 217, 255, 0.2);
-     border-radius: 10px;
 }
 
 #song-filter>div {
@@ -261,14 +167,14 @@
           border-radius: 5px;
           background-color: transparent;
           border: 2px solid rgba(248, 235, 255, 0.2);
-          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+          box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
           backdrop-filter: blur(5px);
           transition: border 0.2s, box-shadow 0.2s, backdrop-filter 0.2s, background-color 0.2s;
           height: 41px;
 
           &:focus {
                backdrop-filter: blur(5px) brightness(125%) saturate(130%);
-               box-shadow: 0px 0px 10px rgba(218, 158, 255, 0.4);
+               box-shadow: 0px 0px 5px rgba(218, 158, 255, 0.4);
                background-color: rgba(218, 158, 255, 0.1);
                border: 2px solid rgba(218, 158, 255, 0.4);
                outline: none;
@@ -304,7 +210,7 @@
           color: #cecfd0;
           border-radius: 5px;
           display: inline-block;
-          box-shadow: 0px 0px 10px rgba(218, 158, 255, 0.2);
+          box-shadow: 0px 0px 5px rgba(218, 158, 255, 0.2);
           background-color: rgba(218, 158, 255, 0.2);
           border: 2px solid rgba(218, 158, 255, 0.2);
           backdrop-filter: blur(5px);
@@ -314,7 +220,7 @@
           &:hover {
                backdrop-filter: blur(5px) brightness(125%) saturate(130%);
                box-shadow: 0px 0px 10px rgba(218, 158, 255, 0.4);
-               background-color: rgba(178, 87, 234, 0.4);
+               background-color: rgba(156, 77, 205, 0.4);
                border: 2px solid rgba(218, 158, 255, 0.3);
           }
      }
@@ -344,106 +250,82 @@
      }
 }
 
-br {
-     user-select: none;
-     -moz-user-select: none;
-}
+#navigation {
+     >input[type="number"] {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          -ms-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
+          -o-backface-visibility: hidden;
+          box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
+          border: 2px solid rgba(255, 255, 255, .2);
+          backdrop-filter: blur(10px);
+          border-radius: 5px;
+          box-sizing: border-box;
+          background: transparent;
+          color: var(--font-color);
+          cursor: pointer;
+          display: inline-block;
+          font-size: 16px;
+          line-height: 38px;
+          margin: .5em;
+          width: 100px;
+          letter-spacing: 2px;
+          text-align: center;
+          text-decoration: none;
+          transition: .1s box-shadow ease, .1s background-color ease, .1s border ease;
 
-input[type="range"] {
-     -webkit-appearance: none;
-     appearance: none;
-     background: transparent;
-     cursor: pointer;
-     width: 75%;
-     height: 0.5rem;
-     margin: 0 10px;
-}
-
-#range-wrap>p {
-     margin: -0.5rem 0 0 0;
-     height: 1.5rem;
-}
-
-input[type="range"]:focus {
-     outline: none;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-     background-color: #645683;
-     border-radius: 0.5rem;
-     height: 0.5rem;
-}
-
-/* slider thumb */
-input[type="range"]::-webkit-slider-thumb {
-     -webkit-appearance: none;
-     appearance: none;
-     margin-top: -4px;
-     background-color: #463C5C;
-     border-radius: 0.5rem;
-     height: 1rem;
-     width: 1rem;
-}
-
-input[type="range"]:hover::-webkit-slider-thumb {
-     background-color: #3f3653;
-}
-
-#settings {
-     display: block;
-     position: fixed;
-     left: 50%;
-     top: 50%;
-     transform: translate(-50%, -50%);
-     width: 50vw;
-     min-width: 300px;
-     max-width: 600px;
-     /** height: 350px; */
-     height: 250px;
-     background-color: #1F1A2A;
-     z-index: 10;
-     border-radius: 10px;
-     transition: opacity ease 0.2s;
-
-     >hr {
-          width: 90%;
-     }
-
-     >h2 {
-          text-align: left;
-          font-size: 28px;
-          margin: 15px 0 10px 5%;
-     }
-
-     >h3 {
-          margin: 25px 0 15px 0;
-
-          >a {
-               color: #8e7aba;
+          &:hover,
+          &:focus {
+               outline: none;
+               box-shadow: 2px 2px 7.5px rgba(227, 228, 237, .5);
+               background-color: rgba(255, 255, 255, .1);
+               border: 2px solid rgba(255, 255, 255, .3);
           }
      }
 }
 
-#settings-wrap {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100vw;
-     height: 100vh;
-     background-color: rgba(0, 0, 0, 0.3);
-     transition: opacity ease 0.2s;
-     z-index: 9;
+#video {
+     height: calc(75vw * 9 / 16);
+     width: 75vw;
+     box-shadow: 2px 2px 10px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     border-radius: 10px;
+     margin-top: 30px;
 }
 
-#close-settings {
-     position: absolute;
-     right: 10px;
-     bottom: 10px;
-     color: #cecfd0;
-     font-size: 16px;
-     cursor: pointer;
-     background-color: transparent;
-     border: 1px solid #cecfd0;
-     border-radius: 5px;
-     padding: 5px 10px;
+#charts {
+     overflow-y: scroll;
+     width: 925px;
+     max-width: calc(100vw - 75px);
+}
+
+#chart-list {
+     display: flex;
+     justify-content: center;
+     width: max-content;
+}
+
+#chart-list>div {
+     width: 200px;
+     box-shadow: 2px 2px 10px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     border-radius: 10px;
+     margin: 0 15px 25px 15px;
+     padding: 15px;
+     backdrop-filter: blur(10px);
+
+     >img {
+          width: 180px;
+          height: auto;
+     }
+
+     >h3 {
+          font-size: 24px;
+     }
+
+     >p {
+          font-size: 20px;
+          width: 200px;
+     }
 }

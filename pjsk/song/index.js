@@ -6,7 +6,7 @@ var ssong = songs.find(song => song.id === songId);
 ssong = false;
 
 if (!ssong) {
-     document.title = "404 - プロセカ創作譜面";
+     document.title = "404 | プロセカ - 創作譜面";
 
      document.getElementById("id").textContent = "";
      document.getElementById("yori-wrap").remove();

@@ -1,122 +1,62 @@
-<html>
+<html lang="ja">
 
 <head>
-     <title>太鼓の達人創作譜面</title>
-     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-     <meta name="theme-color" content="#FEF2E8">
-     <meta content="太鼓の達人創作譜面" property="og:title">
-     <meta content="" property="og:description">
-     <meta content="" name="description">
-     <meta name="revisit-after" content="2 days">
-     <meta property="og:locale" content="ja">
-     <link rel="canonical" href="https://keishispl.github.io/">
-     <meta property="og:url" content="https://keishispl.github.io/">
-     <meta property="og:site_name" content="圭紫">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" type="text/css"
+     <title>太鼓の達人 - 創作譜面</title>
+
+     <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+     <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+     <script src="https://unpkg.com/@babel/standalone@7.28.3/babel.min.js"></script>
+
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+     <link href="https://raw.githubusercontent.com/keishispl/keishispl.github.io/refs/heads/main/fonts/font.css"
           rel="stylesheet">
-     <link href="https://raw.githubusercontent.com/keishispl/tlstuff/refs/heads/main/fonts/font.css" type="text/css" rel="stylesheet">
-     <link href="../../common.css" type="text/css" rel="stylesheet">
-     <link href="index.css" type="text/css" rel="stylesheet">
-     <link href="../../error.css" type="text/css" rel="stylesheet">
+     <link href="../../index.css" type="text/css" rel="stylesheet">
+     <link href="../index.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
      <main>
-          <div id="nav">
-               <p><a href="../">太鼓の達人創作譜面</a></p>
-               <a style="font-weight: bold; margin-left: 10px;" class="beta" href="../../beta">ベータ版へ</a>
+          <a href="../../"
+               style="position: absolute; top: 25px; left: 25px; font-size: 24px; color: var(--font-color);"><i
+                    class="fa-solid fa-house"></i></a>
+          <div>
+               <h1><a href="../">太鼓の達人創作譜面</a></h1>
           </div>
-          <div id="main">
-               <button id="menu-button" tabindex="2"><i class="fa-solid fa-bars"></i></button>
-               <div id="sidebar" style="display: none;">
-                    <div style="padding-right: 25px;">
-                         <h1>MENU</h1>
-                         <p class="line-title">エリア</p>
-                         <p class="line"></p>
-                         <p><a href="../..">ホーム</a></p>
-                         <p><a href="../../pjsk"><s>プロセカ</s></a></p>
-                         <p>関連リンク</p>
-                         <p class="line"></p>
-                         <p><a href="https://taiko-ch.net/" target="_blank">太鼓の達人公式</a></p>
-                         <p><a href="https://github.com/keishispl/fumen" target="_blank">Githubソースコード</a></p>
-                    </div>
-               </div>
-               <div id="sidebar-wrap" style="opacity: 0; z-index: -1;"></div>
-
-               <div id="charts-loading" style="opacity: 0; z-index: -1;"></div>
-
-               <div id="content">
-                    <h2 id="title">???</h2>
-                    <p id="genre">???</p>
-                    <hr id="line">
-                    <div id="block">
-                         <div id="details">
-                              <p class="detail"><svg class="icon" fill="currentColor" aria-hidden="true" width="1em"
-                                        height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14.7 2.23a1 1 0 0 1 1.3.95V13.5a2.5 2.5 0 1 1-1-2V6.18L8 8.37v7.13a2.5 2.5 0 1 1-1-2V5.37a1 1 0 0 1 .7-.96l7-2.18ZM8 7.32l7-2.19V3.18L8 5.37v1.95ZM5.5 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm6.5-.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0Z"
-                                             fill="currentColor"></path>
-                                   </svg><a id="artist" style="color: inherit;">-</a></p>
-                              <p class="detail"><svg class="icon" fill="currentColor" aria-hidden="true" width="1em"
-                                        height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10 13a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Zm0-1a2 2 0 0 1-2-2V5a2 2 0 1 1 4 0v5a2 2 0 0 1-2 2ZM5 9.5c.28 0 .5.22.5.5a4.5 4.5 0 1 0 9 0 .5.5 0 0 1 1 0 5.5 5.5 0 0 1-5 5.48v2.02a.5.5 0 0 1-1 0v-2.02a5.5 5.5 0 0 1-5-5.48c0-.28.22-.5.5-.5Z"
-                                             fill="currentColor"></path>
-                                   </svg><a id="vocal" style="color: inherit;">-</a></p>
-                              <p class="detail"><svg class="icon" fill="currentColor" aria-hidden="true" width="1em"
-                                        height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10,1.375c-3.17,0-5.75,2.548-5.75,5.682c0,6.685,5.259,11.276,5.483,11.469c0.152,0.132,0.382,0.132,0.534,0c0.224-0.193,5.481-4.784,5.483-11.469C15.75,3.923,13.171,1.375,10,1.375 M10,17.653c-1.064-1.024-4.929-5.127-4.929-10.596c0-2.68,2.212-4.861,4.929-4.861s4.929,2.181,4.929,4.861C14.927,12.518,11.063,16.627,10,17.653 M10,3.839c-1.815,0-3.286,1.47-3.286,3.286s1.47,3.286,3.286,3.286s3.286-1.47,3.286-3.286S11.815,3.839,10,3.839 M10,9.589c-1.359,0-2.464-1.105-2.464-2.464S8.641,4.661,10,4.661s2.464,1.105,2.464,2.464S11.359,9.589,10,9.589"
-                                             fill="currentColor"></path>
-                                   </svg><a id="source" style="color: inherit;">-</a></p>
-                              <p class="detail"><svg class="icon" fill="currentColor" aria-hidden="true" width="1em"
-                                        height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17.592,8.936l-6.531-6.534c-0.593-0.631-0.751-0.245-0.751,0.056l0.002,2.999L5.427,9.075H2.491c-0.839,0-0.162,0.901-0.311,0.752l3.683,3.678l-3.081,3.108c-0.17,0.171-0.17,0.449,0,0.62c0.169,0.17,0.448,0.17,0.618,0l3.098-3.093l3.675,3.685c-0.099-0.099,0.773,0.474,0.773-0.296v-2.965l3.601-4.872l2.734-0.005C17.73,9.688,18.326,9.669,17.592,8.936 M3.534,9.904h1.906l4.659,4.66v1.906L3.534,9.904z M10.522,13.717L6.287,9.48l4.325-3.124l3.088,3.124L10.522,13.717z M14.335,8.845l-3.177-3.177V3.762l5.083,5.083H14.335z"
-                                             fill="currentColor"></path>
-                                   </svg><a id="duration" style="color: inherit;">?分??秒</a><br><a id="bpm"
-                                        style="margin-top: -0.5em; color: inherit;">???
-                                        BPM</a></p>
-                              <p class="detail"><svg class="icon" fill="currentColor" aria-hidden="true" width="1em"
-                                        height="1em" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0 1a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm-.5 2a.5.5 0 0 1 .5.41V10h2.5a.5.5 0 0 1 .09 1H9.5a.5.5 0 0 1-.5-.41V5.5c0-.28.22-.5.5-.5Z"
-                                             fill="currentColor"></path>
-                                   </svg><a id="date" style="color: inherit;">-</a></p>
-                         </div>
-                         <div id="links">
-                              <p class="button youtube"><a id="youtube" target="_blank">YouTube</a></p>
-                              <p class="button"><a id="download" target="_blank">ダウンロード</a></p>
-                         </div>
-                    </div>
-                    <div id="charts">
-                         <h2 style="text-align: left; font-size: 28px;">すべての譜面</h2>
-                         <div id="list-big-wrap">
-                              <div class="list-cover left"></div>
-                              <div class="list-cover right"></div>
-                              <div id="list-wrap">
-                                   <div id="list"></div>
-                                   <div aria-hidden id="fakelist"></div>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-               <div id="relevant" style="margin-top: 150px;">
-                    <div id="songs" class="padding">
-                         <h2 style="text-align: left; font-size: 28px;"><a id="genre-link"
-                                   style="text-decoration: none; color: inherit;">同じジャンルの曲<svg fill="currentColor"
-                                        aria-hidden="true" width="1em" height="1em" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M11.27 3.2a.75.75 0 0 0-1.04 1.1l5.24 4.95H2.75a.75.75 0 0 0 0 1.5h12.73l-5.25 4.96a.75.75 0 1 0 1.04 1.09l6.41-6.07a1 1 0 0 0 0-1.46l-6.41-6.06Z"
-                                             fill="currentColor"></path>
-                                   </svg></a></h2>
-                         <hr>
-                         <div id="song-list" class="song-list"></div>
-                    </div>
-                    <div id="footer"></div>
-               </div>
+          <div>
+               <h2 class="title">楽曲情報</h2>
+               <hr style="margin-bottom: 50px;" />
+               <p id="source" style="font-size: 16px; margin-top: 0;">-</p>
+               <h1 id="title" style="margin: 0;">???</h1>
+               <p id="artist" style="margin-bottom: 0;">-</p>
+               <p id="vocal" style="margin-top: 5px; margin-bottom: 0;">-</p>
+               <p id="genre" style="font-size: 16px; text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin-bottom: 0;">???</p>
+               <p id="date" style="font-size: 16px; text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin-top: 0;">-</p>
+               <iframe id="video"></iframe>
+               <p><a class="btn" id="download" target="_blank">ダウンロード <i
+                              class="fa-solid fa-up-right-from-square"></i></a></p>
           </div>
+          <div>
+               <h2 class="title">譜面情報</h2>
+               <hr style="margin-bottom: 25px;" />
+               <div id="charts"></div>
+               <p id="duration" style="margin-bottom: 0; text-align: left;">?分??秒</p>
+               <p id="bpm" style="text-align: left;">??? BPM</p>
+          </div>
+          <div>
+               <h2 class="title"><a id="genre-link" style="text-decoration: none; color: inherit;">同じジャンルの曲<i class="fa-solid fa-arrow-right"></i></a></h2>
+               <hr />
+               <div id="song-list" class="song-list" style="margin-bottom: 50px;"></div>
           </div>
      </main>
-     <script src="../functions.js"></script>
-     <script src="js/menu.js"></script>
-     <script src="js/index.js"></script>
+     <footer>
+          <p>最新のリストは<a href="https://docs.google.com/spreadsheets/d/1TarK2UOGlDZ3vYlixvvasoofZ7MHWmiWMCYMGQM6DHM"
+                    target="_blank">Google スプレッドシート</a>にあります</p>
+          <p class="noselect">&nbsp;</p>
+          <p>keishisplが作成したサイト</p>
+          <p><a href="https://github.com/keishispl/fumen" target="_blank">ソースコード</a>を見る</p>
+     </footer>
+     <script type="text/babel" src="../js/functions.jsx"></script>
+     <script type="text/babel" src="../js/chart.jsx"></script>
 </body>
 
 </html>

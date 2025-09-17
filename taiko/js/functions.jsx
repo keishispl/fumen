@@ -138,7 +138,7 @@ function writeDates(song) {
  */
 function writeBox(song, href = "") {
      return <div className="song-box">
-          <a href={`../taiko/${href}?genre=${song.genre}&id=${song.id}`}></a>
+          <a href={`${href}?genre=${song.genre}&id=${song.id}`}></a>
           <h3>{writeSources(song)}</h3>
           <h1>{song.song}</h1>
           <h2>{writeArtists(song)}</h2>
