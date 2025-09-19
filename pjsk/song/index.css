@@ -8,7 +8,7 @@ body {
      border-radius: 10px;
      background: linear-gradient(rgba(133, 129, 162, 0.5), rgba(133, 129, 162, 0.5), rgb(68, 67, 94), rgb(68, 67, 94), rgb(110, 107, 135));
      backdrop-filter: blur(2.5px);
-     height: calc(100% - 120px);
+     height: calc(100vh - 133.6px - 20px);
      width: 375px;
      margin: 0 auto;
      overflow-y: scroll;
@@ -23,6 +23,7 @@ body {
      -moz-user-select: none;
      pointer-events: none;
      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+     border-radius: 2.5px;
 }
 
 #song-info {
@@ -30,13 +31,21 @@ body {
      margin-top: 20px;
      text-align: left;
      width: 300px;
-     overflow-x: hidden;
-     white-space: nowrap;
      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
 
      >* {
           margin: 0;
           width: fit-content;
+     }
+
+     h1 {
+          font-size: 24px;
+          letter-spacing: 2px;
+     }
+
+     h2 {
+          font-size: 16px;
+          font-weight: normal;
      }
 }
 
@@ -63,127 +72,128 @@ body {
      margin: 5px;
      user-select: none;
      -moz-user-select: none;
-}
 
-#song-charts>div>p {
-     margin: 2.5px 0 0 0;
-     font-size: 10px;
-     font-weight: bold;
-     text-align: center;
-     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-}
+     h1 {
+          margin: 2.5px 0 0 0;
+          font-size: 10px;
+          font-weight: bold;
+          text-align: center;
+          text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+     }
 
-#song-charts>div>div {
-     border: 2px solid;
-     border-radius: 50%;
-     width: 25px;
-     height: 25px;
-     padding: 10px;
-     cursor: pointer;
-     user-select: none;
-     -moz-user-select: none;
-     justify-content: center;
-     align-items: center;
-     display: flex;
-     box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
-
-     >p {
+     p {
           margin: 0;
           font-size: 20px;
           font-weight: bold;
           line-height: 1em;
+          letter-spacing: 0;
      }
 
-     &.easy {
-          border-color: var(--easy);
-     }
-
-     &.normal {
-          border-color: var(--normal);
-     }
-
-     &.hard {
-          border-color: var(--hard);
-     }
-
-     &.expert {
-          border-color: var(--expert);
-     }
-
-     &.master {
-          border-color: var(--master);
-     }
-
-     &.append {
-          border-color: var(--append);
-     }
-
-     &:hover,
-     &.active {
-          color: #37306A;
-          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.75);
-          text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+     div {
+          border: 2px solid;
+          border-radius: 50%;
+          width: 25px;
+          height: 25px;
+          padding: 10px;
+          cursor: pointer;
+          user-select: none;
+          -moz-user-select: none;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
 
           &.easy {
-               border-color: #a3ff9b;
-               background-color: var(--easy);
+               border-color: var(--easy);
           }
 
           &.normal {
-               border-color: #9be3ff;
-               background-color: var(--normal);
+               border-color: var(--normal);
           }
 
           &.hard {
-               border-color: #ffcd9b;
-               background-color: var(--hard);
+               border-color: var(--hard);
           }
 
           &.expert {
-               border-color: #ff9b9b;
-               background-color: var(--expert);
+               border-color: var(--expert);
           }
 
           &.master {
-               border-color: #E19BFF;
-               background-color: var(--master);
+               border-color: var(--master);
           }
 
           &.append {
-               border-color: transparent;
-               background-image: linear-gradient(-45deg, #B695FA, #F67DF1), linear-gradient(-45deg, #D8C9FB, #F5C3F0);
-               background-origin: border-box;
-               background-clip: padding-box, border-box;
-          }
-     }
-
-     &:hover+p,
-     &.active+p {
-          color: #37306A;
-          text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-
-          &.easy {
-               color: var(--easy);
+               border-color: var(--append);
           }
 
-          &.normal {
-               color: var(--normal);
+          &:hover,
+          &.active {
+               color: #37306A;
+               box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.75);
+               text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+
+               &.easy {
+                    border-color: #a3ff9b;
+                    background-color: var(--easy);
+               }
+
+               &.normal {
+                    border-color: #9be3ff;
+                    background-color: var(--normal);
+               }
+
+               &.hard {
+                    border-color: #ffcd9b;
+                    background-color: var(--hard);
+               }
+
+               &.expert {
+                    border-color: #ff9b9b;
+                    background-color: var(--expert);
+               }
+
+               &.master {
+                    border-color: #E19BFF;
+                    background-color: var(--master);
+               }
+
+               &.append {
+                    border-color: transparent;
+                    background-image: linear-gradient(-45deg, #B695FA, #F67DF1), linear-gradient(-45deg, #D8C9FB, #F5C3F0);
+                    background-origin: border-box;
+                    background-clip: padding-box, border-box;
+               }
           }
 
-          &.hard {
-               color: var(--hard);
-          }
+          &:hover+p,
+          &.active+p {
+               color: #37306A;
+               text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 
-          &.expert {
-               color: var(--expert);
-          }
+               &.easy {
+                    color: var(--easy);
+               }
 
-          &.master {
-               color: var(--master);
-          }
+               &.normal {
+                    color: var(--normal);
+               }
 
-          &.append {
-               color: var(--append);
+               &.hard {
+                    color: var(--hard);
+               }
+
+               &.expert {
+                    color: var(--expert);
+               }
+
+               &.master {
+                    color: var(--master);
+               }
+
+               &.append {
+                    color: var(--append);
+               }
           }
      }
 }
@@ -260,46 +270,23 @@ h3.scroll-text {
 #song-buttons {
      margin-top: 14px;
      margin-bottom: 54px;
+     max-width: calc(100% - 25px);
 }
 
-.button {
-     width: fit-content;
-     cursor: pointer;
-     padding: 0.5em 32px;
-     margin: 16px auto;
-     border-radius: 25px;
-     border: 2.5px solid;
-     font-weight: bold;
-     border-color: var(--color);
-     background-color: var(--background);
-     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-     transition: filter 0.1s, text-shadow 0.1s, opacity 0.1s;
-
-     >a {
-          color: var(--color);
-          text-decoration: none;
-     }
-
-     &.chcy {
-          --color: #82e3ea;
-          --background: rgba(130, 227, 234, 0.1);
-     }
-
-     &.sonolus {
-          --color: #9e57f4;
-          --background: rgba(158, 87, 244, 0.1);
-     }
+.btn {
+     font-size: 20px;
+     padding: 5px 25px;
+     transition: .1s box-shadow ease, .1s background-color ease, .1s border ease, opacity 0.075s ease;
 }
 
-.button:hover {
-     filter: brightness(115%) saturate(120%);
-
-     >a {
-          text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-     }
+#song-combo {
+     transition: opacity 0.075s ease;
 }
 
 #id {
+     width: fit-content;
+     letter-spacing: 0;
+     text-align: left;
      position: fixed;
      top: 0;
      left: 2.5px;
@@ -314,7 +301,7 @@ h3.scroll-text {
      padding: 5px 7.5px;
      border-radius: 5px;
      background-color: #343149;
-     width: fit-content;
+     width: auto;
      height: 14px;
      top: 40px;
      left: 75px;
@@ -322,7 +309,8 @@ h3.scroll-text {
      max-width: 235px;
 
      >p {
-          min-width: max-content;
+          letter-spacing: 0px;
+          width: fit-content;
           font-size: 14px;
           line-height: 1em;
           margin: 0;
@@ -336,6 +324,8 @@ h3.scroll-text {
      right: 50px;
      margin: 0;
      font-size: 20px;
+     width: fit-content;
+     letter-spacing: 0;
 
      >a {
           color: #cecfd0;

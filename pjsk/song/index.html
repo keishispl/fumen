@@ -4,40 +4,42 @@
      <title>プロセカ - 創作譜面</title>
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" type="text/css"
           rel="stylesheet">
-     <link href="https://raw.githubusercontent.com/keishispl/tlstuff/refs/heads/main/fonts/font.css" type="text/css" rel="stylesheet">
-     <link href="../../common.css" type="text/css" rel="stylesheet">
+     <link href="https://raw.githubusercontent.com/keishispl/tlstuff/refs/heads/main/fonts/font.css" type="text/css"
+          rel="stylesheet">
+     <link href="../../index.css" type="text/css" rel="stylesheet">
      <link href="index.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-     <div id="nav">
-          <p><a href="../">プロセカ創作譜面</a></p>
-     </div>
-     <div id="main">
-          <div id="obj">
-               <p id="id">#???-????</p>
-               <div id="yori-wrap">
-                    <p id="yori"></p>
-               </div>
-               <p id="youtube-wrap"><a id="youtube" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a></p>
-               <img width="200" height="200" id="song-image" draggable="false">
-               <div id="song-info">
-                    <h3 id="song-name">???</h3>
-                    <p id="song-composer">?????</p>
-                    <p id="song-vocal">Vo. ?????</p>
-                    <p id="song-length" style="margin-top: 0.5em;">?分??秒</p>
-                    <p id="song-bpm">??? BPM</p>
-                    <p id="song-combo"></p>
-               </div>
-               <div id="song-charts"></div>
-               <div id="song-buttons">
-                    <p class="button chcy" style="cursor: default; opacity: 0;"><a id="chcy"
-                              target="_blank">ChartCyanvas</a></p>
-                    <p class="button sonolus" style="cursor: default; opacity: 0;"><a id="sonolus"
-                              target="_blank">プレイ</a></p>
+     <main>
+          <a href="../../" style="position: absolute; top: 25px; left: 25px; font-size: 24px; color: var(--font-color);"><i class="fa-solid fa-house"></i></a>
+          <div>
+               <h1><a href="../">プロセカ創作譜面</a></h1>
+          </div>
+          <div id="main">
+               <div id="obj">
+                    <p id="id">#???-????</p>
+                    <div id="yori-wrap">
+                         <p id="yori"></p>
+                    </div>
+                    <p id="youtube-wrap"><a id="youtube" target="_blank"><i
+                                   class="fa-solid fa-up-right-from-square"></i></a></p>
+                    <img width="200" height="200" id="song-image" draggable="false">
+                    <div id="song-info">
+                         <h1 id="song-name">???</h1>
+                         <h2 id="song-composer">?????</h2>
+                         <h2 id="song-vocal">Vo. ?????</h2>
+                         <h2 id="song-length" style="margin-top: 0.5em;">?分??秒</h2>
+                         <h2 id="song-bpm">??? BPM</h2>
+                         <h2 id="song-combo"></h2>
+                    </div>
+                    <div id="song-charts"></div>
+                    <div id="song-buttons">
+                         <a class="btn sonolus" id="sonolus" target="_blank">プレイ</a></p>
+                    </div>
                </div>
           </div>
-     </div>
+     </main>
      <script src="../functions.js"></script>
      <script src="index.js"></script>
 </body>

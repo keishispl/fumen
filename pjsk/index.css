@@ -3,18 +3,19 @@ body {
 }
 
 #search {
-     border-radius: 5px;
      width: 750px;
      max-width: 90vw;
      padding: 6px;
+     margin-bottom: -10px;
      font-size: 14px;
      line-height: 1em;
-     background-color: rgba(255, 255, 255, 0.1);
-     border: 2px solid rgba(255, 255, 255, 0.4);
-     backdrop-filter: blur(5px) brightness(125%) saturate(130%);
-     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
      color: #cecfd0;
-     transition: border 0.2s, box-shadow 0.2s, backdrop-filter 0.2s, background-color 0.2s;
+     box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     backdrop-filter: blur(10px);
+     border-radius: 5px;
+     background: rgba(0, 0, 0, 0.2);
+     transition: box-shadow 0.2s, background-color 0.1s;
 }
 
 #search::placeholder {
@@ -23,26 +24,28 @@ body {
 
 #search:focus {
      outline: none;
-     background-color: rgba(255, 255, 255, 0.2);
      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+     background-color: rgba(57, 57, 57, 0.2);
 }
 
 #chart-wrap {
      display: block;
-     width: 750px;
-     max-width: 90vw;
+     width: 775px;
+     max-width: calc(90vw + 25px);
      margin: 20px auto 40px auto;
-     height: calc(100vh - 120px - 32px - 60px);
+     height: calc(100vh - 133.6px - 20px - 32px - 20px);
      overflow-y: scroll;
      overflow-x: hidden;
 }
 
 #charts {
+     padding-top: 10px;
      display: flex;
      flex-direction: column;
-     width: 750px;
-     max-width: 90vw;
+     width: 775px;
+     max-width: calc(90vw + 25px);
      margin: 0;
+     align-items: center;
 }
 
 #charts>div {
@@ -53,22 +56,26 @@ body {
      max-width: calc(90vw - 24px);
      align-items: center;
      padding: 10px;
-     border-radius: 10px;
-     background-color: rgba(255, 255, 255, 0.1);
-     border: 2px solid rgba(255, 255, 255, 0.4);
      margin-bottom: 10px;
-     backdrop-filter: blur(5px) brightness(115%) saturate(120%);
-     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-     transition: border 0.2s, box-shadow 0.2s, backdrop-filter 0.2s, background-color 0.2s;
+     box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     backdrop-filter: blur(10px);
+     border-radius: 5px;
+     background: rgba(0, 0, 0, 0.2);
+     transition: box-shadow 0.2s, background-color 0.1s;
 
      &:hover {
-          border: 2px solid rgba(255, 255, 255, 0.3);
           box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
-          background-color: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(5px) brightness(125%) saturate(130%);
+          background-color: rgba(57, 57, 57, 0.2);
      }
 
-     >a {
+     >h1,h2,h3 {
+          margin: 0;
+          text-align: left;
+          width: fit-content;
+     }
+
+     a {
           position: absolute;
           top: 0;
           left: 0;
@@ -76,38 +83,51 @@ body {
           bottom: 0;
      }
 
-     >p {
-          margin: 5px;
-          position: absolute;
-          top: 0;
-          left: 0;
+     h1 {
+          font-size: 24px;
+          letter-spacing: 2px;
      }
-}
 
-#charts>div>div {
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     width: calc(750px - 24px);
-     max-width: calc(90vw - 24px);
-     margin-top: 10px;
-     
-     >img {
+     h2 {
+          font-size: 16px;
+          font-weight: normal;
+     }
+
+     h3 {
+          font-size: 12px;
+          font-weight: normal;
+
+          &.id {
+               width: 100%;
+          }
+     }
+
+     img {
           margin-right: 10px;
+          border-radius: 2.5px;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
      }
-}
 
-#charts>div>div>div {
-     position: relative;
-     flex-direction: column;
-     width: 640px;
-     white-space: nowrap;
-     overflow-x: hidden;
+     >div {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: calc(750px - 24px);
+          max-width: calc(90vw - 24px);
 
-     >* {
-          margin: 0;
-          text-align: left;
-          width: fit-content;
+          >div {
+               position: relative;
+               flex-direction: column;
+               width: 640px;
+               white-space: nowrap;
+               overflow-x: hidden;
+
+               >* {
+                    margin: 0;
+                    text-align: left;
+                    width: fit-content;
+               }
+          }
      }
 }
 
@@ -116,16 +136,15 @@ body {
      animation-timing-function: linear;
 }
 
-p.scroll-text {
+.scroll-text {
      animation-name: scroll;
-}
 
-h3.scroll-text {
-     animation-name: scroll-long;
+     h1 {
+          animation-name: scroll-long;
+     }
 }
 
 @keyframes scroll {
-
      0%,
      20% {
           -moz-transform: translateX(0);
@@ -153,7 +172,6 @@ h3.scroll-text {
 }
 
 @keyframes scroll-long {
-
      0%,
      15% {
           -moz-transform: translateX(0);
@@ -177,24 +195,5 @@ h3.scroll-text {
           -moz-transform: translateX(0);
           -webkit-transform: translateX(0);
           transform: translateX(0);
-     }
-}
-
-#end {
-     z-index: 2;
-     position: fixed;
-     bottom: 0;
-     left: 0;
-     width: 100vw;
-     height: 100vh;
-     background-color: rgba(0, 0, 0, 0.4);
-     backdrop-filter: blur(2.5px);
-
-     >p {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 20px;
      }
 }

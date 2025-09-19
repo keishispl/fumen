@@ -12,20 +12,21 @@ function writeSongs(songs) {
           var div = document.createElement("div");
           document.getElementById("charts").appendChild(div);
 
-          var a = document.createElement("a");
-          a.href = "song/?id=" + song.id;
-          a.style.zIndex = 1;
-          div.appendChild(a);
+          var link = document.createElement("a");
+          link.href = "song/?id=" + song.id;
+          link.style.zIndex = 1;
+          div.appendChild(link);
 
-          var id = document.createElement("p");
+          var id = document.createElement("h3");
           id.textContent = "#" + song.id;
-          id.style.fontSize = "12px";
+          id.className = "id";
           div.appendChild(id);
 
           var div2 = document.createElement("div");
           div.appendChild(div2);
+
           var img = document.createElement("img");
-          img.src = "https://cc-cdn.sevenc7c.com/" + song.image;
+          img.src = song.image;
           img.draggable = false;
           img.width = 75;
           img.height = 75;
@@ -35,29 +36,28 @@ function writeSongs(songs) {
           div3.classList = "scrollable-div";
           div2.appendChild(div3);
 
-          var p = document.createElement("p");
-          p.textContent = song.yori ?? "";
-          p.classList = "scrollable";
-          p.style.fontSize = "12px";
-          div3.appendChild(p);
+          var yori = document.createElement("h3");
+          yori.textContent = song.yori ?? "";
+          yori.classList = "scrollable";
+          div3.appendChild(yori);
 
-          var h3 = document.createElement("h3");
-          h3.textContent = song.name;
-          h3.classList = "scrollable";
-          div3.appendChild(h3);
+          var name = document.createElement("h1");
+          name.textContent = song.name;
+          name.classList = "scrollable";
+          div3.appendChild(name);
 
-          var p2 = document.createElement("p");
-          p2.textContent = writeComposers(song.composer);
-          p2.classList = "scrollable";
-          div3.appendChild(p2);
+          var composer = document.createElement("h2");
+          composer.textContent = writeComposers(song.composer);
+          composer.classList = "scrollable";
+          div3.appendChild(composer);
 
-          var p3 = document.createElement("p");
-          p3.textContent = writeVocals(song.vocal);
-          p3.classList = "scrollable";
-          div3.appendChild(p3);
+          var vocal = document.createElement("h2");
+          vocal.textContent = writeVocals(song.vocal);
+          vocal.classList = "scrollable";
+          div3.appendChild(vocal);
 
           // Animate
-          animateBox([p, h3, p2, p3], div3.clientWidth);
+          animateBox([yori, name, composer, vocal], div3.clientWidth);
      })
 }
 

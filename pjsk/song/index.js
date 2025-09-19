@@ -3,8 +3,6 @@ const songs = getSongs();
 const songId = new URLSearchParams(window.location.search).get("id");
 var ssong = songs.find(song => song.id === songId);
 
-ssong = false;
-
 if (!ssong) {
      document.title = "404 | プロセカ - 創作譜面";
 
@@ -21,9 +19,9 @@ if (!ssong) {
      document.getElementById("song-bpm").remove();
      document.getElementById("song-combo").remove();
 
-     document.getElementById("song-buttons").innerHTML = `<p class="button"><a href="../">ホームに戻る</a></p>`;
+     document.getElementById("song-buttons").innerHTML = `<a class="btn" href="../">ホームに戻る</a></p>`;
 } else {
-     document.title = ssong.name + " - プロセカ創作譜面";
+     document.title = ssong.name + " | プロセカ - 創作譜面";
 
      document.getElementById("id").textContent = "#" + songId;
      document.getElementById("yori").textContent = ssong.yori;
@@ -34,7 +32,7 @@ if (!ssong) {
 
      document.getElementById("youtube").href = "https://www.youtube.com/watch?v=" + ssong.youtube;
 
-     document.getElementById("song-image").src = "https://cc-cdn.sevenc7c.com/" + ssong.image;
+     document.getElementById("song-image").src = ssong.image;
      document.getElementById("song-name").textContent = ssong.name;
      document.getElementById("song-composer").textContent = writeComposers(ssong.composer);
      document.getElementById("song-vocal").textContent = writeVocals(ssong.vocal);
@@ -68,12 +66,17 @@ if (!ssong) {
 
           div.appendChild(circle);
 
-          const text = document.createElement("p");
+          const text = document.createElement("h1");
           text.textContent = diff.type.toUpperCase();
           text.className = diff.type;
           div.appendChild(text);
 
           document.getElementById("song-charts").appendChild(div);
+
+          document.getElementById("song-buttons").querySelectorAll("a").forEach(p => {
+               p.style.cursor = "default";
+               p.style.opacity = 0;
+          });
 
           if (diff.data) {
                circle.addEventListener("click", () => {
@@ -82,11 +85,11 @@ if (!ssong) {
                          contain = true;
                     }
 
-                    document.getElementById("song-combo").textContent = "";
+                    document.getElementById("song-combo").style.opacity = 0;
+                    document.getElementById("song-combo").style.cursor = "default";
 
-                    document.getElementById("chcy").removeAttribute("href");
                     document.getElementById("sonolus").removeAttribute("href");
-                    document.getElementById("song-buttons").querySelectorAll("p").forEach(p => {
+                    document.getElementById("song-buttons").querySelectorAll("a").forEach(p => {
                          p.style.cursor = "default";
                          p.style.opacity = 0;
                     });
@@ -103,13 +106,14 @@ if (!ssong) {
                     text.classList.add("active");
 
                     document.getElementById("song-combo").textContent = diff.data.combo + "コンボ";
+                    document.getElementById("song-combo").style.opacity = 1;
+                    document.getElementById("song-combo").style.cursor = "auto";
 
-                    document.getElementById("song-buttons").querySelectorAll("p").forEach(p => {
+                    document.getElementById("song-buttons").querySelectorAll("a").forEach(p => {
                          p.style.cursor = "pointer";
                          p.style.opacity = 1;
                     });
-                    document.getElementById("chcy").href = "https://cc.sevenc7c.com/charts/" + diff.data.id;
-                    document.getElementById("sonolus").href = "https://open.sonolus.com/cc.sevenc7c.com/levels/chcy-" + diff.data.id;
+                    document.getElementById("sonolus").href = "https://open.sonolus.com/coconut.sonolus.com/next-sekai/levels/coconut-next-sekai-" + diff.data.id;
                })
           }
      })
