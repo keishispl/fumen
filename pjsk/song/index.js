@@ -39,7 +39,9 @@ if (!ssong) {
 
      document.getElementById("song-length").textContent = ssong.info.duration.replace(":", "分") + ("s", "秒");
      document.getElementById("song-bpm").textContent = ssong.info.bpm + " BPM";
-     document.getElementById("song-combo").textContent = "";
+
+     document.getElementById("song-combo").style.opacity = 0;
+     document.getElementById("song-combo").style.cursor = "default";
 
      for (const child of document.getElementById("song-info").children) {
           animateBox([child], 335);
