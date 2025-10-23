@@ -32,7 +32,7 @@ if (!ssong) {
 
      document.getElementById("youtube").href = "https://www.youtube.com/watch?v=" + ssong.youtube;
 
-     document.getElementById("song-image").src = ssong.image;
+     document.getElementById("song-image").src = "https://ba14959b4680d4b81463a1d708c63691.untitledcharts.com/f60ee519b7474d5fc22ad87d03ebf0169f8965a1d8a067d2618be9798b494e08/" + ssong.image;
      document.getElementById("song-name").textContent = ssong.name;
      document.getElementById("song-composer").textContent = writeComposers(ssong.composer);
      document.getElementById("song-vocal").textContent = writeVocals(ssong.vocal);
@@ -115,7 +115,7 @@ if (!ssong) {
                          p.style.cursor = "pointer";
                          p.style.opacity = 1;
                     });
-                    document.getElementById("sonolus").href = "https://open.sonolus.com/coconut.sonolus.com/next-sekai/levels/coconut-next-sekai-" + diff.data.id;
+                    document.getElementById("sonolus").href = "https://open.sonolus.com/untitledcharts.com/levels/UnCh-" + diff.data.id;
                })
           }
      })

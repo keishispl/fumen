@@ -26,7 +26,7 @@ function writeSongs(songs) {
           div.appendChild(div2);
 
           var img = document.createElement("img");
-          img.src = song.image;
+          img.src = "https://ba14959b4680d4b81463a1d708c63691.untitledcharts.com/f60ee519b7474d5fc22ad87d03ebf0169f8965a1d8a067d2618be9798b494e08/" + song.image;
           img.draggable = false;
           img.width = 75;
           img.height = 75;

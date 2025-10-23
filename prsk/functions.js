@@ -38,7 +38,7 @@ for (var i = 0; i < lines.length; i++) {
  */
 function jsonFromFile(file) {
      var request = new XMLHttpRequest();
-     request.open("GET", `https://raw.githubusercontent.com/keishispl/fumen-res/refs/heads/main/pjsk/${file}.json`, false);
+     request.open("GET", `https://raw.githubusercontent.com/keishispl/fumen-res/refs/heads/main/prsk/${file}.json`, false);
      request.send(null)
      return JSON.parse(request.responseText);
 }
