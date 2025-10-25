@@ -74,11 +74,7 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
 
      // Generate the relevant songs list for the genre
      var list = [];
-     songs.filter(s => s.genre == genre).forEach(s => {
-          if (s.song === song.song) {
-               return;
-          }
-
+     songs.filter(s => s.genre == genre && s.song !== song.song).slice(0, 5).forEach(s => {
           list.push(writeBox(s));
      })
      ReactDOM.render(<div id="song-list">{list}</div>, document.getElementById("song-list"));
