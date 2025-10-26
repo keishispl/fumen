@@ -17,20 +17,24 @@ function writeSongs(songs) {
           link.style.zIndex = 1;
           div.appendChild(link);
 
-          var id = document.createElement("h3");
-          id.textContent = "#" + song.id;
-          id.className = "id";
-          div.appendChild(id);
-
-          var div2 = document.createElement("div");
-          div.appendChild(div2);
+          var div4 = document.createElement("div");
+          div.appendChild(div4);
 
           var img = document.createElement("img");
           img.src = "https://ba14959b4680d4b81463a1d708c63691.untitledcharts.com/f60ee519b7474d5fc22ad87d03ebf0169f8965a1d8a067d2618be9798b494e08/" + song.image;
           img.draggable = false;
-          img.width = 75;
-          img.height = 75;
-          div2.appendChild(img);
+          img.width = 100;
+          img.height = 100;
+          div4.appendChild(img);
+
+          var div2 = document.createElement("div");
+          div4.appendChild(div2);
+
+          var exdiv = document.createElement("div");
+          exdiv.classList = "exdiv";
+          div.appendChild(exdiv);
+
+          exdiv.style.setProperty("--background-image", "url(https://ba14959b4680d4b81463a1d708c63691.untitledcharts.com/f60ee519b7474d5fc22ad87d03ebf0169f8965a1d8a067d2618be9798b494e08/" + song.image + ")");
 
           var div3 = document.createElement("div");
           div3.classList = "scrollable-div";

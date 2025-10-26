@@ -44,7 +44,7 @@ if (!ssong) {
      document.getElementById("song-combo").style.cursor = "default";
 
      for (const child of document.getElementById("song-info").children) {
-          animateBox([child], 335);
+          animateBox([child], 300);
      }
 
      var items = [];
