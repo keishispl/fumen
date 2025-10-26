@@ -50,20 +50,17 @@ if (!ssong) {
      var items = [];
 
      ssong.difficulties.forEach(diff => {
+          if (diff.data == null) {
+               return
+          }
+
           const div = document.createElement("div");
 
           const circle = document.createElement("div");
           circle.className = diff.type;
 
           const level = document.createElement("p");
-          if (diff.data) {
-               level.textContent = diff.data.level;
-          } else {
-               level.textContent = "-";
-               if (["easy", "normal", "hard"].includes(diff.type)) {
-                    items.push(div);
-               }
-          }
+          level.textContent = diff.data.level;
           circle.appendChild(level);
 
           div.appendChild(circle);
@@ -119,8 +116,4 @@ if (!ssong) {
                })
           }
      })
-
-     if (items.length === 3) {
-          items.forEach(item => item.remove());
-     }
 }
