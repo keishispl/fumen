@@ -377,3 +377,12 @@ h1.scroll-text {
           box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
      }
 }
+
+#song-audio {
+     position: sticky;
+     bottom: 5px;
+     height: 35px;
+     min-height: 35px;
+     max-height: 35px;
+     padding-bottom: 25px;
+}
