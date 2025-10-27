@@ -30,9 +30,18 @@ if (!ssong) {
           document.getElementById("youtube-wrap").style.top = "75px";
      }
 
-     document.getElementById("youtube").href = "https://www.youtube.com/watch?v=" + ssong.youtube;
+     document.getElementById("youtube").addEventListener("click", () => {
+          document.getElementById("video-overlay").style.display = "block";
+          document.getElementById("video").src = "https://www.youtube.com/embed/" + ssong.youtube;
+     });
+
+     document.getElementById("video-close").addEventListener("click", () => {
+          document.getElementById("video-overlay").style.display = "none";
+          document.getElementById("video").src = "";
+     });
 
      document.getElementById("song-image").src = "https://ba14959b4680d4b81463a1d708c63691.untitledcharts.com/f60ee519b7474d5fc22ad87d03ebf0169f8965a1d8a067d2618be9798b494e08/" + ssong.image;
+     document.getElementById("song-audio").src = "https://ba14959b4680d4b81463a1d708c63691.untitledcharts.com/f60ee519b7474d5fc22ad87d03ebf0169f8965a1d8a067d2618be9798b494e08/" + ssong.audio;
      document.getElementById("song-name").textContent = ssong.name;
      document.getElementById("song-composer").textContent = writeComposers(ssong.composer);
      document.getElementById("song-vocal").textContent = writeVocals(ssong.vocal);

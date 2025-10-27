@@ -116,6 +116,7 @@ function getSongs() {
                     info: song["info"],
                     difficulties: song["difficulties"],
                     image: song["image"],
+                    audio: song["audio"],
                     youtube: song["youtube"]
                });
           })

@@ -12,6 +12,10 @@
 
 <body>
      <main>
+          <div id="video-overlay" style="display: none; z-index: 3;">
+               <iframe id="video" style="z-index: 2;"></iframe>
+               <div id="video-close" style="z-index: 1;"></div>
+          </div>
           <a href="../../" style="position: absolute; top: 25px; left: 25px; font-size: 24px; color: var(--font-color);"><i class="fa-solid fa-house"></i></a>
           <div>
                <h1><a href="../">プロセカ創作譜面</a></h1>
@@ -22,7 +26,7 @@
                     <div id="yori-wrap">
                          <p id="yori"></p>
                     </div>
-                    <p id="youtube-wrap"><a id="youtube" target="_blank"><i
+                    <p id="youtube-wrap"><a id="youtube"><i
                                    class="fa-solid fa-up-right-from-square"></i></a></p>
                     <img width="200" height="200" id="song-image" draggable="false">
                     <div id="song-info">
@@ -37,6 +41,7 @@
                     <div id="song-buttons">
                          <a class="btn sonolus" id="sonolus" target="_blank">プレイ</a></p>
                     </div>
+                    <audio id="song-audio" controls style="margin-bottom: 25px;"></audio>
                </div>
           </div>
      </main>
