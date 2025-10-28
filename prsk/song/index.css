@@ -24,12 +24,11 @@
 
 #song-info {
      display: block;
-     min-height: 165px;
-     margin-top: 20px;
+     margin: 20px 10px 40px 10px;
      text-align: left;
+     overflow-x: hidden;
      width: 300px;
      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-     overflow-x: hidden;
 
      >* {
           margin: 0;
@@ -126,8 +125,7 @@
                border-color: var(--append);
           }
 
-          &:hover,
-          &.active {
+          &:hover {
                color: #37306A;
                box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.75);
                text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -165,8 +163,7 @@
                }
           }
 
-          &:hover+p,
-          &.active+p {
+          &:hover+p {
                color: #37306A;
                text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 
@@ -329,6 +326,7 @@ h1.scroll-text {
      >a {
           color: #cecfd0;
           text-decoration: none;
+          cursor: pointer;
      }
 }
 
@@ -379,10 +377,106 @@ h1.scroll-text {
 }
 
 #song-audio {
-     position: sticky;
-     bottom: 5px;
      height: 35px;
      min-height: 35px;
      max-height: 35px;
-     padding-bottom: 25px;
+     padding: 50px 0 25px 0;
+}
+
+#chart-overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.5);
+     padding: 0 0 5px 0;
+}
+
+#chart-close {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100vw;
+     height: 100vh;
+}
+
+#chart-div {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 85vw;
+     height: 85vh;
+     backdrop-filter: blur(5px);
+     background-color: rgba(0, 0, 0, 0.4);
+     box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     border-radius: 10px;
+     transition: box-shadow 0.2s, background-color 0.1s;
+     overflow-y: scroll;
+
+     &:hover {
+          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+     }
+
+     p,
+     h3 {
+          font-size: 16px;
+          letter-spacing: 0;
+          word-break: keep-all;
+          font-weight: normal;
+          text-align: center;
+          width: 100%;
+
+          a {
+               color: var(--link-color);
+               text-decoration: none;
+          }
+     }
+
+     h3 {
+          margin: 0;
+     }
+
+     #chart-level {
+          font-size: 18px;
+          font-weight: bold;
+          margin: 10px 0 0 0;
+     }
+}
+
+#chart-qr {
+     max-height: 200px;
+     max-width: 200px;
+     width: 50vw;
+     height: 50vw;
+     box-shadow: 2px 2px 5px rgba(227, 228, 237, .2);
+     border: 2px solid rgba(255, 255, 255, .2);
+     border-radius: 10px;
+     transition: box-shadow 0.2s, background-color 0.1s;
+     margin: 50px 0 25px 0;
+     user-select: none;
+     -moz-user-select: none;
+     pointer-events: none;
+
+     &:hover {
+          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+     }
+}
+
+.close {
+     position: absolute;
+     top: 10px;
+     right: 10px;
+     font-size: 48px;
+     color: #cecfd0;
+     cursor: pointer;
+     width: min-content;
+     margin: 0;
+     transition: text-shadow 0.2s;
+
+     &:hover {
+          text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+     }
 }

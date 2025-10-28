@@ -39,6 +39,17 @@ if (!ssong) {
           document.getElementById("video-overlay").style.display = "none";
           document.getElementById("video").src = "";
      });
+     document.getElementById("video-close-button").addEventListener("click", () => {
+          document.getElementById("video-overlay").style.display = "none";
+          document.getElementById("video").src = "";
+     });
+
+     document.getElementById("chart-close").addEventListener("click", () => {
+          document.getElementById("chart-overlay").style.display = "none";
+     });
+     document.getElementById("chart-close-button").addEventListener("click", () => {
+          document.getElementById("chart-overlay").style.display = "none";
+     });
 
      document.getElementById("song-image").src = "https://ba14959b4680d4b81463a1d708c63691.untitledcharts.com/f60ee519b7474d5fc22ad87d03ebf0169f8965a1d8a067d2618be9798b494e08/" + ssong.image;
      document.getElementById("song-audio").src = "https://ba14959b4680d4b81463a1d708c63691.untitledcharts.com/f60ee519b7474d5fc22ad87d03ebf0169f8965a1d8a067d2618be9798b494e08/" + ssong.audio;
@@ -46,11 +57,8 @@ if (!ssong) {
      document.getElementById("song-composer").textContent = writeComposers(ssong.composer);
      document.getElementById("song-vocal").textContent = writeVocals(ssong.vocal);
 
-     document.getElementById("song-length").textContent = ssong.info.duration.replace(":", "分") + ("s", "秒");
-     document.getElementById("song-bpm").textContent = ssong.info.bpm + " BPM";
-
-     document.getElementById("song-combo").style.opacity = 0;
-     document.getElementById("song-combo").style.cursor = "default";
+     document.getElementById("chart-length").textContent = ssong.info.duration.replace(":", "分") + ("s", "秒");
+     document.getElementById("chart-bpm").textContent = ssong.info.bpm + " BPM";
 
      for (const child of document.getElementById("song-info").children) {
           animateBox([child], 300);
@@ -81,47 +89,16 @@ if (!ssong) {
 
           document.getElementById("song-charts").appendChild(div);
 
-          document.getElementById("song-buttons").querySelectorAll("a").forEach(p => {
-               p.style.cursor = "default";
-               p.style.opacity = 0;
-          });
-
           if (diff.data) {
                circle.addEventListener("click", () => {
-                    var contain = false;
-                    if (circle.classList.contains("active")) {
-                         contain = true;
-                    }
+                    document.getElementById("chart-level").textContent = diff.type.toUpperCase() + " " + diff.data.level;
+                    document.getElementById("chart-combo").textContent = diff.data.combo + "コンボ";
 
-                    document.getElementById("song-combo").style.opacity = 0;
-                    document.getElementById("song-combo").style.cursor = "default";
+                    document.getElementById("chart-qr").src = "https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&qzone=1&data=sonolus://untitledcharts.com/levels/UnCh-" + diff.data.id;
+                    document.getElementById("chart-link").href = "sonolus://untitledcharts.com/levels/UnCh-" + diff.data.id;
+                    document.getElementById("chart-link").innerHTML = "sonolus://untitledcharts.com/levels/UnCh-" + diff.data.id + " <i class=\"fa-solid fa-up-right-from-square\"></i>";
 
-                    document.getElementById("sonolus").removeAttribute("href");
-                    document.getElementById("song-buttons").querySelectorAll("a").forEach(p => {
-                         p.style.cursor = "default";
-                         p.style.opacity = 0;
-                    });
-
-                    document.getElementById("song-charts").querySelectorAll("div").forEach(div => {
-                         for (const child of div.children) {
-                              child.classList.remove("active");
-                         }
-                    })
-
-                    if (contain) return;
-
-                    circle.classList.add("active");
-                    text.classList.add("active");
-
-                    document.getElementById("song-combo").textContent = diff.data.combo + "コンボ";
-                    document.getElementById("song-combo").style.opacity = 1;
-                    document.getElementById("song-combo").style.cursor = "auto";
-
-                    document.getElementById("song-buttons").querySelectorAll("a").forEach(p => {
-                         p.style.cursor = "pointer";
-                         p.style.opacity = 1;
-                    });
-                    document.getElementById("sonolus").href = "https://open.sonolus.com/untitledcharts.com/levels/UnCh-" + diff.data.id;
+                    document.getElementById("chart-overlay").style.display = "block";
                })
           }
      })

@@ -14,8 +14,23 @@
 <body>
      <main>
           <div id="video-overlay" style="display: none; z-index: 3;">
+               <p id="video-close-button" class="close" style="z-index: 2;"><i class="fa-solid fa-xmark"></i></p>
                <iframe id="video" style="z-index: 2;"></iframe>
                <div id="video-close" style="z-index: 1;"></div>
+          </div>
+          <div id="chart-overlay" style="display: none; z-index: 3;">
+               <p id="chart-close-button" class="close" style="z-index: 2;"><i class="fa-solid fa-xmark"></i></p>
+               <div id="chart-div" style="z-index: 2;">
+                    <h1 style="margin: 50px 0 0 0;">譜面情報</h1>
+                    <h3 id="chart-length">?分??秒</h3>
+                    <h3 id="chart-bpm">???BPM</h3>
+                    <h3 id="chart-level">-</h3>
+                    <h3 id="chart-combo">???コンボ</h3>
+                    <h1 style="margin-top: 50px;">Sonolusで開く</h1>
+                    <p>Sonolusが開かなかった場合は、このリンクをタップしてみてください：<br><a id="chart-link"></a></p>
+                    <img id="chart-qr" draggable="false">
+               </div>
+               <div id="chart-close" style="z-index: 1;"></div>
           </div>
           <a href="../../" style="position: absolute; top: 25px; left: 25px; font-size: 24px; color: var(--font-color);"><i class="fa-solid fa-house"></i></a>
           <div>
@@ -27,21 +42,15 @@
                     <div id="yori-wrap">
                          <p id="yori"></p>
                     </div>
-                    <p id="youtube-wrap"><a id="youtube"><i
-                                   class="fa-solid fa-up-right-from-square"></i></a></p>
+                    <p id="youtube-wrap"><a id="youtube" title="YouTube動画を見る"><i
+                                   class="fa-brands fa-youtube"></i></a></p>
                     <img width="200" height="200" id="song-image" draggable="false">
                     <div id="song-info">
                          <h1 id="song-name">???</h1>
                          <h2 id="song-composer">?????</h2>
                          <h2 id="song-vocal">Vo. ?????</h2>
-                         <h2 id="song-length" style="margin-top: 0.5em;">?分??秒</h2>
-                         <h2 id="song-bpm">??? BPM</h2>
-                         <h2 id="song-combo">コンボはここ</h2>
                     </div>
                     <div id="song-charts"></div>
-                    <div id="song-buttons">
-                         <a class="btn sonolus" id="sonolus" target="_blank">プレイ</a></p>
-                    </div>
                     <audio id="song-audio" controls></audio>
                </div>
           </div>
