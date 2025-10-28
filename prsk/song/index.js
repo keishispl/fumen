@@ -4,7 +4,7 @@ const songId = new URLSearchParams(window.location.search).get("id");
 var ssong = songs.find(song => song.id === songId);
 
 if (!ssong) {
-     document.title = "404 | プロセカ - 創作譜面";
+     document.title = "404 | プロセカ創作譜面";
 
      document.getElementById("id").textContent = "";
      document.getElementById("yori-wrap").remove();
@@ -21,7 +21,7 @@ if (!ssong) {
 
      document.getElementById("song-buttons").innerHTML = `<a class="btn" href="../">ホームに戻る</a></p>`;
 } else {
-     document.title = ssong.name + " | プロセカ - 創作譜面";
+     document.title = ssong.name + " | プロセカ創作譜面";
 
      document.getElementById("id").textContent = "#" + songId;
      document.getElementById("yori").textContent = ssong.yori;

@@ -22,7 +22,7 @@ const id = new URL(window.location.href).searchParams.get('id');
 
 // Check if the song is valid 
 if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !Object.keys(genreLabels).includes(genre) || id >= genreCount[genre]) {
-     document.title = "404 | 太鼓の達人 - 創作譜面";
+     document.title = "404 | 太鼓の達人創作譜面";
      document.querySelector("main").remove();
      document.querySelector("footer").remove();
 
@@ -43,7 +43,7 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
      const song = songs.find(s => s.id == parseInt(id) && s.genre == genre);
 
      // Update the song details
-     document.title = song.song + " | 太鼓の達人 - 創作譜面";
+     document.title = song.song + " | 太鼓の達人創作譜面";
      document.getElementById("title").textContent = song.song;
      document.getElementById("genre").textContent = genreLabels[song.genre];
      document.getElementById("genre").className = song.genre;

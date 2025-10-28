@@ -208,6 +208,7 @@ function chartsSetup(_songs) {
 
      document.getElementById("song-amount").textContent = "??件の結果";
      document.getElementById("page-amount").textContent = "";
+     document.title = "太鼓の達人創作譜面";
 
      loading++;
 
@@ -235,6 +236,7 @@ function chartsSetup(_songs) {
 
      // Generate song amount
      document.getElementById("song-amount").textContent = amount + "件の結果";
+     document.title = `【${amount}件】太鼓の達人創作譜面`;
 
      // Generate page amount
      document.getElementById("page-amount").textContent = "全" + songDivs.length + "ページ";
