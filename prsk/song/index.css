@@ -342,7 +342,8 @@ h1.scroll-text {
      border-bottom-left-radius: 0;
 }
 
-#video-overlay {
+#video-overlay,
+#chart-overlay {
      position: absolute;
      top: 0;
      left: 0;
@@ -352,7 +353,8 @@ h1.scroll-text {
      padding: 0 0 5px 0;
 }
 
-#video-close {
+#video-close,
+#chart-close {
      position: absolute;
      top: 0;
      left: 0;
@@ -384,24 +386,6 @@ h1.scroll-text {
      min-height: 35px;
      max-height: 35px;
      padding: 50px 0 25px 0;
-}
-
-#chart-overlay {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100vw;
-     height: 100vh;
-     background-color: rgba(0, 0, 0, 0.5);
-     padding: 0 0 5px 0;
-}
-
-#chart-close {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100vw;
-     height: 100vh;
 }
 
 #chart-div {
