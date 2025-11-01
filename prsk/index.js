@@ -2,6 +2,9 @@
 var search = document.getElementById("search");
 var urlparam = new URLSearchParams(window.location.search);
 search.value = urlparam.get("search") ?? "";
+document.getElementById("filter-source").value = urlparam.get("source") ?? "";
+
+var difficultyFilter = ["master", "append"];
 
 /**
  * Write a list of songs to the page.
@@ -75,11 +78,30 @@ function filterSearch() {
      urlparam.delete("search");
 
      if (search.value === "") {
-          history.pushState(null, null, ".");
+          history.pushState(null, null, "." + (urlparam.toString() ? "?" + urlparam.toString() : ""));
      } else {
           urlparam.set("search", search.value);
           history.pushState(null, null, "?" + urlparam.toString());
      }
+
+     // Update filter source
+     urlparam.delete("source");
+     if (document.getElementById("filter-source").value !== "") {
+          urlparam.set("source", document.getElementById("filter-source").value);
+          history.pushState(null, null, "?" + urlparam.toString());
+     } else {
+          history.pushState(null, null, "." + (urlparam.toString() ? "?" + urlparam.toString() : ""));
+     }
+
+     difficultyFilter.forEach(type => {
+          urlparam.delete(type + "-ari");
+          if (document.getElementById("filter-ari-" + type).checked) {
+               urlparam.set(type + "-ari", "1");
+               history.pushState(null, null, "?" + urlparam.toString());
+          } else {
+               history.pushState(null, null, "." + (urlparam.toString() ? "?" + urlparam.toString() : ""));
+          }
+     });
 
      // Filter songs by search
      var ssongs = getSongs().filter(song =>
@@ -89,6 +111,29 @@ function filterSearch() {
           kataToHira(song.vocal.join("、").replaceAll(", ", "、")).toLowerCase().includes(kataToHira(search.value).toLowerCase()) ||
           kataToHira(song.yori).toLowerCase().includes(kataToHira(search.value).toLowerCase())
      );
+
+     if (document.getElementById("filter-source").value !== "") {
+          ssongs = ssongs.filter(song => {
+               var yori = song.yori;
+               if (yori.includes("アニメ")) yori = "アニメ";
+               return kataToHira(yori).toLowerCase().includes(kataToHira(document.getElementById("filter-source").value).toLowerCase());
+          })
+     }
+     difficultyFilter.forEach(type => {
+          if (document.getElementById("filter-ari-" + type).checked) {
+               ssongs = ssongs.filter(song => {
+                    var has = false;
+                    song.difficulties.forEach(diff => {
+                         if (diff.type === type) {
+                              if (diff.data !== null) {
+                                   has = true;
+                              } 
+                         }
+                    });
+                    return has;
+               })
+          }
+     });
 
      // Rewrite HTML
      document.getElementById("charts").innerHTML = "";
@@ -105,6 +150,122 @@ window.addEventListener("resize", () => {
      var items = [];
      document.getElementById("charts").querySelectorAll(".scrollable").forEach(item => items.push(item));
      animateBox(items, document.querySelector(".scrollable-div").clientWidth);
+})
+
+// filter button
+document.getElementById("search-filter").addEventListener("click", () => {
+     document.getElementById("filter-search").value = document.getElementById("search").value;
+     document.getElementById("filter-overlay").style.display = "block";
+});
+
+["filter-close", "filter-close-button"].forEach(id => {
+     document.getElementById(id).addEventListener("click", () => {
+          document.getElementById("filter-overlay").style.display = "none";
+     });
+});
+
+document.getElementById("filter-search").addEventListener("input", () => {
+     document.getElementById("search").value = document.getElementById("filter-search").value;
+     filterSearch();
+});
+
+document.getElementById("filter-clear-search").addEventListener("click", (e) => {
+     document.getElementById("filter-search").value = "";
+     document.getElementById("search").value = "";
+     document.getElementById("filter-search").focus();
+     filterSearch();
+});
+
+document.getElementById("filter-clear-source").addEventListener("click", () => {
+     document.getElementById("filter-source").value = "";
+     document.getElementById("filter-source").focus();
+     filterSearch();
+});
+
+var yoris = [];
+getSongs().forEach(song => {
+     var yori = song.yori;
+     if (yori.includes("アニメ")) yori = "アニメ";
+     var has = false;
+     yoris.forEach(oyori => {
+          if (kataToHira(oyori).toLowerCase() == kataToHira(yori).toLowerCase()) has = true;
+     });
+     if (!has) yoris.push(yori);
+})
+
+function resetYori() {
+     document.getElementById("filter-source-list").innerHTML = "";
+
+     yoris.sort().forEach(yori => {
+          var option = document.createElement("a");
+          option.textContent = yori;
+          document.getElementById("filter-source-list").appendChild(option);
+
+          option.addEventListener("click", () => {
+               document.getElementById("filter-source").value = yori;
+               document.getElementById("filter-source").focus();
+               filterSearch();
+          });
+     });
+}
+
+document.getElementById("filter-source").addEventListener("input", () => {
+     var source = document.getElementById("filter-source").value;
+     document.getElementById("filter-source-list").innerHTML = "";
+
+     yoris.forEach(yori => {
+          if (!kataToHira(yori).toLowerCase().includes(kataToHira(source).toLowerCase())) return;
+
+          var option = document.createElement("a");
+          option.textContent = yori;
+          document.getElementById("filter-source-list").appendChild(option);
+
+          option.addEventListener("click", () => {
+               document.getElementById("filter-source").value = yori;
+               document.getElementById("filter-source").focus();
+               resetYori();
+               filterSearch();
+          });
+     });
+
+     filterSearch();
+});
+
+resetYori();
+
+difficultyFilter.forEach(id => {
+     var wrap = document.createElement("div");
+     wrap.className = "checkbox-wrap";
+     document.getElementById("filter-difficulty").appendChild(wrap);
+
+     var checkbox = document.createElement("input");
+     checkbox.type = "checkbox";
+     checkbox.id = "filter-ari-" + id;
+     wrap.appendChild(checkbox);
+
+     var label = document.createElement("label");
+     label.htmlFor = "filter-ari-" + id;
+     label.textContent = id.toUpperCase() + "譜面あり";
+     wrap.appendChild(label);
+
+     var urlparam = new URLSearchParams(window.location.search);
+     if (urlparam.get(id + "-ari") === "1") {
+          checkbox.checked = true;
+     }
+
+     checkbox.addEventListener("change", () => {
+          filterSearch();
+     });
+});
+
+document.getElementById("filter-reset-all").addEventListener("click", () => {
+     document.getElementById("filter-search").value = "";
+     document.getElementById("search").value = "";
+     document.getElementById("filter-source").value = "";
+     difficultyFilter.forEach(id => {
+          document.getElementById("filter-ari-" + id).checked = false;
+     });
+     filterSearch();
 })
 
 // Filter on load

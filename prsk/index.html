@@ -2,7 +2,8 @@
 
 <head>
      <title>プロセカ創作譜面</title>
-     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+     <meta name="viewport"
+          content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" type="text/css"
           rel="stylesheet">
      <link href="https://raw.githubusercontent.com/keishispl/tlstuff/refs/heads/main/fonts/font.css" type="text/css"
@@ -13,13 +14,42 @@
 
 <body>
      <main>
-          <a href="../" style="position: absolute; top: 25px; left: 25px; font-size: 24px; color: var(--font-color);"><i class="fa-solid fa-house"></i></a>
+          <div id="filter-overlay" style="display: none; z-index: 3;">
+               <p id="filter-close-button" class="close" style="z-index: 2;"><i class="fa-solid fa-xmark"></i></p>
+               <div id="filter-div" style="z-index: 2;">
+                    <h1>検索とフィルター</h1>
+                    <div>
+                         <h3>検索キーワード</h3>
+                         <input type="text" id="filter-search" autocomplete="off"
+                              placeholder="曲ID・曲名・クリエイター名・ボーカリスト名・來源から探す">
+                         <a id="filter-clear-search" class="clear"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                    <div>
+                         <h3>曲の出どころ</h3>
+                         <input type="text" id="filter-source" autocomplete="off" style="z-index: 5;"
+                              placeholder="來源でフィルターする">
+                         <div id="filter-source-list" style="z-index: 4;"></div>
+                         <a id="filter-clear-source" class="clear"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                    <div>
+                         <h3>難易度</h3>
+                         <div class="checkbox-list" id="filter-difficulty"></div>
+                    </div>
+                    <p id="filter-reset-all">リセット</p>
+               </div>
+               <div id="filter-close" style="z-index: 1;"></div>
+          </div>
+          <a href="../" style="position: absolute; top: 25px; left: 25px; font-size: 24px; color: var(--font-color);"><i
+                    class="fa-solid fa-house"></i></a>
           <div>
-               <h1><a href="./">プロセカ創作譜面</a></h1>
+               <h1 style="word-break: keep-all;"><a href="./">プロセカ創作譜面</a></h1>
           </div>
           <div id="main">
                <div id="obj">
-                    <input type="text" id="search" autocomplete="off" placeholder="曲ID・曲名・クリエイター名・ボーカリスト名・來源から探す">
+                    <div id="search-div">
+                         <input type="text" id="search" autocomplete="off" placeholder="曲ID・曲名・クリエイター名・ボーカリスト名・來源から探す">
+                         <button id="search-filter" title="検索とフィルターを開く"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
                     <div id="chart-wrap">
                          <div id="charts"></div>
                     </div>
