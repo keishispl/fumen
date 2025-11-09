@@ -118,7 +118,7 @@ function renderButtons(div, current, display) {
 
                buttons.sort((a, b) => a.key - b.key);
 
-               var searchButton = <input type="number" onKeyDown={handleKeyDown} />;
+               var searchButton = <input type="number" min="1" max={div.length} onKeyDown={handleKeyDown} />;
                function handleKeyDown(event) {
                     if (event.key === "Enter") {
                          var key = event.target.value;
