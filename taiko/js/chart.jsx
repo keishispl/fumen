@@ -58,6 +58,7 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
      document.getElementById("video").src = `https://www.youtube.com/embed/${song.link}`;
      document.getElementById("download").href = `https://drive.google.com/drive/folders/${song.download}`;
 
+     document.getElementById("source-link").href = `../?source=${writeSources(song)}`;
      document.getElementById("genre-link").href = `../?genre=${song.genre}`;
 
      // Generate the difficulty list
@@ -71,6 +72,17 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
           </div>);
      });
      ReactDOM.render(<div id="chart-list">{charts}</div>, document.getElementById("charts"));
+
+     // Generate the relevant songs list for the source
+     var list = [];
+     songs.filter(s => writeSources(s) == writeSources(song) && s.song !== song.song).slice(0, 5).forEach(s => {
+          list.push(writeBox(s));
+     })
+     if (list.length == 0 || writeSources(song) === "") {
+          document.getElementById("source-same").style.display = "none";
+     } else {
+          ReactDOM.render(<div id="source-list">{list}</div>, document.getElementById("source-list"));
+     }
 
      // Generate the relevant songs list for the genre
      var list = [];
