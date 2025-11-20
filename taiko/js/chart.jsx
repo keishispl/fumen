@@ -64,12 +64,14 @@ if (!id || !genre || id.includes(".") || `${parseInt(id)}` !== id || id < 0 || !
      // Generate the difficulty list
      var charts = [];
      Object.keys(song.chart).forEach(chart => {
-          charts.push(<div className={chart}>
-               <img src={`../difficulty/${chart}.png`} draggable={false} />
-               <h3>{chartLabels[chart]}</h3>
-               <p>☆{song.chart[chart][0]}</p>
-               <p>{song.chart[chart][1]} コンボ</p>
-          </div>);
+          if (song.chart[chart] !== null) {
+               charts.push(<div className={chart}>
+                    <img src={`../difficulty/${chart}.png`} draggable={false} />
+                    <h3>{chartLabels[chart]}</h3>
+                    <p>☆{song.chart[chart][0]}</p>
+                    <p>{song.chart[chart][1]} コンボ</p>
+               </div>);
+          }
      });
      ReactDOM.render(<div id="chart-list">{charts}</div>, document.getElementById("charts"));
 
