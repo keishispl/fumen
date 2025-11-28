@@ -1,3 +1,11 @@
+// スワップリンク
+var href = window.location.pathname;
+if (href.includes("/taiko-scroll/")) {
+     document.getElementById("change").href = window.location.href.replace("/taiko-scroll/", "/taiko/");
+} else {
+     document.getElementById("change").href = window.location.href.replace("/taiko/", "/taiko-scroll/");
+}
+
 /**
  * An array of songs
  * @type {Song[]}

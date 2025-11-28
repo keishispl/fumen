@@ -2,7 +2,8 @@
 
 <head>
      <title>太鼓の達人創作譜面</title>
-     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+     <meta name="viewport"
+          content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
 
      <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
      <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
@@ -16,14 +17,16 @@
 </head>
 
 <body>
-     <main>
+     <header>
           <a href="../../"
                style="position: absolute; top: 25px; left: 25px; font-size: 24px; color: var(--font-color);"><i
                     class="fa-solid fa-house"></i></a>
           <div>
                <h1><a href="../">太鼓の達人創作譜面</a></h1>
           </div>
-          <a id="change" title="スクロールバーションを見る" style="position: absolute; top: 25px; right: 25px; font-size: 24px; color: var(--font-color);"><i class="fa-solid fa-arrow-right-arrow-left"></i></a>
+          <a id="change" title="オリジナルバーションを見る" style="position: absolute; top: 25px; right: 25px; font-size: 24px; color: var(--font-color);"><i class="fa-solid fa-arrow-right-arrow-left"></i></a>
+     </header>
+     <main id="scrollable">
           <div>
                <h2 class="title">楽曲情報</h2>
                <hr style="margin-bottom: 50px;" />
@@ -31,7 +34,8 @@
                <h1 id="title" style="line-height: 1.5em; margin: 0;">???</h1>
                <p id="artist" style="margin: 12px 0 0 0;">-</p>
                <p id="vocal" style="margin-top: 5px; margin-bottom: 0;">-</p>
-               <p id="genre" style="font-size: 16px; text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin-bottom: 0;">???</p>
+               <p id="genre" style="font-size: 16px; text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin-bottom: 0;">
+                    ???</p>
                <p id="date" style="font-size: 16px; text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); margin-top: 0;">-</p>
                <iframe id="video"></iframe>
                <p><a class="btn" id="download" target="_blank">ダウンロード <i
@@ -62,8 +66,8 @@
           <p>keishisplが作成したサイト</p>
           <p><a href="https://github.com/keishispl/fumen" target="_blank">ソースコード</a>を見る</p>
      </footer>
-     <script type="text/babel" src="../js/functions.jsx"></script>
-     <script type="text/babel" src="../js/chart.jsx"></script>
+     <script type="text/babel" src="../../taiko/js/functions.jsx"></script>
+     <script type="text/babel" src="../../taiko/js/chart.jsx"></script>
 </body>
 
 </html>
