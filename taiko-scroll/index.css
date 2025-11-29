@@ -41,6 +41,7 @@ main#scrollable {
      >div {
           min-width: 100vw;
           scroll-snap-align: start;
+          scroll-snap-stop: always;
      }
 }
 
