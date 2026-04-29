@@ -1,3 +1,5 @@
+window.location.href = "./endofservice";
+
 // Set the search value
 var search = document.getElementById("search");
 var urlparam = new URLSearchParams(window.location.search);

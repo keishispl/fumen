@@ -1,3 +1,5 @@
+window.location.href = "../endofservice";
+
 const songs = getSongs();
 
 const songId = new URLSearchParams(window.location.search).get("id");
